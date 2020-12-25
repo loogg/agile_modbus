@@ -139,10 +139,10 @@ static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int
     if (remain_len > (int)ctx->backend->max_adu_length)
         return -1;
     remain_len -= (ctx->backend->header_length + 1);
-    if (remain_len <= 0)
+    if (remain_len < 0)
         return -1;
     remain_len -= agile_modbus_compute_meta_length_after_function(msg[ctx->backend->header_length], msg_type);
-    if (remain_len <= 0)
+    if (remain_len < 0)
         return -1;
     remain_len -= agile_modbus_compute_data_length_after_meta(ctx, msg, msg_type);
     if (remain_len < 0)
