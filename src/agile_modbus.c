@@ -214,7 +214,12 @@ static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
 
     /* Exception code */
     if (function >= 0x80)
-        return -1;
+    {
+        if (rsp_length == (offset + 2 + (int)ctx->backend->checksum_length) && req[offset] == (rsp[offset] - 0x80))
+            return (-128 - rsp[offset + 1]);
+        else
+            return -1;
+    }
 
     /* Check length */
     if ((rsp_length == rsp_length_computed || rsp_length_computed == AGILE_MODBUS_MSG_LENGTH_UNDEFINED) && function < 0x80)
@@ -305,7 +310,7 @@ int agile_modbus_deserialize_read_bits(agile_modbus_t *ctx, int msg_length, uint
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
 
     int i, temp, bit;
     int pos = 0;
@@ -362,7 +367,7 @@ int agile_modbus_deserialize_read_input_bits(agile_modbus_t *ctx, int msg_length
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
 
     int i, temp, bit;
     int pos = 0;
@@ -419,7 +424,7 @@ int agile_modbus_deserialize_read_registers(agile_modbus_t *ctx, int msg_length,
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
     
     int offset;
     int i;
@@ -464,7 +469,7 @@ int agile_modbus_deserialize_read_input_registers(agile_modbus_t *ctx, int msg_l
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
     
     int offset;
     int i;
@@ -748,7 +753,7 @@ int agile_modbus_deserialize_write_and_read_registers(agile_modbus_t *ctx, int m
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
     
     int offset;
     int i;
@@ -794,7 +799,7 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
     
     rc = agile_modbus_check_confirmation(ctx, ctx->send_buf, ctx->read_buf, rc);
     if (rc < 0)
-        return -1;
+        return rc;
     
     int i;
     int offset;
