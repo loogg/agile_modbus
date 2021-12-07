@@ -5,13 +5,16 @@ OBJSDIR = ./build
 
 .PHONY: all clean
 
-TARGETS=RtuMaster
+TARGETS=RtuMaster TcpMaster
 COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ./common/*.c)
 COMMON_OBJS = $(patsubst %.c,./$(OBJSDIR)/%.o,$(notdir $(COMMON_SRCS)))
 
 all: $(TARGETS)
 
-RtuMaster: $(COMMON_OBJS) ./$(OBJSDIR)/rtu_master.o
+RtuMaster:$(COMMON_OBJS) ./$(OBJSDIR)/rtu_master.o
+	${CC} $^ -g -o $@ ${LDFLAGS}
+
+TcpMaster:$(COMMON_OBJS) ./$(OBJSDIR)/tcp_master.o
 	${CC} $^ -g -o $@ ${LDFLAGS}
 
 ./$(OBJSDIR)/%.o:../src/%.c
@@ -24,6 +27,9 @@ RtuMaster: $(COMMON_OBJS) ./$(OBJSDIR)/rtu_master.o
 	${CC} -g -c $< -o $@ ${CFLAGS}
 
 ./$(OBJSDIR)/%.o:./rtu_master/%.c
+	${CC} -g -c $< -o $@ ${CFLAGS}
+
+./$(OBJSDIR)/%.o:./tcp_master/%.c
 	${CC} -g -c $< -o $@ ${CFLAGS}
 
 clean:
