@@ -51,3 +51,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Documentation
+doc/doxygen/output/*
+!doc/doxygen/output/index.html
