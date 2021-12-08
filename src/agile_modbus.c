@@ -38,6 +38,23 @@
     | Client | ---------------------->| Server |
     ---------- Confirmation  Response ----------
 
+    以 03 功能码请求报文举例
+
+    ---------- ------ --------------- ---------
+    | header | | 03 | | 00 00 00 01 | | CRC16 |
+    ---------- ------ --------------- ---------
+
+    ----------
+    | header |
+    ----------
+        RTU: 设备地址
+        TCP: | 事务处理标识  协议标识  长度  单元标识符 |
+
+    ---------------
+    | 00 00 00 01 |
+    ---------------
+        数据元: 与功能码相关的数据，如 03 功能码数据元中包含寄存器起始地址和寄存器长度
+
  @endverbatim
  * @param   ctx modbus 句柄
  * @param   function 功能码
@@ -88,7 +105,7 @@ static uint8_t agile_modbus_compute_meta_length_after_function(agile_modbus_t *c
             break;
 
         default:
-            length = 0;
+            length = 1;
             if (ctx->compute_meta_length_after_function)
                 length = ctx->compute_meta_length_after_function(ctx, function, msg_type);
         }
@@ -99,6 +116,34 @@ static uint8_t agile_modbus_compute_meta_length_after_function(agile_modbus_t *c
 
 /**
  * @brief   计算数据元之后要接收的数据长度
+ @verbatim
+    ---------- Request     Indication ----------
+    | Client | ---------------------->| Server |
+    ---------- Confirmation  Response ----------
+
+    以 03 功能码响应报文举例
+
+    ---------- ------ ------ --------- ---------
+    | header | | 03 | | 02 | | 00 00 | | CRC16 |
+    ---------- ------ ------ --------- ---------
+
+    ----------
+    | header |
+    ----------
+        RTU: 设备地址
+        TCP: | 事务处理标识  协议标识  长度  单元标识符 |
+
+    ------
+    | 02 |
+    ------
+        数据元: 两个字节数据
+
+    ---------
+    | 00 00 |
+    ---------
+        数据
+
+ @endverbatim
  * @param   ctx modbus 句柄
  * @param   msg 消息指针
  * @param   msg_length 消息长度
@@ -228,8 +273,8 @@ static int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx
  * @param   rsp 响应数据指针
  * @param   rsp_length 响应数据长度
  * @return
- * - >=0:对应功能码处理需要的长度(特殊的功能码返回值为1)
- * - 其他:异常
+ * - >=0:对应功能码响应对象的长度。如 03 功能码，值代表寄存器个数
+ * - 其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
  */
 static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
                                            uint8_t *rsp, int rsp_length)
@@ -351,6 +396,32 @@ void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_b
 int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
 {
     return ctx->backend->set_slave(ctx, slave);
+}
+
+/**
+ * @brief   设置 modbus 对象的计算功能码后要接收的数据元长度回调函数
+ * @param   ctx modbus 句柄
+ * @param   cb 计算功能码后要接收的数据元长度回调函数
+ * @see     agile_modbus_compute_meta_length_after_function
+ */
+void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
+                                                            uint8_t (*cb)(agile_modbus_t *ctx, int function,
+                                                                          agile_modbus_msg_type_t msg_type))
+{
+    ctx->compute_meta_length_after_function = cb;
+}
+
+/**
+ * @brief   设置 modbus 对象的计算数据元之后要接收的数据长度回调函数
+ * @param   ctx modbus 句柄
+ * @param   cb 计算数据元之后要接收的数据长度回调函数
+ * @see     agile_modbus_compute_data_length_after_meta
+ */
+void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
+                                                        int (*cb)(agile_modbus_t *ctx, uint8_t *msg,
+                                                                  int msg_length, agile_modbus_msg_type_t msg_type))
+{
+    ctx->compute_data_length_after_meta = cb;
 }
 
 /**

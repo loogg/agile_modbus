@@ -3,8 +3,8 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 
 #define DBG_ENABLE
 #define DBG_COLOR
@@ -27,8 +27,7 @@ static void *cycle_entry(void *param)
 
     LOG_I("Running.");
 
-    while(1)
-    {
+    while (1) {
         usleep(100000);
 
         tcp_flush(_sock);
@@ -46,8 +45,11 @@ static void *cycle_entry(void *param)
         }
 
         int rc = agile_modbus_deserialize_read_registers(ctx, read_len, hold_register);
-        if (rc != 10) {
+        if (rc < 0) {
             LOG_W("Receive failed.");
+            if (rc != -1)
+                LOG_W("Error code:%d", -128 - rc);
+
             continue;
         }
 
@@ -69,8 +71,7 @@ int main(int argc, char *argv[])
     }
 
     _sock = tcp_connect(argv[1], atoi(argv[2]));
-    if(_sock == -1)
-    {
+    if (_sock == -1) {
         LOG_E("Connect %s:%d failed!", argv[1], atoi(argv[2]));
         return -1;
     }

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Agile Modbus: 使用说明</title>
+<title>Agile Modbus: Agile Modbus</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,124 +40,65 @@ $(function() {
 <div id="main-nav"></div>
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">使用说明 </div></div>
+  <div class="headertitle"><div class="title">Agile Modbus </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
 <h1><a class="anchor" id="autotoc_md1"></a>
-介绍</h1>
+1、介绍</h1>
+<p >Agile Modbus 即：轻量型 modbus 协议栈，是我在使用其他第三方库过程中进行归纳而形成的一个库。</p>
+<h2><a class="anchor" id="autotoc_md2"></a>
+1.1、特性</h2>
 <ol type="1">
-<li><a class="el" href="structagile__modbus.html" title="Agile Modbus 结构体">agile_modbus</a> 即：轻量型 modbus 协议栈，是我在使用其他第三方库过程中进行归纳而形成的一个库。</li>
 <li>其支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
 <li>由于其使用纯 C 开发、不涉及硬件，完全可以在串口上跑 tcp 协议，在网络上跑 rtu 协议。</li>
 <li>支持符合 modbus 格式的自定义协议。</li>
-<li>支持常用功能码，如下：</li>
+<li>同时支持主机和从机<ul>
+<li><p class="startli">主机时：常用功能码都有相应的 API 支持，支持自定义命令解析。</p>
+<p class="startli">```C AGILE_MODBUS_FC_READ_COILS 0x01 AGILE_MODBUS_FC_READ_DISCRETE_INPUTS 0x02 AGILE_MODBUS_FC_READ_HOLDING_REGISTERS 0x03 AGILE_MODBUS_FC_READ_INPUT_REGISTERS 0x04 AGILE_MODBUS_FC_WRITE_SINGLE_COIL 0x05 AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER 0x06 AGILE_MODBUS_FC_READ_EXCEPTION_STATUS 0x07 AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS 0x0F AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS 0x10 AGILE_MODBUS_FC_REPORT_SLAVE_ID 0x11 AGILE_MODBUS_FC_MASK_WRITE_REGISTER 0x16 AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS 0x17 ```</p><ul>
+<li>从机时：</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。</li>
 </ol>
-<div class="fragment"><div class="line"><span class="comment">/* Modbus function codes */</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_COILS                0x01</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_DISCRETE_INPUTS      0x02</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_HOLDING_REGISTERS    0x03</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_INPUT_REGISTERS      0x04</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_SINGLE_COIL         0x05</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER     0x06</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_EXCEPTION_STATUS     0x07</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS      0x0F</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS  0x10</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_REPORT_SLAVE_ID           0x11</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_MASK_WRITE_REGISTER       0x16</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS  0x17</span></div>
-</div><!-- fragment --><ol type="1">
-<li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用响应 API 进行组包和解包即可。</li>
-<li>作为从机使用时只简单提供了解包 API，因为从机的处理多种多样，个人没有能力抽象出一个通用的类。而像 <code>libmodbus</code> 里的 <code>mapping</code> 结构根本应对不了多少场合。如果您能想到更好的方法，希望能够告知。</li>
-</ol>
-<h1><a class="anchor" id="autotoc_md2"></a>
-API 介绍</h1>
-<ol type="1">
-<li>初始化 rtu 句柄</li>
-</ol>
-<p ><code>int <a class="el" href="group___r_t_u___exported___functions.html#ga96821440a21db41bb7b662ea8ff346ec" title="RTU 初始化">agile_modbus_rtu_init(agile_modbus_rtu_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)</a></code></p>
+<h2><a class="anchor" id="autotoc_md3"></a>
+1.2、目录结构</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
+<th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">说明    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">rtu 句柄    </td></tr>
+<td class="markdownTableBodyNone">doc   </td><td class="markdownTableBodyNone">文档目录    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">send_buf   </td><td class="markdownTableBodyNone">发送缓冲区地址    </td></tr>
+<td class="markdownTableBodyNone">examples   </td><td class="markdownTableBodyNone">例子目录    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">send_bufsz   </td><td class="markdownTableBodyNone">发送缓冲区大小    </td></tr>
+<td class="markdownTableBodyNone">inc   </td><td class="markdownTableBodyNone">头文件目录    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">read_buf   </td><td class="markdownTableBodyNone">接收缓冲区地址    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">read_bufsz   </td><td class="markdownTableBodyNone">接收缓冲区大小   </td></tr>
+<td class="markdownTableBodyNone">src   </td><td class="markdownTableBodyNone">源代码目录   </td></tr>
 </table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>初始化 tcp 句柄</li>
-</ol>
-<p ><code>int <a class="el" href="group___t_c_p___exported___functions.html#ga4f9b3e37c01e6f112f63e7194dad7b33" title="TCP 初始化">agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">tcp 句柄    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">send_buf   </td><td class="markdownTableBodyNone">发送缓冲区地址    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">send_bufsz   </td><td class="markdownTableBodyNone">发送缓冲区大小    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">read_buf   </td><td class="markdownTableBodyNone">接收缓冲区地址    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">read_bufsz   </td><td class="markdownTableBodyNone">接收缓冲区大小   </td></tr>
-</table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>设置从机地址</li>
-</ol>
-<p ><code>int <a class="el" href="group___c_o_m_m_o_n___operation___functions.html#ga6e2698caaa0b25e3d2fb00bba81594f7" title="设置地址">agile_modbus_set_slave(agile_modbus_t *ctx, int slave)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>解析主机发来的数据</li>
-</ol>
-<p ><code>int <a class="el" href="group___c_o_m_m_o_n___exported___functions.html#ga6cab780b622e86d12e9d878a331ae6c8">agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">句柄    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">msg_length   </td><td class="markdownTableBodyNone">接收到的数据的长度   </td></tr>
-</table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">&lt; 0   </td><td class="markdownTableBodyNone">异常    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">其他   </td><td class="markdownTableBodyNone">数据格式正确   </td></tr>
-</table>
-<h1><a class="anchor" id="autotoc_md3"></a>
-示例</h1>
-<p >基于 STM32F103，使用 <code>RT-Thread Nano</code>。该 demo 实现了 rtu 及 tcp 的例子，rtu 使用串口作为演示；tcp 使用 ESP8266 演示，支持微信配网。</p>
-<p >该 demo 也可作为 <code>RT-Thread Nano</code> 学习的参考例程。</p>
-<ol type="1">
-<li>示例地址为： <a href="https://github.com/loogg/agile_modbus_demo">地址</a></li>
-<li>定期维护 </li>
-</ol>
+<h2><a class="anchor" id="autotoc_md4"></a>
+1.3、许可证</h2>
+<p >Agile Modbus 遵循 LGPLv2.1 许可，详见 <code>LICENSE</code> 文件。</p>
+<h1><a class="anchor" id="autotoc_md5"></a>
+2、使用 Agile Modbus</h1>
+<h2><a class="anchor" id="autotoc_md6"></a>
+2.1、示例</h2>
+<p >使用示例在 <a href="./examples">examples</a> 下。</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
+2.2、Doxygen 文档生成</h2>
+<ul>
+<li>使用 <code>Doxywizard</code> 打开 <a href="./doc/doxygen/Doxyfile">Doxyfile</a> 运行，生成的文件在 <a href="./doc/doxygen/output">doxygen/output</a> 下。</li>
+<li>需要更改 <code>Graphviz</code> 路径。</li>
+<li><code>HTML</code> 生成未使用 <code>chm</code> 格式的，如果使能需要更改 <code>hhc.exe</code> 路径。</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md8"></a>
+3、联系方式 &amp; 感谢</h1>
+<ul>
+<li>维护：马龙伟</li>
+<li>主页：<a href="https://github.com/loogg/agile_modbus">https://github.com/loogg/agile_modbus</a></li>
+<li>邮箱：<a href="#" onclick="location.href='mai'+'lto:'+'254'+'40'+'472'+'13'+'@qq'+'.c'+'om'; return false;">25440<span style="display: none;">.nosp@m.</span>4721<span style="display: none;">.nosp@m.</span>3@qq.<span style="display: none;">.nosp@m.</span>com</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

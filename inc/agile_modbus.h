@@ -208,6 +208,12 @@ struct agile_modbus {
  */
 void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz);
 int agile_modbus_set_slave(agile_modbus_t *ctx, int slave);
+void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
+                                                            uint8_t (*cb)(agile_modbus_t *ctx, int function,
+                                                                          agile_modbus_msg_type_t msg_type));
+void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
+                                                        int (*cb)(agile_modbus_t *ctx, uint8_t *msg,
+                                                                  int msg_length, agile_modbus_msg_type_t msg_type));
 int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus_msg_type_t msg_type);
 /**
  * @}

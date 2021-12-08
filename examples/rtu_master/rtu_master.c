@@ -45,8 +45,11 @@ static void *cycle_entry(void *param)
         }
 
         int rc = agile_modbus_deserialize_read_registers(ctx, read_len, hold_register);
-        if (rc != 10) {
+        if (rc < 0) {
             LOG_W("Receive failed.");
+            if (rc != -1)
+                LOG_W("Error code:%d", -128 - rc);
+
             continue;
         }
 
