@@ -5,6 +5,22 @@
  * @version 1.1.0
  * @date    2021-12-02
  *
+ @verbatim
+    使用：
+    用户需要实现硬件接口的 `发送数据` 、 `等待数据接收结束` 、 `清空接收缓存` 函数
+
+    - 主机：
+        1. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
+        2. agile_modbus_set_slave 设置从机地址
+        3. `清空接收缓存`
+        4. `agile_modbus_serialize_xxx` 打包请求数据
+        5. `发送数据`
+        6. `等待数据接收结束`
+        7. `agile_modbus_deserialize_xxx` 解析响应数据
+        8. 用户处理得到的数据
+
+ @endverbatim
+ *
  * @attention
  *
  * <h2><center>&copy; Copyright (c) 2021 Ma Longwei.
@@ -195,9 +211,7 @@ static int agile_modbus_compute_data_length_after_meta(agile_modbus_t *ctx, uint
  * @param   msg 消息指针
  * @param   msg_length 消息长度
  * @param   msg_type 消息类型
- * @return
- * - >0:正确，modbus 数据帧长度
- * - 其他:异常
+ * @return  >0:正确，modbus 数据帧长度; 其他:异常
  */
 static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int msg_length, agile_modbus_msg_type_t msg_type)
 {
@@ -272,9 +286,8 @@ static int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx
  * @param   req 请求数据指针
  * @param   rsp 响应数据指针
  * @param   rsp_length 响应数据长度
- * @return
- * - >=0:对应功能码响应对象的长度。如 03 功能码，值代表寄存器个数
- * - 其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
+ * @return  >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数);
+ *          其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
  */
 static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
                                            uint8_t *rsp, int rsp_length)
@@ -390,8 +403,7 @@ void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_b
  * @brief   设置地址
  * @param   ctx modbus 句柄
  * @param   slave 地址
- * @return
- * - 0:成功
+ * @return  0:成功
  */
 int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
 {
@@ -426,12 +438,11 @@ void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
 
 /**
  * @brief   校验接收数据正确性
+ * @note    该 API 返回的是 modbus 数据帧长度，比如 8 个字节的 modbus 数据帧 + 2 个字节的脏数据，返回 8
  * @param   ctx modbus 句柄
  * @param   msg_length 接收数据长度
  * @param   msg_type 消息类型
- * @return
- * - >0:正确，modbus 数据帧长度
- * - 其他:异常
+ * @return  >0:正确，modbus 数据帧长度; 其他:异常
  */
 int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus_msg_type_t msg_type)
 {
@@ -448,7 +459,7 @@ int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus
  */
 
 /** @defgroup COMMON_MODBUS_Master_Operation_Functions Common Modbus Master Operation Functions
- *  @brief    常用 modbus 操作函数
+ *  @brief    常用 modbus 主机操作函数
  @verbatim
     API 形式如下：
     - agile_modbus_serialize_xxx    打包请求数据
@@ -458,7 +469,7 @@ int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus
 
     - agile_modbus_deserialize_xxx  解析响应数据
     返回值:
-        >=0:对应功能码响应对象的长度。如 03 功能码，值代表寄存器个数
+        >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数)
         其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
 
  @endverbatim
@@ -1001,9 +1012,7 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
  * @param   ctx modbus 句柄
  * @param   raw_req 原始报文(PDU + Slave address)
  * @param   raw_req_length 原始报文长度
- * @return
- * - >0:请求数据长度
- * - 其他:异常
+ * @return  >0:请求数据长度; 其他:异常
  */
 int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length)
 {
@@ -1044,9 +1053,8 @@ int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_r
  * @brief   解析响应原始数据
  * @param   ctx modbus 句柄
  * @param   msg_length 接收数据长度
- * @return
- * - >=0:对应功能码响应对象的长度。如 03 功能码，值代表寄存器个数
- * - 其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
+ * @return  >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数);
+ *          其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
  */
 int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length)
 {

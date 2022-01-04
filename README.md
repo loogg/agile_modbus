@@ -2,33 +2,14 @@
 
 ## 1、介绍
 
-Agile Modbus 即：轻量型 modbus 协议栈，是我在使用其他第三方库过程中进行归纳而形成的一个库。
+Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。
 
 ### 1.1、特性
 
-1. 其支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。
+1. 支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。
 2. 由于其使用纯 C 开发、不涉及硬件，完全可以在串口上跑 tcp 协议，在网络上跑 rtu 协议。
 3. 支持符合 modbus 格式的自定义协议。
-4. 同时支持主机和从机
-   - 主机时：常用功能码都有相应的 API 支持，支持自定义命令解析。
-
-    ```C
-    AGILE_MODBUS_FC_READ_COILS               0x01
-    AGILE_MODBUS_FC_READ_DISCRETE_INPUTS     0x02
-    AGILE_MODBUS_FC_READ_HOLDING_REGISTERS   0x03
-    AGILE_MODBUS_FC_READ_INPUT_REGISTERS     0x04
-    AGILE_MODBUS_FC_WRITE_SINGLE_COIL        0x05
-    AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER    0x06
-    AGILE_MODBUS_FC_READ_EXCEPTION_STATUS    0x07
-    AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS     0x0F
-    AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS 0x10
-    AGILE_MODBUS_FC_REPORT_SLAVE_ID          0x11
-    AGILE_MODBUS_FC_MASK_WRITE_REGISTER      0x16
-    AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS 0x17
-    ```
-
-    - 从机时：
-
+4. 同时支持多主机和多从机。
 5. 使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。
 
 ### 1.2、目录结构
@@ -45,6 +26,35 @@ Agile Modbus 即：轻量型 modbus 协议栈，是我在使用其他第三方�
 Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
 ## 2、使用 Agile Modbus
+
+- 帮助文档请查看 [doc/doxygen/Agile_Modbus.chm](./doc/doxygen/Agile_Modbus.chm)
+
+- 用户需要实现硬件接口的 `发送数据` 、 `等待数据接收结束` 、 `清空接收缓存` 函数
+
+  对于 `等待数据接收结束`，提供如下几点思路：
+
+  1. 通用方法
+
+     每隔 20 / 50 ms (该时间可根据波特率和硬件设置，这里只是给了参考值) 从硬件接口读取数据存放到缓冲区中并更新偏移，直到读取不到或缓冲区满，退出读取。
+
+     这对于裸机或操作系统都适用，操作系统可通过 `select` 或 `信号量` 方式完成阻塞。
+
+  2. 串口 `DMA + IDLE` 中断方式
+
+     配置 `DMA + IDLE` 中断，在中断中使能标志，应用程序中判断该标志是否置位即可。
+
+     但该方案容易出问题，数据字节间稍微错开一点时间就不是一帧了。推荐第一种方案。
+
+- 主机：
+
+  1. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
+  2. agile_modbus_set_slave 设置从机地址
+  3. `清空接收缓存`
+  4. `agile_modbus_serialize_xxx` 打包请求数据
+  5. `发送数据`
+  6. `等待数据接收结束`
+  7. `agile_modbus_deserialize_xxx` 解析响应数据
+  8. 用户处理得到的数据
 
 ### 2.1、示例
 
