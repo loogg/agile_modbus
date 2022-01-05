@@ -20,30 +20,30 @@
 
 - RTU
 
-  1. 使用虚拟串口软件虚拟出一对串口
+  - 使用虚拟串口软件虚拟出一对串口
 
   ![VirtualCom](./figures/VirtualCom.jpg)
 
-  1. 打开 `Modbus Slave` ，按下图设置
+  - 打开 `Modbus Slave` ，按下图设置
 
   ![ModbusSlaveSetup](./figures/ModbusSlaveSetup.jpg)
 
-  1. `Modbus Slave` 连接，按下图设置
+  - `Modbus Slave` 连接，按下图设置
 
   ![ModbusSlaveRTUConnection](./figures/ModbusSlaveRTUConnection.jpg)
 
-  1. `./RtuMaster /dev/ttySX` 运行 `RTU` 主机示例，`ttySX` 为一对虚拟串口中的另一个
+  - `./RtuMaster /dev/ttySX` 运行 `RTU` 主机示例，`ttySX` 为一对虚拟串口中的另一个
 
   ![RTUMaster](./figures/RTUMaster.jpg)
 
 - TCP
 
-  1. 打开 `Modbus Slave`，`SetUp` 设置同 `RTU` 一致
+  - 打开 `Modbus Slave`，`SetUp` 设置同 `RTU` 一致
 
-  2. `Modbus Slave` 连接，按下图设置
+  - `Modbus Slave` 连接，按下图设置
 
   ![ModbusSlaveTCPConnection](./figures/ModbusSlaveTCPConnection.jpg)
 
-  1. `./TcpMaster 127.0.0.1 502` 运行 `TCP` 主机示例
+  - `./TcpMaster 127.0.0.1 502` 运行 `TCP` 主机示例
 
   ![TCPMaster](./figures/TCPMaster.jpg)
