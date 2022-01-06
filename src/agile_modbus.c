@@ -233,6 +233,99 @@ static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int
 }
 
 /**
+ * @}
+ */
+
+/** @defgroup COMMON_Exported_Functions Common Exported Functions
+ * @{
+ */
+
+/**
+ * @brief   初始化 modbus 句柄
+ * @param   ctx modbus 句柄
+ * @param   send_buf 发送缓冲区
+ * @param   send_bufsz 发送缓冲区大小
+ * @param   read_buf 接收缓冲区
+ * @param   read_bufsz 接收缓冲区大小
+ */
+void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
+{
+    memset(ctx, 0, sizeof(agile_modbus_t));
+    ctx->slave = -1;
+    ctx->send_buf = send_buf;
+    ctx->send_bufsz = send_bufsz;
+    ctx->read_buf = read_buf;
+    ctx->read_bufsz = read_bufsz;
+}
+
+/**
+ * @brief   设置地址
+ * @param   ctx modbus 句柄
+ * @param   slave 地址
+ * @return  0:成功
+ */
+int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
+{
+    return ctx->backend->set_slave(ctx, slave);
+}
+
+/**
+ * @brief   设置 modbus 对象的计算功能码后要接收的数据元长度回调函数
+ * @param   ctx modbus 句柄
+ * @param   cb 计算功能码后要接收的数据元长度回调函数
+ * @see     agile_modbus_compute_meta_length_after_function
+ */
+void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
+                                                            uint8_t (*cb)(agile_modbus_t *ctx, int function,
+                                                                          agile_modbus_msg_type_t msg_type))
+{
+    ctx->compute_meta_length_after_function = cb;
+}
+
+/**
+ * @brief   设置 modbus 对象的计算数据元之后要接收的数据长度回调函数
+ * @param   ctx modbus 句柄
+ * @param   cb 计算数据元之后要接收的数据长度回调函数
+ * @see     agile_modbus_compute_data_length_after_meta
+ */
+void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
+                                                        int (*cb)(agile_modbus_t *ctx, uint8_t *msg,
+                                                                  int msg_length, agile_modbus_msg_type_t msg_type))
+{
+    ctx->compute_data_length_after_meta = cb;
+}
+
+/**
+ * @brief   校验接收数据正确性
+ * @note    该 API 返回的是 modbus 数据帧长度，比如 8 个字节的 modbus 数据帧 + 2 个字节的脏数据，返回 8
+ * @param   ctx modbus 句柄
+ * @param   msg_length 接收数据长度
+ * @param   msg_type 消息类型
+ * @return  >0:正确，modbus 数据帧长度; 其他:异常
+ */
+int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus_msg_type_t msg_type)
+{
+    if ((msg_length <= 0) || (msg_length > ctx->read_bufsz))
+        return -1;
+
+    int rc = agile_modbus_receive_msg_judge(ctx, ctx->read_buf, msg_length, msg_type);
+
+    return rc;
+}
+
+/**
+ * @}
+ */
+
+/** @defgroup Modbus_Master Modbus Master
+ * @{
+ */
+
+/** @defgroup Master_Private_Functions Master Private Functions
+ * @{
+ */
+
+/**
  * @brief   计算预期响应数据长度
  * @note    如果是特殊的功能码，返回 AGILE_MODBUS_MSG_LENGTH_UNDEFINED ，但这不代表异常。
  *          agile_modbus_check_confirmation 调用该 API 处理时认为 AGILE_MODBUS_MSG_LENGTH_UNDEFINED 返回值也是有效的。
@@ -373,92 +466,7 @@ static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
  * @}
  */
 
-/** @defgroup COMMON_Exported_Functions Common Exported Functions
- * @{
- */
-
-/** @defgroup COMMON_Operation_Functions Common Operation Functions
- * @{
- */
-
-/**
- * @brief   初始化 modbus 句柄
- * @param   ctx modbus 句柄
- * @param   send_buf 发送缓冲区
- * @param   send_bufsz 发送缓冲区大小
- * @param   read_buf 接收缓冲区
- * @param   read_bufsz 接收缓冲区大小
- */
-void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
-{
-    memset(ctx, 0, sizeof(agile_modbus_t));
-    ctx->slave = -1;
-    ctx->send_buf = send_buf;
-    ctx->send_bufsz = send_bufsz;
-    ctx->read_buf = read_buf;
-    ctx->read_bufsz = read_bufsz;
-}
-
-/**
- * @brief   设置地址
- * @param   ctx modbus 句柄
- * @param   slave 地址
- * @return  0:成功
- */
-int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
-{
-    return ctx->backend->set_slave(ctx, slave);
-}
-
-/**
- * @brief   设置 modbus 对象的计算功能码后要接收的数据元长度回调函数
- * @param   ctx modbus 句柄
- * @param   cb 计算功能码后要接收的数据元长度回调函数
- * @see     agile_modbus_compute_meta_length_after_function
- */
-void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
-                                                            uint8_t (*cb)(agile_modbus_t *ctx, int function,
-                                                                          agile_modbus_msg_type_t msg_type))
-{
-    ctx->compute_meta_length_after_function = cb;
-}
-
-/**
- * @brief   设置 modbus 对象的计算数据元之后要接收的数据长度回调函数
- * @param   ctx modbus 句柄
- * @param   cb 计算数据元之后要接收的数据长度回调函数
- * @see     agile_modbus_compute_data_length_after_meta
- */
-void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
-                                                        int (*cb)(agile_modbus_t *ctx, uint8_t *msg,
-                                                                  int msg_length, agile_modbus_msg_type_t msg_type))
-{
-    ctx->compute_data_length_after_meta = cb;
-}
-
-/**
- * @brief   校验接收数据正确性
- * @note    该 API 返回的是 modbus 数据帧长度，比如 8 个字节的 modbus 数据帧 + 2 个字节的脏数据，返回 8
- * @param   ctx modbus 句柄
- * @param   msg_length 接收数据长度
- * @param   msg_type 消息类型
- * @return  >0:正确，modbus 数据帧长度; 其他:异常
- */
-int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus_msg_type_t msg_type)
-{
-    if ((msg_length <= 0) || (msg_length > ctx->read_bufsz))
-        return -1;
-
-    int rc = agile_modbus_receive_msg_judge(ctx, ctx->read_buf, msg_length, msg_type);
-
-    return rc;
-}
-
-/**
- * @}
- */
-
-/** @defgroup COMMON_MODBUS_Master_Operation_Functions Common Modbus Master Operation Functions
+/** @defgroup Master_Common_Operation_Functions Master Common Operation Functions
  *  @brief    常用 modbus 主机操作函数
  @verbatim
     API 形式如下：
@@ -1003,7 +1011,7 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
  * @}
  */
 
-/** @defgroup RAW_MODBUS_Master_Operation_Functions RAW Modbus Master Operation Functions
+/** @defgroup Master_Raw_Operation_Functions Master Raw Operation Functions
  * @{
  */
 
@@ -1077,9 +1085,391 @@ int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length)
  * @}
  */
 
-/** @defgroup COMMON_MODBUS_Slave_Operation_Functions Common Modbus Slave Operation Functions
+/**
+ * @}
+ */
+
+/** @defgroup Modbus_Slave Modbus Slave
  * @{
  */
+
+/** @defgroup Slave_Private_Functions Slave Private Functions
+ * @{
+ */
+
+/**
+ * @brief   打包异常响应数据
+ * @param   ctx modbus 句柄
+ * @param   sft modbus 信息头
+ * @param   exception_code 异常码
+ * @return  响应数据长度
+ */
+static int agile_modbus_serialize_response_exception(agile_modbus_t *ctx, agile_modbus_sft_t *sft, int exception_code)
+{
+    int rsp_length;
+
+    /* Build exception response */
+    sft->function = sft->function + 0x80;
+    rsp_length = ctx->backend->build_response_basis(sft, ctx->send_buf);
+    ctx->send_buf[rsp_length++] = exception_code;
+
+    return rsp_length;
+}
+
+/**
+ * @}
+ */
+
+/** @defgroup Slave_Operation_Functions Slave Operation Functions
+ * @{
+ */
+
+/**
+ * @brief   从机 IO 设置
+ * @param   buf 存放 IO 数据区
+ * @param   index IO 索引(第几个 IO)
+ * @param   status IO 状态
+ */
+void agile_modbus_slave_io_set(uint8_t *buf, int index, int status)
+{
+    int offset = index / 8;
+    int shift = index % 8;
+
+    if (status)
+        buf[offset] |= (0x01 << shift);
+    else
+        buf[offset] &= ~(0x01 << shift);
+}
+
+/**
+ * @brief   读取 IO 状态
+ * @param   buf IO 数据区域
+ * @param   index IO 索引(第几个 IO)
+ * @return  IO 状态(1/0)
+ */
+uint8_t agile_modbus_slave_io_get(uint8_t *buf, int index)
+{
+    int offset = index / 8;
+    int shift = index % 8;
+
+    uint8_t status = (buf[offset] & (0x01 << shift)) ? 1 : 0;
+
+    return status;
+}
+
+/**
+ * @brief   从机寄存器设置
+ * @param   buf 存放数据区
+ * @param   index 寄存器索引(第几个寄存器)
+ * @param   data 寄存器数据
+ */
+void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data)
+{
+    buf[index * 2] = data >> 8;
+    buf[index * 2 + 1] = data & 0xFF;
+}
+
+/**
+ * @brief   从机数据处理
+ * @param   ctx modbus 句柄
+ * @param   msg_length 接收数据长度
+ * @param   slave_strict 从机地址严格检查标志
+ *     @arg 0: 不比对从机地址
+ *     @arg 1: 比对从机地址
+ * @param   slave_cb 从机回调函数
+ * @param   frame_length 存放 modbus 数据帧长度
+ * @return  >=0:要响应的数据长度; 其他:异常
+ */
+int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
+                              agile_modbus_slave_callback_t slave_cb, int *frame_length)
+{
+    int min_rsp_length = ctx->backend->header_length + 5 + ctx->backend->checksum_length;
+    if (ctx->send_bufsz < min_rsp_length)
+        return -1;
+
+    int req_length = agile_modbus_receive_judge(ctx, msg_length, AGILE_MODBUS_MSG_INDICATION);
+    if (req_length < 0)
+        return -1;
+    if (frame_length)
+        *frame_length = req_length;
+
+    int offset;
+    int slave;
+    int function;
+    uint16_t address;
+    int rsp_length = 0;
+    int exception_code = 0;
+    agile_modbus_sft_t sft;
+    uint8_t *req = ctx->read_buf;
+    uint8_t *rsp = ctx->send_buf;
+
+    memset(rsp, 0, ctx->send_bufsz);
+    offset = ctx->backend->header_length;
+    slave = req[offset - 1];
+    function = req[offset];
+    address = (req[offset + 1] << 8) + req[offset + 2];
+
+    sft.slave = slave;
+    sft.function = function;
+    sft.t_id = ctx->backend->prepare_response_tid(req, &req_length);
+
+    struct agile_modbus_slave_info slave_info = {0};
+    slave_info.sft = &sft;
+    slave_info.address = address;
+
+    if (slave_strict) {
+        if (slave != ctx->slave)
+            return 0;
+    }
+
+    switch (function) {
+    case AGILE_MODBUS_FC_READ_COILS:
+    case AGILE_MODBUS_FC_READ_DISCRETE_INPUTS: {
+        int nb = (req[offset + 3] << 8) + req[offset + 4];
+        if (nb < 1 || AGILE_MODBUS_MAX_READ_BITS < nb) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        int end_address = (int)address + nb - 1;
+        if (end_address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        slave_info.nb = (nb / 8) + ((nb % 8) ? 1 : 0);
+        rsp[rsp_length++] = slave_info.nb;
+        slave_info.send_index = rsp_length;
+        rsp_length += slave_info.nb;
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+    } break;
+
+    case AGILE_MODBUS_FC_READ_HOLDING_REGISTERS:
+    case AGILE_MODBUS_FC_READ_INPUT_REGISTERS: {
+        int nb = (req[offset + 3] << 8) + req[offset + 4];
+        if (nb < 1 || AGILE_MODBUS_MAX_READ_REGISTERS < nb) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        int end_address = (int)address + nb - 1;
+        if (end_address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        slave_info.nb = nb << 1;
+        rsp[rsp_length++] = slave_info.nb;
+        slave_info.send_index = rsp_length;
+        rsp_length += slave_info.nb;
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_SINGLE_COIL: {
+        if (address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        int data = (req[offset + 3] << 8) + req[offset + 4];
+        if (data == 0xFF00 || data == 0x0)
+            data = data ? 1 : 0;
+        else {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        slave_info.buf = (uint8_t *)&data;
+        rsp_length = req_length;
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        memcpy(rsp, req, req_length);
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER: {
+        if (address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        int data = (req[offset + 3] << 8) + req[offset + 4];
+
+        slave_info.buf = (uint8_t *)&data;
+        rsp_length = req_length;
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        memcpy(rsp, req, req_length);
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS: {
+        int nb = (req[offset + 3] << 8) + req[offset + 4];
+        int nb_bits = req[offset + 5];
+        if (nb < 1 || AGILE_MODBUS_MAX_WRITE_BITS < nb || nb_bits * 8 < nb) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        int end_address = (int)address + nb - 1;
+        if (end_address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        slave_info.nb = nb;
+        slave_info.buf = &req[offset + 6];
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + 4)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        /* 4 to copy the bit address (2) and the quantity of bits */
+        memcpy(rsp + rsp_length, req + rsp_length, 4);
+        rsp_length += 4;
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS: {
+        int nb = (req[offset + 3] << 8) + req[offset + 4];
+        int nb_bytes = req[offset + 5];
+        if (nb < 1 || AGILE_MODBUS_MAX_WRITE_REGISTERS < nb || nb_bytes != nb * 2) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        int end_address = (int)address + nb - 1;
+        if (end_address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        slave_info.nb = nb;
+        slave_info.buf = &req[offset + 6];
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + 4)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        /* 4 to copy the address (2) and the no. of registers */
+        memcpy(rsp + rsp_length, req + rsp_length, 4);
+        rsp_length += 4;
+
+    } break;
+
+    case AGILE_MODBUS_FC_REPORT_SLAVE_ID: {
+        int str_len;
+        int byte_count_pos;
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        /* Skip byte count for now */
+        byte_count_pos = rsp_length++;
+        rsp[rsp_length++] = ctx->slave;
+        /* Run indicator status to ON */
+        rsp[rsp_length++] = 0xFF;
+
+        str_len = strlen(AGILE_MODBUS_VERSION_STRING);
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + str_len)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        memcpy(rsp + rsp_length, AGILE_MODBUS_VERSION_STRING, str_len);
+        rsp_length += str_len;
+        rsp[byte_count_pos] = rsp_length - byte_count_pos - 1;
+    } break;
+
+    case AGILE_MODBUS_FC_READ_EXCEPTION_STATUS:
+        exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
+        break;
+
+    case AGILE_MODBUS_FC_MASK_WRITE_REGISTER: {
+        if (address > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        slave_info.buf = &req[offset + 3];
+        rsp_length = req_length;
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+        memcpy(rsp, req, req_length);
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS: {
+        int nb = (req[offset + 3] << 8) + req[offset + 4];
+        uint16_t address_write = (req[offset + 5] << 8) + req[offset + 6];
+        int nb_write = (req[offset + 7] << 8) + req[offset + 8];
+        int nb_write_bytes = req[offset + 9];
+        if (nb_write < 1 || AGILE_MODBUS_MAX_WR_WRITE_REGISTERS < nb_write ||
+            nb < 1 || AGILE_MODBUS_MAX_WR_READ_REGISTERS < nb ||
+            nb_write_bytes != nb_write * 2) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
+            break;
+        }
+
+        int end_address = (int)address + nb - 1;
+        int end_address_write = (int)address_write + nb_write - 1;
+        if(end_address > 0xFFFF || end_address_write > 0xFFFF) {
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
+            break;
+        }
+
+        rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+        rsp[rsp_length++] = nb << 1;
+        slave_info.buf = &req[offset + 3];
+        slave_info.send_index = rsp_length;
+        rsp_length += (nb << 1);
+        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+            exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
+            break;
+        }
+    } break;
+
+    default: {
+        if (slave_cb == NULL)
+            exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
+        else {
+            rsp_length = ctx->backend->build_response_basis(&sft, rsp);
+            slave_info.send_index = rsp_length;
+        }
+    } break;
+    }
+
+    if (exception_code)
+        rsp_length = agile_modbus_serialize_response_exception(ctx, &sft, exception_code);
+    else {
+        if (slave_cb) {
+            int ret = slave_cb(ctx, &slave_info);
+
+            if (ret < 0) {
+                if (ret == -AGILE_MODBUS_EXCEPTION_UNKNOW)
+                    rsp_length = 0;
+                else
+                    rsp_length = agile_modbus_serialize_response_exception(ctx, &sft, -ret);
+            }
+        }
+    }
+
+    if (rsp_length) {
+        if ((ctx->backend->backend_type == AGILE_MODBUS_BACKEND_TYPE_RTU) && (slave == AGILE_MODBUS_BROADCAST_ADDRESS))
+            return 0;
+
+        rsp_length = ctx->backend->send_msg_pre(rsp, rsp_length);
+    }
+
+    return rsp_length;
+}
 
 /**
  * @}

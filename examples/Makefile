@@ -5,7 +5,7 @@ OBJSDIR = ./build
 
 .PHONY: all clean
 
-TARGETS = RtuMaster TcpMaster
+TARGETS = RtuMaster TcpMaster ModbusSlave
 
 COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ./common/*.c)
 COMMON_OBJS = $(patsubst %.c,./$(OBJSDIR)/%.o,$(notdir $(COMMON_SRCS)))
