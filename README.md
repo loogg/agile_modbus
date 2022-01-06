@@ -56,6 +56,29 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
   7. `agile_modbus_deserialize_xxx` 解析响应数据
   8. 用户处理得到的数据
 
+- 从机：
+
+  1. 实现 `agile_modbus_slave_callback_t` 类型回调函数
+  2. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
+  3. agile_modbus_set_slave 设置从机地址
+  4. `等待数据接收结束`
+  5. agile_modbus_slave_handle 处理请求数据
+  6. `清空接收缓存` (可选)
+  7. `发送数据`
+
+- `agile_modbus_slave_callback_t` 介绍
+
+  `typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);`
+
+  agile_modbus_slave_info:
+
+  - agile_modbus_sft_t *sft: 包含从机地址和功能码属性，回调中可利用
+  - int *rsp_length: 响应数据长度指针，回调中处理 `特殊功能码` 时需要更新其值，否则 **不准更改**
+  - int address: 寄存器地址 (不一定用到)
+  - int nb: 数目 (不一定用到)
+  - uint8_t *buf: 不同功能码需要使用的数据域 (不一定用到)
+  - int send_index: 发送缓冲区当前索引 (不一定用到)
+
 ### 2.1、示例
 
 使用示例在 [examples](./examples) 下。

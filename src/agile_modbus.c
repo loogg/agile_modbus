@@ -19,6 +19,15 @@
         7. `agile_modbus_deserialize_xxx` 解析响应数据
         8. 用户处理得到的数据
 
+    - 从机：
+        1. 实现 `agile_modbus_slave_callback_t` 类型回调函数
+        2. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
+        3. agile_modbus_set_slave 设置从机地址
+        4. `等待数据接收结束`
+        5. agile_modbus_slave_handle 处理请求数据
+        6. `清空接收缓存` (可选)
+        7. `发送数据`
+
  @endverbatim
  *
  * @attention
@@ -1142,7 +1151,7 @@ void agile_modbus_slave_io_set(uint8_t *buf, int index, int status)
 }
 
 /**
- * @brief   读取 IO 状态
+ * @brief   读取从机 IO 状态
  * @param   buf IO 数据区域
  * @param   index IO 索引(第几个 IO)
  * @return  IO 状态(1/0)
@@ -1167,6 +1176,19 @@ void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data)
 {
     buf[index * 2] = data >> 8;
     buf[index * 2 + 1] = data & 0xFF;
+}
+
+/**
+ * @brief   读取从机寄存器数据
+ * @param   buf 寄存器数据区域
+ * @param   index 寄存器索引(第几个寄存器)
+ * @return  寄存器数据
+ */
+uint16_t agile_modbus_slave_register_get(uint8_t *buf, int index)
+{
+    uint16_t data = (buf[index * 2] << 8) + buf[index * 2 + 1];
+
+    return data;
 }
 
 /**
@@ -1215,6 +1237,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
 
     struct agile_modbus_slave_info slave_info = {0};
     slave_info.sft = &sft;
+    slave_info.rsp_length = &rsp_length;
     slave_info.address = address;
 
     if (slave_strict) {
@@ -1242,6 +1265,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         rsp[rsp_length++] = slave_info.nb;
         slave_info.send_index = rsp_length;
         rsp_length += slave_info.nb;
+        slave_info.nb = nb;
         if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
@@ -1267,6 +1291,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         rsp[rsp_length++] = slave_info.nb;
         slave_info.send_index = rsp_length;
         rsp_length += slave_info.nb;
+        slave_info.nb = nb;
         if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
@@ -1420,7 +1445,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
 
         int end_address = (int)address + nb - 1;
         int end_address_write = (int)address_write + nb_write - 1;
-        if(end_address > 0xFFFF || end_address_write > 0xFFFF) {
+        if (end_address > 0xFFFF || end_address_write > 0xFFFF) {
             exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
             break;
         }

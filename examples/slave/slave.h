@@ -6,8 +6,9 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include "agile_modbus.h"
 
-#define DEVICE_VERSION
+int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
 
 #ifdef __cplusplus
 }

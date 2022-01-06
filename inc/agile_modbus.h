@@ -232,6 +232,7 @@ struct agile_modbus {
  */
 struct agile_modbus_slave_info {
     agile_modbus_sft_t *sft; /**< sft 结构体指针 */
+    int *rsp_length;         /**< 响应数据长度指针 */
     int address;             /**< 寄存器地址 */
     int nb;                  /**< 数目 */
     uint8_t *buf;            /**< 不同功能码需要使用的数据域 */
@@ -334,6 +335,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
 void agile_modbus_slave_io_set(uint8_t *buf, int index, int status);
 uint8_t agile_modbus_slave_io_get(uint8_t *buf, int index);
 void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data);
+uint16_t agile_modbus_slave_register_get(uint8_t *buf, int index);
 /**
  * @}
  */
