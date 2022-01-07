@@ -6,6 +6,18 @@
 
 `WSL` 或 `Linux` 下使用 `gcc` 可直接 `make all` 编译出所有示例，在电脑上运行测试程序。
 
+目录结构：
+
+| 名称 | 说明 |
+| ---- | ---- |
+| common | 公用源码 |
+| figures | 素材 |
+| rtu_master | RTU 主机示例 |
+| tcp_master  | TCP 主机示例 |
+| slave  | RTU + TCP 从机示例 |
+| rtu_p2p  | RTU 点对点传输文件 |
+| rtu_broadcast  | RTU 广播传输文件 |
+
 ## 2、使用
 
 需要准备的工具如下：
@@ -18,7 +30,7 @@
 
 ### 2.1、主机
 
-- RTU
+- RTU (rtu_master)
 
   - 使用虚拟串口软件虚拟出一对串口
 
@@ -32,11 +44,11 @@
 
     ![ModbusSlaveRTUConnection](./figures/ModbusSlaveRTUConnection.jpg)
 
-  - `./RtuMaster /dev/ttySX` 运行 `RTU` 主机示例，`ttySX` 为一对虚拟串口中的另一个
+  - 进入 `rtu_master` 目录，`./RtuMaster /dev/ttySX` 运行 `RTU` 主机示例，`ttySX` 为一对虚拟串口中的另一个
 
     ![RTUMaster](./figures/RTUMaster.jpg)
 
-- TCP
+- TCP (tcp_master)
 
   - 打开 `Modbus Slave`，`SetUp` 设置同 `RTU` 一致
 
@@ -44,15 +56,17 @@
 
     ![ModbusSlaveTCPConnection](./figures/ModbusSlaveTCPConnection.jpg)
 
-  - `./TcpMaster 127.0.0.1 502` 运行 `TCP` 主机示例
+  - 进入 `tcp_master` 目录，`./TcpMaster 127.0.0.1 502` 运行 `TCP` 主机示例
 
     ![TCPMaster](./figures/TCPMaster.jpg)
 
 ### 2.2、从机
 
-该示例同时提供 `RTU` 和 `TCP` 从机功能演示，控制的是同一片内存。`TCP` 最大可接入 5 个客户端，每个客户端无数据超时为 10s, 10s 后自动断开。
+该示例 (slave) 同时提供 `RTU` 和 `TCP` 从机功能演示，控制的是同一片内存。`TCP` 最大可接入 5 个客户端，每个客户端无数据超时为 10s, 10s 后自动断开。
 
 示例支持所有功能码(除了功能码 0x07)。
+
+回调函数的处理在 `slave.c` 中，其他源码只是建立不同硬件接口的链接。
 
 **注意**：
 
@@ -66,7 +80,7 @@
 
   ![VirtualCom](./figures/VirtualCom.jpg)
 
-- `./ModbusSlave /dev/ttyS2 1025` 运行示例
+- 进入 `slave` 目录，`./ModbusSlave /dev/ttyS2 1025` 运行示例
 
   /dev/ttySX: 虚拟串口中的一个
 

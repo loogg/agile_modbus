@@ -10,8 +10,8 @@
     用户需要实现硬件接口的 `发送数据` 、 `等待数据接收结束` 、 `清空接收缓存` 函数
 
     - 主机：
-        1. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
-        2. agile_modbus_set_slave 设置从机地址
+        1. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
+        2. `agile_modbus_set_slave` 设置从机地址
         3. `清空接收缓存`
         4. `agile_modbus_serialize_xxx` 打包请求数据
         5. `发送数据`
@@ -21,10 +21,10 @@
 
     - 从机：
         1. 实现 `agile_modbus_slave_callback_t` 类型回调函数
-        2. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
-        3. agile_modbus_set_slave 设置从机地址
+        2. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
+        3. `agile_modbus_set_slave` 设置从机地址
         4. `等待数据接收结束`
-        5. agile_modbus_slave_handle 处理请求数据
+        5. `agile_modbus_slave_handle` 处理请求数据
         6. `清空接收缓存` (可选)
         7. `发送数据`
 
@@ -1468,6 +1468,8 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         else {
             rsp_length = ctx->backend->build_response_basis(&sft, rsp);
             slave_info.send_index = rsp_length;
+            slave_info.buf = &req[offset + 1];
+            slave_info.nb = req_length - offset - 1;
         }
     } break;
     }

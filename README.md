@@ -47,8 +47,8 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
 - 主机：
 
-  1. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
-  2. agile_modbus_set_slave 设置从机地址
+  1. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
+  2. `agile_modbus_set_slave` 设置从机地址
   3. `清空接收缓存`
   4. `agile_modbus_serialize_xxx` 打包请求数据
   5. `发送数据`
@@ -59,12 +59,38 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 - 从机：
 
   1. 实现 `agile_modbus_slave_callback_t` 类型回调函数
-  2. agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境
-  3. agile_modbus_set_slave 设置从机地址
+  2. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
+  3. `agile_modbus_set_slave` 设置从机地址
   4. `等待数据接收结束`
-  5. agile_modbus_slave_handle 处理请求数据
+  5. `agile_modbus_slave_handle` 处理请求数据
   6. `清空接收缓存` (可选)
   7. `发送数据`
+
+- 特殊功能码
+
+  需要调用 `agile_modbus_set_compute_meta_length_after_function_cb` 和 `agile_modbus_set_compute_data_length_after_meta_cb` API 设置特殊功能码在主从模式下处理的回调。
+
+  - `agile_modbus_set_compute_meta_length_after_function_cb`
+
+    `msg_type == AGILE_MODBUS_MSG_INDICATION`: 返回主机请求报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 0。
+
+    `msg_type == MSG_CONFIRMATION`: 返回从机响应报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 1。
+
+  - `agile_modbus_set_compute_data_length_after_meta_cb`
+
+    `msg_type == AGILE_MODBUS_MSG_INDICATION`: 返回主机请求报文数据元之后的数据长度，不是特殊功能码必须返回 0。
+
+    `msg_type == MSG_CONFIRMATION`: 返回从机响应报文数据元之后的数据长度，不是特殊功能码必须返回 0。
+
+- `agile_modbus_rtu_init` / `agile_modbus_tcp_init`
+
+  初始化 `RTU/TCP` 环境时需要用户传入 `发送缓冲区` 和 `接收缓冲区`，建议这两个缓冲区大小都为 `AGILE_MODBUS_MAX_ADU_LENGTH` (260) 字节。
+
+  但对于小内存 MCU，这两个缓冲区也可以设置小，所有 API 都会对缓冲区大小进行判断：
+
+  发送缓冲区设置：如果 `预期请求的数据长度` 或 `预期响应的数据长度` 大于 `设置的发送缓冲区大小`，返回异常。
+
+  接收缓冲区设置：如果 `主机请求的报文长度` 大于 `设置的接收缓冲区大小`，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。
 
 - `agile_modbus_slave_handle` 介绍
 
@@ -84,17 +110,23 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
   frame_length: 获取解析出的 modbus 数据帧长度。这个参数的意义在于：
     1. 尾部有脏数据: 仍能解析成功，并告诉用户真实的 modbus 帧长，用户可以进行处理
     2. 数据粘包: 数据由 `一帧完整的 modbus 数据 + 部分 modbus 数据帧` 组成，用户获得真实 modbus 帧长后，可以移除处理完的 modbus 数据帧，再次读取硬件接口数据与当前 `部分 modbus 数据帧` 组成新的一帧
-    3. 该参数在 modbus 广播传输大数据时使用较多，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 `清空接收缓存`
+    3. 该参数在 modbus 广播传输大数据时使用较多(如：自定义功能码广播升级固件)，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 `清空接收缓存`
 
 - `agile_modbus_slave_callback_t` 介绍
 
   ```C
 
+  /**
+  * @return  =0:正常;
+  *          <0:异常
+  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
+  *             (其他负数异常码: 从机会打包异常响应数据)
+  */
   typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
 
   ```
 
-  agile_modbus_slave_info:
+  `agile_modbus_slave_info`:
 
   sft: 包含从机地址和功能码属性，回调中可利用
 
@@ -138,9 +170,27 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
     需要使用到 `address`、`buf`、`send_index` 属性，通过 `(buf[0] << 8) + buf[1]` 获取要读取的寄存器数目，通过 `(buf[2] << 8) + buf[3]` 获取要写入的寄存器地址，通过 `(buf[4] << 8) + buf[5]` 获取要写入的寄存器数目。需要调用 `agile_modbus_slave_register_get` API 获取要写入的寄存器数据，调用 `agile_modbus_slave_register_set` API 将寄存器数据存放到 `ctx->send_buf + send_index` 开始的数据区域。
 
+  - 自定义功能码
+
+  需要使用到 `send_index`、`nb`、`buf` 属性，用户在回调中处理数据。
+
+  send_index: 发送缓冲区当前索引
+
+  nb: PUD - 1，也就是 modbus 数据域长度
+
+  buf: modbus 数据域起始位置
+
 ### 2.1、示例
 
-使用示例在 [examples](./examples) 下。
+[examples](./examples) 文件夹中提供 PC 上的示例，可以在 `WSL` 或 `Linux` 下编译运行。
+
+- RTU / TCP 主机、从机的示例
+
+- 特殊功能码的示例
+
+  RTU 点对点传输文件: 演示特殊功能码的使用方式
+
+  RTU 广播传输文件: 演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处
 
 ### 2.2、Doxygen 文档生成
 

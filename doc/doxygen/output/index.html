@@ -9,13 +9,6 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
-<link href="navtree.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="resize.js"></script>
-<script type="text/javascript" src="navtreedata.js"></script>
-<script type="text/javascript" src="navtree.js"></script>
-<link href="search/search.css" rel="stylesheet" type="text/css"/>
-<script type="text/javascript" src="search/searchdata.js"></script>
-<script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -35,58 +28,22 @@
 </div>
 <!-- end header part -->
 <!-- 制作者 Doxygen 1.9.2 -->
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-var searchBox = new SearchBox("searchBox", "search",'搜索','.html');
-/* @license-end */
-</script>
 <script type="text/javascript" src="menudata.js"></script>
 <script type="text/javascript" src="menu.js"></script>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
 $(function() {
-  initMenu('',true,false,'search.php','搜索');
-  $(document).ready(function() { init_search(); });
+  initMenu('',false,false,'search.php','搜索');
 });
 /* @license-end */
 </script>
 <div id="main-nav"></div>
 </div><!-- top -->
-<div id="side-nav" class="ui-resizable side-nav-resizable">
-  <div id="nav-tree">
-    <div id="nav-tree-contents">
-      <div id="nav-sync" class="sync"></div>
-    </div>
-  </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
-       class="ui-resizable-handle">
-  </div>
-</div>
-<script type="text/javascript">
-/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('index.html',''); initResizable(); });
-/* @license-end */
-</script>
-<div id="doc-content">
-<!-- window showing the filter options -->
-<div id="MSearchSelectWindow"
-     onmouseover="return searchBox.OnSearchSelectShow()"
-     onmouseout="return searchBox.OnSearchSelectHide()"
-     onkeydown="return searchBox.OnSearchSelectKey(event)">
-</div>
-
-<!-- iframe showing the search results (closed by default) -->
-<div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
-        name="MSearchResults" id="MSearchResults">
-</iframe>
-</div>
-
 <div><div class="header">
   <div class="headertitle"><div class="title">Agile Modbus </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_C__Users_longwei_ma_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
+<div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
 <h1><a class="anchor" id="autotoc_md10"></a>
 1、介绍</h1>
 <p >Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。</p>
@@ -133,8 +90,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ol>
 </li>
 <li>主机：<ol type="1">
-<li>agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境</li>
-<li>agile_modbus_set_slave 设置从机地址</li>
+<li><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code> 初始化 <code>RTU/TCP</code> 环境</li>
+<li><code>agile_modbus_set_slave</code> 设置从机地址</li>
 <li><code>清空接收缓存</code></li>
 <li><code>agile_modbus_serialize_xxx</code> 打包请求数据</li>
 <li><code>发送数据</code></li>
@@ -145,13 +102,19 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </li>
 <li>从机：<ol type="1">
 <li>实现 <code>agile_modbus_slave_callback_t</code> 类型回调函数</li>
-<li>agile_modbus_rtu_init / agile_modbus_tcp_init 初始化 RTU/TCP 环境</li>
-<li>agile_modbus_set_slave 设置从机地址</li>
+<li><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code> 初始化 <code>RTU/TCP</code> 环境</li>
+<li><code>agile_modbus_set_slave</code> 设置从机地址</li>
 <li><code>等待数据接收结束</code></li>
-<li>agile_modbus_slave_handle 处理请求数据</li>
+<li><code>agile_modbus_slave_handle</code> 处理请求数据</li>
 <li><code>清空接收缓存</code> (可选)</li>
 <li><code>发送数据</code></li>
 </ol>
+</li>
+<li><p class="startli"><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code></p>
+<p class="startli">初始化 <code>RTU/TCP</code> 环境时需要用户传入 <code>发送缓冲区</code> 和 <code>接收缓冲区</code>，建议这两个缓冲区大小都为 <code>AGILE_MODBUS_MAX_ADU_LENGTH</code> (260) 字节。</p>
+<p class="startli">但对于小内存 MCU，这两个缓冲区也可以设置小，所有 API 都会对缓冲区大小进行判断：</p>
+<p class="startli">发送缓冲区设置：如果 <code>预期请求的数据长度</code> 或 <code>预期响应的数据长度</code> 大于 <code>设置的发送缓冲区大小</code>，返回异常。</p>
+<p class="startli">接收缓冲区设置：如果 <code>主机请求的报文长度</code> 大于 <code>设置的接收缓冲区大小</code>，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。</p>
 </li>
 <li><p class="startli"><code>agile_modbus_slave_handle</code> 介绍</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a>(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keywordtype">int</span> msg_length, uint8_t slave_strict,</div>
@@ -165,13 +128,14 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="startli">frame_length: 获取解析出的 modbus 数据帧长度。这个参数的意义在于：</p><ol type="1">
 <li>尾部有脏数据: 仍能解析成功，并告诉用户真实的 modbus 帧长，用户可以进行处理</li>
 <li>数据粘包: 数据由 <code>一帧完整的 modbus 数据 + 部分 modbus 数据帧</code> 组成，用户获得真实 modbus 帧长后，可以移除处理完的 modbus 数据帧，再次读取硬件接口数据与当前 <code>部分 modbus 数据帧</code> 组成新的一帧</li>
-<li>该参数在 modbus 广播传输大数据时使用较多，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 <code>清空接收缓存</code></li>
+<li>该参数在 modbus 广播传输大数据时使用较多(如：自定义功能码广播升级固件)，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 <code>清空接收缓存</code></li>
 </ol>
 </li>
 <li><p class="startli"><code>agile_modbus_slave_callback_t</code> 介绍</p>
-<div class="fragment"><div class="line"><span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a>)(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code hl_struct" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info);</div>
+<div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a>)(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code hl_struct" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info);</div>
 <div class="ttc" id="astructagile__modbus__slave__info_html"><div class="ttname"><a href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a></div><div class="ttdoc">Agile Modbus 从机信息结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00233">agile_modbus.h:233</a></div></div>
-</div><!-- fragment --><p class="startli"><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a>:</p>
+</div><!-- fragment --><p class="startli"><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code>:</p>
 <p class="startli">sft: 包含从机地址和功能码属性，回调中可利用</p>
 <p class="startli">rsp_length: 响应数据长度指针，回调中处理 <code>特殊功能码</code> 时需要更新其值，否则 <b>不准更改</b></p>
 <p class="startli">address: 寄存器地址 (不是所有功能码都用到)</p>
@@ -179,7 +143,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="startli">buf: 不同功能码需要使用的数据域 (不是所有功能码都用到)</p>
 <p class="startli">send_index: 发送缓冲区当前索引 (不是所有功能码都用到)</p>
 </li>
-<li><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 不同功能码使用<ul>
+<li><p class="startli"><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 不同功能码使用</p><ul>
 <li><p class="startli">AGILE_MODBUS_FC_READ_COILS、AGILE_MODBUS_FC_READ_DISCRETE_INPUTS</p>
 <p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>send_index</code> 属性，需要调用 <code>agile_modbus_slave_io_set</code> API 将 IO 数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
 </li>
@@ -201,7 +165,12 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li><p class="startli">AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS</p>
 <p class="startli">需要使用到 <code>address</code>、<code>buf</code>、<code>send_index</code> 属性，通过 <code>(buf[0] &lt;&lt; 8) + buf[1]</code> 获取要读取的寄存器数目，通过 <code>(buf[2] &lt;&lt; 8) + buf[3]</code> 获取要写入的寄存器地址，通过 <code>(buf[4] &lt;&lt; 8) + buf[5]</code> 获取要写入的寄存器数目。需要调用 <code>agile_modbus_slave_register_get</code> API 获取要写入的寄存器数据，调用 <code>agile_modbus_slave_register_set</code> API 将寄存器数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
 </li>
+<li>自定义功能码</li>
 </ul>
+<p class="startli">需要使用到 <code>send_index</code>、<code>nb</code>、<code>buf</code> 属性，用户在回调中处理数据。</p>
+<p class="startli">send_index: 发送缓冲区当前索引</p>
+<p class="startli">nb: PUD - 1，也就是 modbus 数据域长度</p>
+<p class="startli">buf: modbus 数据域起始位置</p>
 </li>
 </ul>
 <h2><a class="anchor" id="autotoc_md15"></a>
@@ -223,12 +192,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
-</div><!-- doc-content -->
 <!-- start footer part -->
-<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
-  <ul>
-    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
-  </ul>
-</div>
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2
+</small></address>
 </body>
 </html>
