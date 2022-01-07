@@ -66,18 +66,77 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
   6. `清空接收缓存` (可选)
   7. `发送数据`
 
+- `agile_modbus_slave_handle` 介绍
+
+  ```C
+
+  int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
+                              agile_modbus_slave_callback_t slave_cb, int *frame_length)
+
+  ```
+
+  msg_length: `等待数据接收结束` 后接收到的数据长度
+
+  slave_strict: 从机地址严格性检查 (0: 不判断地址是否一致，由用户回调处理; 1: 地址必须一致，否则不会调用回调，也不打包响应数据)。
+
+  slave_cb: `agile_modbus_slave_callback_t` 类型回调函数，用户实现并传入。如果为 NULL，所有功能码都能响应且为成功，但寄存器数据依然为 0。
+
+  frame_length: 获取解析出的 modbus 数据帧长度。这个参数的意义在于：
+    1. 尾部有脏数据: 仍能解析成功，并告诉用户真实的 modbus 帧长，用户可以进行处理
+    2. 数据粘包: 数据由 `一帧完整的 modbus 数据 + 部分 modbus 数据帧` 组成，用户获得真实 modbus 帧长后，可以移除处理完的 modbus 数据帧，再次读取硬件接口数据与当前 `部分 modbus 数据帧` 组成新的一帧
+    3. 该参数在 modbus 广播传输大数据时使用较多，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 `清空接收缓存`
+
 - `agile_modbus_slave_callback_t` 介绍
 
-  `typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);`
+  ```C
+
+  typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
+
+  ```
 
   agile_modbus_slave_info:
 
-  - agile_modbus_sft_t *sft: 包含从机地址和功能码属性，回调中可利用
-  - int *rsp_length: 响应数据长度指针，回调中处理 `特殊功能码` 时需要更新其值，否则 **不准更改**
-  - int address: 寄存器地址 (不一定用到)
-  - int nb: 数目 (不一定用到)
-  - uint8_t *buf: 不同功能码需要使用的数据域 (不一定用到)
-  - int send_index: 发送缓冲区当前索引 (不一定用到)
+  sft: 包含从机地址和功能码属性，回调中可利用
+
+  rsp_length: 响应数据长度指针，回调中处理 `特殊功能码` 时需要更新其值，否则 **不准更改**
+
+  address: 寄存器地址 (不是所有功能码都用到)
+
+  nb: 数目 (不是所有功能码都用到)
+
+  buf: 不同功能码需要使用的数据域 (不是所有功能码都用到)
+
+  send_index: 发送缓冲区当前索引 (不是所有功能码都用到)
+
+- `agile_modbus_slave_info` 不同功能码使用
+
+  - AGILE_MODBUS_FC_READ_COILS、AGILE_MODBUS_FC_READ_DISCRETE_INPUTS
+
+    需要使用到 `address`、`nb`、`send_index` 属性，需要调用 `agile_modbus_slave_io_set` API 将 IO 数据存放到 `ctx->send_buf + send_index` 开始的数据区域。
+
+  - AGILE_MODBUS_FC_READ_HOLDING_REGISTERS、AGILE_MODBUS_FC_READ_INPUT_REGISTERS
+
+    需要使用到 `address`、`nb`、`send_index` 属性，需要调用 `agile_modbus_slave_register_set` API 将寄存器数据存放到 `ctx->send_buf + send_index` 开始的数据区域。
+
+  - AGILE_MODBUS_FC_WRITE_SINGLE_COIL、AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER
+
+    需要使用到 `address`、`buf` 属性，将 `buf` 强转为 `int *` 类型，获取值存放到寄存器中。
+
+  - AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS
+
+    需要使用到 `address`、`nb`、`buf` 属性，需要调用 `agile_modbus_slave_io_get` API 获取要写入的 IO 数据。
+
+  - AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS
+
+    需要使用到 `address`、`nb`、`buf` 属性，需要调用 `agile_modbus_slave_register_get` API 获取要写入的寄存器数据。
+
+  - AGILE_MODBUS_FC_MASK_WRITE_REGISTER
+
+    需要使用到 `address`、`buf` 属性，通过 `(buf[0] << 8) + buf[1]` 获取 `and` 值，通过 `(buf[2] << 8) + buf[3]` 获取 `or` 值。获取寄存器值 `data`，进行 `data = (data & and) | (or & (~and))` 操作更新 `data` 值，写入寄存器。
+
+  - AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS
+
+    需要使用到 `address`、`buf`、`send_index` 属性，通过 `(buf[0] << 8) + buf[1]` 获取要读取的寄存器数目，通过 `(buf[2] << 8) + buf[3]` 获取要写入的寄存器地址，通过 `(buf[4] << 8) + buf[5]` 获取要写入的寄存器数目。需要调用 `agile_modbus_slave_register_get` API 获取要写入的寄存器数据，调用 `agile_modbus_slave_register_set` API 将寄存器数据存放到 `ctx->send_buf + send_index` 开始的数据区域。
 
 ### 2.1、示例
 

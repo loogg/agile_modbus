@@ -1395,6 +1395,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         int str_len;
         int byte_count_pos;
 
+        slave_cb = NULL;
         rsp_length = ctx->backend->build_response_basis(&sft, rsp);
         /* Skip byte count for now */
         byte_count_pos = rsp_length++;

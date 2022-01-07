@@ -389,7 +389,7 @@ int serial_receive(int s, uint8_t *buf, int bufsz, int timeout)
         len += rc;
         bufsz -= rc;
 
-        timeout = 50;
+        timeout = 20;
     }
 
     if (rc >= 0) {

@@ -30,6 +30,9 @@ static uint16_t _tab_input_registers[TAB_MAX_NUM] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 
 int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)
 {
     int function = slave_info->sft->function;
+    int ret = 0;
+
+    pthread_mutex_lock(&_mtx);
 
     switch (function) {
     case AGILE_MODBUS_FC_READ_COILS:
@@ -39,11 +42,12 @@ int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_in
         int send_index = slave_info->send_index;
         int is_input = (function == AGILE_MODBUS_FC_READ_DISCRETE_INPUTS);
 
-        for (int now_address = address; now_address < address + nb; now_address++) {
-            int index = now_address - address;
-            if (now_address >= 0 && now_address < TAB_MAX_NUM)
-                agile_modbus_slave_io_set(ctx->send_buf + send_index, index,
+        for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
+            if (now_address >= 0 && now_address < TAB_MAX_NUM) {
+                int index = now_address - 0;
+                agile_modbus_slave_io_set(ctx->send_buf + send_index, i,
                                           is_input ? _tab_input_bits[index] : _tab_bits[index]);
+            }
         }
     } break;
 
@@ -54,11 +58,12 @@ int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_in
         int send_index = slave_info->send_index;
         int is_input = (function == AGILE_MODBUS_FC_READ_INPUT_REGISTERS);
 
-        for (int now_address = address; now_address < address + nb; now_address++) {
-            int index = now_address - address;
-            if (now_address >= 0 && now_address < TAB_MAX_NUM)
-                agile_modbus_slave_register_set(ctx->send_buf + send_index, index,
+        for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
+            if (now_address >= 0 && now_address < TAB_MAX_NUM) {
+                int index = now_address - 0;
+                agile_modbus_slave_register_set(ctx->send_buf + send_index, i,
                                                 is_input ? _tab_input_registers[index] : _tab_registers[index]);
+            }
         }
     } break;
 
@@ -68,15 +73,16 @@ int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_in
 
         if (function == AGILE_MODBUS_FC_WRITE_SINGLE_COIL) {
             if (address >= 0 && address < TAB_MAX_NUM) {
+                int index = address - 0;
                 int data = *((int *)slave_info->buf);
-                _tab_bits[address] = data;
+                _tab_bits[index] = data;
             }
         } else {
             int nb = slave_info->nb;
-            for (int now_address = address; now_address < address + nb; now_address++) {
-                int index = now_address - address;
+            for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
                 if (now_address >= 0 && now_address < TAB_MAX_NUM) {
-                    uint8_t status = agile_modbus_slave_io_get(slave_info->buf, index);
+                    int index = now_address - 0;
+                    uint8_t status = agile_modbus_slave_io_get(slave_info->buf, i);
                     _tab_bits[index] = status;
                 }
             }
@@ -86,17 +92,19 @@ int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_in
     case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER:
     case AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS: {
         int address = slave_info->address;
+
         if (function == AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER) {
             if (address >= 0 && address < TAB_MAX_NUM) {
+                int index = address - 0;
                 int data = *((int *)slave_info->buf);
-                _tab_registers[address] = data;
+                _tab_registers[index] = data;
             }
         } else {
             int nb = slave_info->nb;
-            for (int now_address = address; now_address < address + nb; now_address++) {
-                int index = now_address - address;
+            for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
                 if (now_address >= 0 && now_address < TAB_MAX_NUM) {
-                    uint16_t data = agile_modbus_slave_register_get(slave_info->buf, index);
+                    int index = now_address - 0;
+                    uint16_t data = agile_modbus_slave_register_get(slave_info->buf, i);
                     _tab_registers[index] = data;
                 }
             }
@@ -104,11 +112,53 @@ int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_in
 
     } break;
 
+    case AGILE_MODBUS_FC_MASK_WRITE_REGISTER: {
+        int address = slave_info->address;
+        if (address >= 0 && address < TAB_MAX_NUM) {
+            int index = address - 0;
+            uint16_t data = _tab_registers[index];
+            uint16_t and = (slave_info->buf[0] << 8) + slave_info->buf[1];
+            uint16_t or = (slave_info->buf[2] << 8) + slave_info->buf[3];
+
+            data = (data & and) | (or &(~and));
+
+            _tab_registers[index] = data;
+        }
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS: {
+        int address = slave_info->address;
+        int nb = (slave_info->buf[0] << 8) + slave_info->buf[1];
+        uint16_t address_write = (slave_info->buf[2] << 8) + slave_info->buf[3];
+        int nb_write = (slave_info->buf[4] << 8) + slave_info->buf[5];
+        int send_index = slave_info->send_index;
+
+        /* Write first. 7 is the offset of the first values to write */
+        for (int now_address = address_write, i = 0; now_address < address_write + nb_write; now_address++, i++) {
+            if (now_address >= 0 && now_address < TAB_MAX_NUM) {
+                int index = now_address - 0;
+                uint16_t data = agile_modbus_slave_register_get(slave_info->buf + 7, i);
+                _tab_registers[index] = data;
+            }
+        }
+
+        /* and read the data for the response */
+        for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
+            if (now_address >= 0 && now_address < TAB_MAX_NUM) {
+                int index = now_address - 0;
+                agile_modbus_slave_register_set(ctx->send_buf + send_index, i, _tab_registers[index]);
+            }
+        }
+    } break;
+
     default:
-        return -AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
+        ret = -AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION;
+        break;
     }
 
-    return 0;
+    pthread_mutex_unlock(&_mtx);
+
+    return ret;
 }
 
 extern int rtu_slave_init(const char *dev, pthread_t *tid);
