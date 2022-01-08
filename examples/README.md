@@ -163,8 +163,18 @@
 
   - 传输的文件必须是一般文件，像可执行文件、目录等不支持
 
+  - 文件路径必须是 `Linux` 环境下的路径
+
   - 从机接收到数据后修改文件名称 (从机地址_原文件名) 写入在当前目录。
 
   ![rtu_p2p](./figures/rtu_p2p.gif)
 
 #### 2.3.2、广播传输
+
+该例子主要演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处。
+
+`broadcast_master` 中，使用广播地址 0，周期 5ms 发送数据包。
+
+在如此快速的数据流下，`broadcast_slave` 必须使用 `agile_modbus_slave_handle` 中 `frame_length` 参数来对粘包进行处理。
+
+
