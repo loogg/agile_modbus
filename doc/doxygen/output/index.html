@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Agile Modbus: 使用说明</title>
+<title>Agile Modbus: Agile Modbus</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,124 +40,180 @@ $(function() {
 <div id="main-nav"></div>
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">使用说明 </div></div>
+  <div class="headertitle"><div class="title">Agile Modbus </div></div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
-<h1><a class="anchor" id="autotoc_md1"></a>
-介绍</h1>
+<h1><a class="anchor" id="autotoc_md13"></a>
+1、介绍</h1>
+<p >Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。</p>
+<p ><img src="./figures/ModbusProtocol.jpg" alt="ModbusProtocol" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+1.1、特性</h2>
 <ol type="1">
-<li><a class="el" href="structagile__modbus.html" title="Agile Modbus 结构体">agile_modbus</a> 即：轻量型 modbus 协议栈，是我在使用其他第三方库过程中进行归纳而形成的一个库。</li>
-<li>其支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
+<li>支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
 <li>由于其使用纯 C 开发、不涉及硬件，完全可以在串口上跑 tcp 协议，在网络上跑 rtu 协议。</li>
 <li>支持符合 modbus 格式的自定义协议。</li>
-<li>支持常用功能码，如下：</li>
+<li>同时支持多主机和多从机。</li>
+<li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。</li>
 </ol>
-<div class="fragment"><div class="line"><span class="comment">/* Modbus function codes */</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_COILS                0x01</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_DISCRETE_INPUTS      0x02</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_HOLDING_REGISTERS    0x03</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_INPUT_REGISTERS      0x04</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_SINGLE_COIL         0x05</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER     0x06</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_READ_EXCEPTION_STATUS     0x07</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS      0x0F</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS  0x10</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_REPORT_SLAVE_ID           0x11</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_MASK_WRITE_REGISTER       0x16</span></div>
-<div class="line"><span class="preprocessor">#define AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS  0x17</span></div>
-</div><!-- fragment --><ol type="1">
-<li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用响应 API 进行组包和解包即可。</li>
-<li>作为从机使用时只简单提供了解包 API，因为从机的处理多种多样，个人没有能力抽象出一个通用的类。而像 <code>libmodbus</code> 里的 <code>mapping</code> 结构根本应对不了多少场合。如果您能想到更好的方法，希望能够告知。</li>
-</ol>
-<h1><a class="anchor" id="autotoc_md2"></a>
-API 介绍</h1>
-<ol type="1">
-<li>初始化 rtu 句柄</li>
-</ol>
-<p ><code>int <a class="el" href="group___r_t_u___exported___functions.html#ga96821440a21db41bb7b662ea8ff346ec" title="RTU 初始化">agile_modbus_rtu_init(agile_modbus_rtu_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)</a></code></p>
+<h2><a class="anchor" id="autotoc_md15"></a>
+1.2、目录结构</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
+<th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">说明    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">rtu 句柄    </td></tr>
+<td class="markdownTableBodyNone">doc   </td><td class="markdownTableBodyNone">文档    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">send_buf   </td><td class="markdownTableBodyNone">发送缓冲区地址    </td></tr>
+<td class="markdownTableBodyNone">examples   </td><td class="markdownTableBodyNone">例子    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">send_bufsz   </td><td class="markdownTableBodyNone">发送缓冲区大小    </td></tr>
+<td class="markdownTableBodyNone">figures   </td><td class="markdownTableBodyNone">素材    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">read_buf   </td><td class="markdownTableBodyNone">接收缓冲区地址    </td></tr>
+<td class="markdownTableBodyNone">inc   </td><td class="markdownTableBodyNone">头文件    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">read_bufsz   </td><td class="markdownTableBodyNone">接收缓冲区大小   </td></tr>
+<td class="markdownTableBodyNone">src   </td><td class="markdownTableBodyNone">源代码   </td></tr>
 </table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>初始化 tcp 句柄</li>
+<h2><a class="anchor" id="autotoc_md16"></a>
+1.3、许可证</h2>
+<p >Agile Modbus 遵循 LGPLv2.1 许可，详见 <code>LICENSE</code> 文件。</p>
+<h1><a class="anchor" id="autotoc_md17"></a>
+2、使用 Agile Modbus</h1>
+<ul>
+<li>帮助文档请查看 <a href="./doc/doxygen/Agile_Modbus.chm">doc/doxygen/Agile_Modbus.chm</a></li>
+<li><p class="startli">用户需要实现硬件接口的 <code>发送数据</code> 、 <code>等待数据接收结束</code> 、 <code>清空接收缓存</code> 函数</p>
+<p class="startli">对于 <code>等待数据接收结束</code>，提供如下几点思路：</p><ol type="1">
+<li><p class="startli">通用方法</p>
+<p class="startli">每隔 20 / 50 ms (该时间可根据波特率和硬件设置，这里只是给了参考值) 从硬件接口读取数据存放到缓冲区中并更新偏移，直到读取不到或缓冲区满，退出读取。</p>
+<p class="startli">这对于裸机或操作系统都适用，操作系统可通过 <code>select</code> 或 <code>信号量</code> 方式完成阻塞。</p>
+</li>
+<li><p class="startli">串口 <code>DMA + IDLE</code> 中断方式</p>
+<p class="startli">配置 <code>DMA + IDLE</code> 中断，在中断中使能标志，应用程序中判断该标志是否置位即可。</p>
+<p class="startli">但该方案容易出问题，数据字节间稍微错开一点时间就不是一帧了。推荐第一种方案。</p>
+</li>
 </ol>
-<p ><code>int <a class="el" href="group___t_c_p___exported___functions.html#ga4f9b3e37c01e6f112f63e7194dad7b33" title="TCP 初始化">agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">tcp 句柄    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">send_buf   </td><td class="markdownTableBodyNone">发送缓冲区地址    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">send_bufsz   </td><td class="markdownTableBodyNone">发送缓冲区大小    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">read_buf   </td><td class="markdownTableBodyNone">接收缓冲区地址    </td></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">read_bufsz   </td><td class="markdownTableBodyNone">接收缓冲区大小   </td></tr>
-</table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>设置从机地址</li>
+</li>
+<li>主机：<ol type="1">
+<li><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code> 初始化 <code>RTU/TCP</code> 环境</li>
+<li><code>agile_modbus_set_slave</code> 设置从机地址</li>
+<li><code>清空接收缓存</code></li>
+<li><code>agile_modbus_serialize_xxx</code> 打包请求数据</li>
+<li><code>发送数据</code></li>
+<li><code>等待数据接收结束</code></li>
+<li><code>agile_modbus_deserialize_xxx</code> 解析响应数据</li>
+<li>用户处理得到的数据</li>
 </ol>
-<p ><code>int <a class="el" href="group___c_o_m_m_o_n___operation___functions.html#ga6e2698caaa0b25e3d2fb00bba81594f7" title="设置地址">agile_modbus_set_slave(agile_modbus_t *ctx, int slave)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">成功   </td></tr>
-</table>
-<ol type="1">
-<li>解析主机发来的数据</li>
+</li>
+<li>从机：<ol type="1">
+<li>实现 <code>agile_modbus_slave_callback_t</code> 类型回调函数</li>
+<li><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code> 初始化 <code>RTU/TCP</code> 环境</li>
+<li><code>agile_modbus_set_slave</code> 设置从机地址</li>
+<li><code>等待数据接收结束</code></li>
+<li><code>agile_modbus_slave_handle</code> 处理请求数据</li>
+<li><code>清空接收缓存</code> (可选)</li>
+<li><code>发送数据</code></li>
 </ol>
-<p ><code>int <a class="el" href="group___c_o_m_m_o_n___exported___functions.html#ga6cab780b622e86d12e9d878a331ae6c8">agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length)</a></code></p>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">参数   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">ctx   </td><td class="markdownTableBodyNone">句柄    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">msg_length   </td><td class="markdownTableBodyNone">接收到的数据的长度   </td></tr>
-</table>
-<table class="markdownTable">
-<tr class="markdownTableHead">
-<th class="markdownTableHeadNone">返回   </th><th class="markdownTableHeadNone">注释    </th></tr>
-<tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">&lt; 0   </td><td class="markdownTableBodyNone">异常    </td></tr>
-<tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">其他   </td><td class="markdownTableBodyNone">数据格式正确   </td></tr>
-</table>
-<h1><a class="anchor" id="autotoc_md3"></a>
-示例</h1>
-<p >基于 STM32F103，使用 <code>RT-Thread Nano</code>。该 demo 实现了 rtu 及 tcp 的例子，rtu 使用串口作为演示；tcp 使用 ESP8266 演示，支持微信配网。</p>
-<p >该 demo 也可作为 <code>RT-Thread Nano</code> 学习的参考例程。</p>
-<ol type="1">
-<li>示例地址为： <a href="https://github.com/loogg/agile_modbus_demo">地址</a></li>
-<li>定期维护 </li>
+</li>
+<li><p class="startli">特殊功能码</p>
+<p class="startli">需要调用 <code>agile_modbus_set_compute_meta_length_after_function_cb</code> 和 <code>agile_modbus_set_compute_data_length_after_meta_cb</code> API 设置特殊功能码在主从模式下处理的回调。</p><ul>
+<li><p class="startli"><code>agile_modbus_set_compute_meta_length_after_function_cb</code></p>
+<p class="startli"><code>msg_type == AGILE_MODBUS_MSG_INDICATION</code>: 返回主机请求报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 0。</p>
+<p class="startli"><code>msg_type == MSG_CONFIRMATION</code>: 返回从机响应报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 1。</p>
+</li>
+<li><p class="startli"><code>agile_modbus_set_compute_data_length_after_meta_cb</code></p>
+<p class="startli"><code>msg_type == AGILE_MODBUS_MSG_INDICATION</code>: 返回主机请求报文数据元之后的数据长度，不是特殊功能码必须返回 0。</p>
+<p class="startli"><code>msg_type == MSG_CONFIRMATION</code>: 返回从机响应报文数据元之后的数据长度，不是特殊功能码必须返回 0。</p>
+</li>
+</ul>
+</li>
+<li><p class="startli"><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code></p>
+<p class="startli">初始化 <code>RTU/TCP</code> 环境时需要用户传入 <code>发送缓冲区</code> 和 <code>接收缓冲区</code>，建议这两个缓冲区大小都为 <code>AGILE_MODBUS_MAX_ADU_LENGTH</code> (260) 字节。<code>特殊功能码</code> 情况用户根据协议自行决定。</p>
+<p class="startli">但对于小内存 MCU，这两个缓冲区也可以设置小，所有 API 都会对缓冲区大小进行判断：</p>
+<p class="startli">发送缓冲区设置：如果 <code>预期请求的数据长度</code> 或 <code>预期响应的数据长度</code> 大于 <code>设置的发送缓冲区大小</code>，返回异常。</p>
+<p class="startli">接收缓冲区设置：如果 <code>主机请求的报文长度</code> 大于 <code>设置的接收缓冲区大小</code>，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。</p>
+</li>
+<li><p class="startli"><code>agile_modbus_slave_handle</code> 介绍</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a>(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keywordtype">int</span> msg_length, uint8_t slave_strict,</div>
+<div class="line">                            <a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a> slave_cb, <span class="keywordtype">int</span> *frame_length)</div>
+<div class="ttc" id="agroup___slave___exported___types_html_ga5df67b94293bd33bdd5ff6b5ccb0901e"><div class="ttname"><a href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a></div><div class="ttdeci">int(* agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">从机回调函数</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00251">agile_modbus.h:251</a></div></div>
+<div class="ttc" id="agroup___slave___operation___functions_html_ga35776da46b116038a0395e56f2750403"><div class="ttname"><a href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a></div><div class="ttdeci">int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict, agile_modbus_slave_callback_t slave_cb, int *frame_length)</div><div class="ttdoc">从机数据处理</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01203">agile_modbus.c:1203</a></div></div>
+<div class="ttc" id="astructagile__modbus_html"><div class="ttname"><a href="structagile__modbus.html">agile_modbus</a></div><div class="ttdoc">Agile Modbus 结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00204">agile_modbus.h:204</a></div></div>
+</div><!-- fragment --><p class="startli">msg_length: <code>等待数据接收结束</code> 后接收到的数据长度</p>
+<p class="startli">slave_strict: 从机地址严格性检查 (0: 不判断地址是否一致，由用户回调处理; 1: 地址必须一致，否则不会调用回调，也不打包响应数据)。</p>
+<p class="startli">slave_cb: <code>agile_modbus_slave_callback_t</code> 类型回调函数，用户实现并传入。如果为 NULL，所有功能码都能响应且为成功，但寄存器数据依然为 0。</p>
+<p class="startli">frame_length: 获取解析出的 modbus 数据帧长度。这个参数的意义在于：</p><ol type="1">
+<li>尾部有脏数据: 仍能解析成功，并告诉用户真实的 modbus 帧长，用户可以进行处理</li>
+<li>数据粘包: 数据由 <code>一帧完整的 modbus 数据 + 部分 modbus 数据帧</code> 组成，用户获得真实 modbus 帧长后，可以移除处理完的 modbus 数据帧，再次读取硬件接口数据与当前 <code>部分 modbus 数据帧</code> 组成新的一帧</li>
+<li>该参数在 modbus 广播传输大数据时使用较多(如：自定义功能码广播升级固件)，普通的从机响应都是一问一答式，只处理完整数据帧就行，建议在响应前执行 <code>清空接收缓存</code></li>
 </ol>
+</li>
+<li><p class="startli"><code>agile_modbus_slave_callback_t</code> 介绍</p>
+<div class="fragment"><div class="line"> </div>
+<div class="line"><span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a>)(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code hl_struct" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info);</div>
+<div class="ttc" id="astructagile__modbus__slave__info_html"><div class="ttname"><a href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a></div><div class="ttdoc">Agile Modbus 从机信息结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00233">agile_modbus.h:233</a></div></div>
+</div><!-- fragment --><p class="startli"><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code>:</p>
+<p class="startli">sft: 包含从机地址和功能码属性，回调中可利用</p>
+<p class="startli">rsp_length: 响应数据长度指针，回调中处理 <code>特殊功能码</code> 时需要更新其值，否则 <b>不准更改</b></p>
+<p class="startli">address: 寄存器地址 (不是所有功能码都用到)</p>
+<p class="startli">nb: 数目 (不是所有功能码都用到)</p>
+<p class="startli">buf: 不同功能码需要使用的数据域 (不是所有功能码都用到)</p>
+<p class="startli">send_index: 发送缓冲区当前索引 (不是所有功能码都用到)</p>
+</li>
+<li><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 不同功能码使用<ul>
+<li><p class="startli">AGILE_MODBUS_FC_READ_COILS、AGILE_MODBUS_FC_READ_DISCRETE_INPUTS</p>
+<p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>send_index</code> 属性，需要调用 <code>agile_modbus_slave_io_set</code> API 将 IO 数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_READ_HOLDING_REGISTERS、AGILE_MODBUS_FC_READ_INPUT_REGISTERS</p>
+<p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>send_index</code> 属性，需要调用 <code>agile_modbus_slave_register_set</code> API 将寄存器数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_WRITE_SINGLE_COIL、AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER</p>
+<p class="startli">需要使用到 <code>address</code>、<code>buf</code> 属性，将 <code>buf</code> 强转为 <code>int *</code> 类型，获取值存放到寄存器中。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS</p>
+<p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>buf</code> 属性，需要调用 <code>agile_modbus_slave_io_get</code> API 获取要写入的 IO 数据。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS</p>
+<p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>buf</code> 属性，需要调用 <code>agile_modbus_slave_register_get</code> API 获取要写入的寄存器数据。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_MASK_WRITE_REGISTER</p>
+<p class="startli">需要使用到 <code>address</code>、<code>buf</code> 属性，通过 <code>(buf[0] &lt;&lt; 8) + buf[1]</code> 获取 <code>and</code> 值，通过 <code>(buf[2] &lt;&lt; 8) + buf[3]</code> 获取 <code>or</code> 值。获取寄存器值 <code>data</code>，进行 <code>data = (data &amp; and) | (or &amp; (~and))</code> 操作更新 <code>data</code> 值，写入寄存器。</p>
+</li>
+<li><p class="startli">AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS</p>
+<p class="startli">需要使用到 <code>address</code>、<code>buf</code>、<code>send_index</code> 属性，通过 <code>(buf[0] &lt;&lt; 8) + buf[1]</code> 获取要读取的寄存器数目，通过 <code>(buf[2] &lt;&lt; 8) + buf[3]</code> 获取要写入的寄存器地址，通过 <code>(buf[4] &lt;&lt; 8) + buf[5]</code> 获取要写入的寄存器数目。需要调用 <code>agile_modbus_slave_register_get</code> API 获取要写入的寄存器数据，调用 <code>agile_modbus_slave_register_set</code> API 将寄存器数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
+</li>
+<li><p class="startli">自定义功能码</p>
+<p class="startli">需要使用到 <code>send_index</code>、<code>nb</code>、<code>buf</code> 属性，用户在回调中处理数据。</p>
+<p class="startli">send_index: 发送缓冲区当前索引</p>
+<p class="startli">nb: PUD - 1，也就是 modbus 数据域长度</p>
+<p class="startli">buf: modbus 数据域起始位置</p>
+<p class="startli"><b>注意</b>: 用户在回调中往发送缓冲区填入数据后，需要更新 <code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 的 <code>rsp_length</code> 值。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md18"></a>
+2.1、示例</h2>
+<p ><a href="./examples">examples</a> 文件夹中提供 PC 上的示例，可以在 <code>WSL</code> 或 <code>Linux</code> 下编译运行。</p>
+<ul>
+<li>RTU / TCP 主机、从机的示例</li>
+<li><p class="startli">特殊功能码的示例</p>
+<p class="startli">RTU 点对点传输文件: 演示特殊功能码的使用方式</p>
+<p class="startli">RTU 广播传输文件: 演示 <code>agile_modbus_slave_handle</code> 中 <code>frame_length</code> 的用处</p>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md19"></a>
+2.2、Doxygen 文档生成</h2>
+<ul>
+<li>使用 <code>Doxywizard</code> 打开 <a href="./doc/doxygen/Doxyfile">Doxyfile</a> 运行，生成的文件在 <a href="./doc/doxygen/output">doxygen/output</a> 下。</li>
+<li>需要更改 <code>Graphviz</code> 路径。</li>
+<li><code>HTML</code> 生成未使用 <code>chm</code> 格式的，如果使能需要更改 <code>hhc.exe</code> 路径。</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md20"></a>
+3、联系方式 &amp; 感谢</h1>
+<ul>
+<li>维护：马龙伟</li>
+<li>主页：<a href="https://github.com/loogg/agile_modbus">https://github.com/loogg/agile_modbus</a></li>
+<li>邮箱：<a href="#" onclick="location.href='mai'+'lto:'+'254'+'40'+'472'+'13'+'@qq'+'.c'+'om'; return false;">25440<span style="display: none;">.nosp@m.</span>4721<span style="display: none;">.nosp@m.</span>3@qq.<span style="display: none;">.nosp@m.</span>com</a> </li>
+</ul>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

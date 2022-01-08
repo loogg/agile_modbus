@@ -19,8 +19,6 @@ static void *cycle_entry(void *param)
     uint8_t ctx_send_buf[AGILE_MODBUS_MAX_ADU_LENGTH];
     uint8_t ctx_read_buf[AGILE_MODBUS_MAX_ADU_LENGTH];
     uint16_t hold_register[10];
-    fd_set readset;
-    struct timeval select_timeout;
 
     agile_modbus_rtu_t ctx_rtu;
     agile_modbus_t *ctx = &ctx_rtu._ctx;
@@ -32,6 +30,7 @@ static void *cycle_entry(void *param)
     while (1) {
         usleep(100000);
 
+        serial_flush(_fd);
         int send_len = agile_modbus_serialize_read_registers(ctx, 0, 10);
         serial_send(_fd, ctx->send_buf, send_len);
         int read_len = serial_receive(_fd, ctx->read_buf, ctx->read_bufsz, 1000);
@@ -46,8 +45,11 @@ static void *cycle_entry(void *param)
         }
 
         int rc = agile_modbus_deserialize_read_registers(ctx, read_len, hold_register);
-        if (rc != 10) {
+        if (rc < 0) {
             LOG_W("Receive failed.");
+            if (rc != -1)
+                LOG_W("Error code:%d", -128 - rc);
+
             continue;
         }
 
@@ -57,12 +59,14 @@ static void *cycle_entry(void *param)
 
         printf("\r\n\r\n\r\n");
     }
+
+    serial_close(_fd, &_old_tios);
 }
 
 int main(int argc, char *argv[])
 {
     if (argc < 2) {
-        LOG_E("Please enter main [dev]!");
+        LOG_E("Please enter RtuMaster [dev]!");
         return -1;
     }
 

@@ -27,8 +27,7 @@
  * @brief   TCP 设置地址接口
  * @param   ctx modbus 句柄
  * @param   slave 从机地址
- * @return
- * - 0:成功
+ * @return  0:成功
  */
 static int agile_modbus_tcp_set_slave(agile_modbus_t *ctx, int slave)
 {
@@ -136,8 +135,8 @@ static int agile_modbus_tcp_send_msg_pre(uint8_t *req, int req_length)
  * @brief   TCP 检查接收数据完整性接口
  * @param   ctx modbus 句柄
  * @param   msg 接收数据指针
- * @param   msg_length 接收数据长度
- * @return  接收数据长度
+ * @param   msg_length 有效数据长度
+ * @return  有效数据长度
  */
 static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, const int msg_length)
 {
@@ -150,9 +149,7 @@ static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, c
  * @param   req 请求数据指针
  * @param   rsp 响应数据指针
  * @param   rsp_length 响应数据长度
- * @return
- * - 0:成功
- * - 其他:异常
+ * @return  0:成功; 其他:异常
  */
 static int agile_modbus_tcp_pre_check_confirmation(agile_modbus_t *ctx, const uint8_t *req,
                                                    const uint8_t *rsp, int rsp_length)
@@ -208,8 +205,7 @@ static const agile_modbus_backend_t agile_modbus_tcp_backend =
  * @param   send_bufsz 发送缓冲区大小
  * @param   read_buf 接收缓冲区
  * @param   read_bufsz 接收缓冲区大小
- * @return
- * - 0:成功
+ * @return  0:成功
  */
 int agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
 {
