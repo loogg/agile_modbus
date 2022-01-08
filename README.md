@@ -4,6 +4,8 @@
 
 Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。
 
+![ModbusProtocol](./figures/ModbusProtocol.jpg)
+
 ### 1.1、特性
 
 1. 支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。
@@ -16,10 +18,11 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 
 | 名称 | 说明 |
 | ---- | ---- |
-| doc | 文档目录 |
-| examples | 例子目录 |
-| inc  | 头文件目录 |
-| src  | 源代码目录 |
+| doc | 文档 |
+| examples | 例子 |
+| figures | 素材 |
+| inc  | 头文件 |
+| src  | 源代码 |
 
 ### 1.3、许可证
 
@@ -84,7 +87,7 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
 - `agile_modbus_rtu_init` / `agile_modbus_tcp_init`
 
-  初始化 `RTU/TCP` 环境时需要用户传入 `发送缓冲区` 和 `接收缓冲区`，建议这两个缓冲区大小都为 `AGILE_MODBUS_MAX_ADU_LENGTH` (260) 字节。
+  初始化 `RTU/TCP` 环境时需要用户传入 `发送缓冲区` 和 `接收缓冲区`，建议这两个缓冲区大小都为 `AGILE_MODBUS_MAX_ADU_LENGTH` (260) 字节。`特殊功能码` 情况用户根据协议自行决定。
 
   但对于小内存 MCU，这两个缓冲区也可以设置小，所有 API 都会对缓冲区大小进行判断：
 
@@ -172,13 +175,15 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
   - 自定义功能码
 
-  需要使用到 `send_index`、`nb`、`buf` 属性，用户在回调中处理数据。
+    需要使用到 `send_index`、`nb`、`buf` 属性，用户在回调中处理数据。
 
-  send_index: 发送缓冲区当前索引
+    send_index: 发送缓冲区当前索引
 
-  nb: PUD - 1，也就是 modbus 数据域长度
+    nb: PUD - 1，也就是 modbus 数据域长度
 
-  buf: modbus 数据域起始位置
+    buf: modbus 数据域起始位置
+
+    **注意**: 用户在回调中往发送缓冲区填入数据后，需要更新 `agile_modbus_slave_info` 的 `rsp_length` 值。
 
 ### 2.1、示例
 

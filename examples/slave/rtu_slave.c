@@ -18,7 +18,6 @@ static void *rtu_entry(void *param)
 {
     uint8_t ctx_send_buf[AGILE_MODBUS_MAX_ADU_LENGTH];
     uint8_t ctx_read_buf[AGILE_MODBUS_MAX_ADU_LENGTH];
-    uint16_t hold_register[10];
 
     agile_modbus_rtu_t ctx_rtu;
     agile_modbus_t *ctx = &ctx_rtu._ctx;

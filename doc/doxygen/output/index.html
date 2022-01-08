@@ -44,10 +44,11 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 1、介绍</h1>
 <p >Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<p ><img src="./figures/ModbusProtocol.jpg" alt="ModbusProtocol" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md14"></a>
 1.1、特性</h2>
 <ol type="1">
 <li>支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
@@ -56,24 +57,26 @@ $(function() {
 <li>同时支持多主机和多从机。</li>
 <li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md15"></a>
 1.2、目录结构</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">说明    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">doc   </td><td class="markdownTableBodyNone">文档目录    </td></tr>
+<td class="markdownTableBodyNone">doc   </td><td class="markdownTableBodyNone">文档    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">examples   </td><td class="markdownTableBodyNone">例子目录    </td></tr>
+<td class="markdownTableBodyNone">examples   </td><td class="markdownTableBodyNone">例子    </td></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone">inc   </td><td class="markdownTableBodyNone">头文件目录    </td></tr>
+<td class="markdownTableBodyNone">figures   </td><td class="markdownTableBodyNone">素材    </td></tr>
 <tr class="markdownTableRowEven">
-<td class="markdownTableBodyNone">src   </td><td class="markdownTableBodyNone">源代码目录   </td></tr>
+<td class="markdownTableBodyNone">inc   </td><td class="markdownTableBodyNone">头文件    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">src   </td><td class="markdownTableBodyNone">源代码   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md13"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 1.3、许可证</h2>
 <p >Agile Modbus 遵循 LGPLv2.1 许可，详见 <code>LICENSE</code> 文件。</p>
-<h1><a class="anchor" id="autotoc_md14"></a>
+<h1><a class="anchor" id="autotoc_md17"></a>
 2、使用 Agile Modbus</h1>
 <ul>
 <li>帮助文档请查看 <a href="./doc/doxygen/Agile_Modbus.chm">doc/doxygen/Agile_Modbus.chm</a></li>
@@ -110,8 +113,20 @@ $(function() {
 <li><code>发送数据</code></li>
 </ol>
 </li>
+<li><p class="startli">特殊功能码</p>
+<p class="startli">需要调用 <code>agile_modbus_set_compute_meta_length_after_function_cb</code> 和 <code>agile_modbus_set_compute_data_length_after_meta_cb</code> API 设置特殊功能码在主从模式下处理的回调。</p><ul>
+<li><p class="startli"><code>agile_modbus_set_compute_meta_length_after_function_cb</code></p>
+<p class="startli"><code>msg_type == AGILE_MODBUS_MSG_INDICATION</code>: 返回主机请求报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 0。</p>
+<p class="startli"><code>msg_type == MSG_CONFIRMATION</code>: 返回从机响应报文的数据元长度(uint8_t 类型)，不是特殊功能码必须返回 1。</p>
+</li>
+<li><p class="startli"><code>agile_modbus_set_compute_data_length_after_meta_cb</code></p>
+<p class="startli"><code>msg_type == AGILE_MODBUS_MSG_INDICATION</code>: 返回主机请求报文数据元之后的数据长度，不是特殊功能码必须返回 0。</p>
+<p class="startli"><code>msg_type == MSG_CONFIRMATION</code>: 返回从机响应报文数据元之后的数据长度，不是特殊功能码必须返回 0。</p>
+</li>
+</ul>
+</li>
 <li><p class="startli"><code>agile_modbus_rtu_init</code> / <code>agile_modbus_tcp_init</code></p>
-<p class="startli">初始化 <code>RTU/TCP</code> 环境时需要用户传入 <code>发送缓冲区</code> 和 <code>接收缓冲区</code>，建议这两个缓冲区大小都为 <code>AGILE_MODBUS_MAX_ADU_LENGTH</code> (260) 字节。</p>
+<p class="startli">初始化 <code>RTU/TCP</code> 环境时需要用户传入 <code>发送缓冲区</code> 和 <code>接收缓冲区</code>，建议这两个缓冲区大小都为 <code>AGILE_MODBUS_MAX_ADU_LENGTH</code> (260) 字节。<code>特殊功能码</code> 情况用户根据协议自行决定。</p>
 <p class="startli">但对于小内存 MCU，这两个缓冲区也可以设置小，所有 API 都会对缓冲区大小进行判断：</p>
 <p class="startli">发送缓冲区设置：如果 <code>预期请求的数据长度</code> 或 <code>预期响应的数据长度</code> 大于 <code>设置的发送缓冲区大小</code>，返回异常。</p>
 <p class="startli">接收缓冲区设置：如果 <code>主机请求的报文长度</code> 大于 <code>设置的接收缓冲区大小</code>，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。</p>
@@ -120,7 +135,7 @@ $(function() {
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a>(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keywordtype">int</span> msg_length, uint8_t slave_strict,</div>
 <div class="line">                            <a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a> slave_cb, <span class="keywordtype">int</span> *frame_length)</div>
 <div class="ttc" id="agroup___slave___exported___types_html_ga5df67b94293bd33bdd5ff6b5ccb0901e"><div class="ttname"><a href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a></div><div class="ttdeci">int(* agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">从机回调函数</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00251">agile_modbus.h:251</a></div></div>
-<div class="ttc" id="agroup___slave___operation___functions_html_ga35776da46b116038a0395e56f2750403"><div class="ttname"><a href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a></div><div class="ttdeci">int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict, agile_modbus_slave_callback_t slave_cb, int *frame_length)</div><div class="ttdoc">从机数据处理</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01205">agile_modbus.c:1205</a></div></div>
+<div class="ttc" id="agroup___slave___operation___functions_html_ga35776da46b116038a0395e56f2750403"><div class="ttname"><a href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a></div><div class="ttdeci">int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict, agile_modbus_slave_callback_t slave_cb, int *frame_length)</div><div class="ttdoc">从机数据处理</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01203">agile_modbus.c:1203</a></div></div>
 <div class="ttc" id="astructagile__modbus_html"><div class="ttname"><a href="structagile__modbus.html">agile_modbus</a></div><div class="ttdoc">Agile Modbus 结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00204">agile_modbus.h:204</a></div></div>
 </div><!-- fragment --><p class="startli">msg_length: <code>等待数据接收结束</code> 后接收到的数据长度</p>
 <p class="startli">slave_strict: 从机地址严格性检查 (0: 不判断地址是否一致，由用户回调处理; 1: 地址必须一致，否则不会调用回调，也不打包响应数据)。</p>
@@ -143,7 +158,7 @@ $(function() {
 <p class="startli">buf: 不同功能码需要使用的数据域 (不是所有功能码都用到)</p>
 <p class="startli">send_index: 发送缓冲区当前索引 (不是所有功能码都用到)</p>
 </li>
-<li><p class="startli"><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 不同功能码使用</p><ul>
+<li><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 不同功能码使用<ul>
 <li><p class="startli">AGILE_MODBUS_FC_READ_COILS、AGILE_MODBUS_FC_READ_DISCRETE_INPUTS</p>
 <p class="startli">需要使用到 <code>address</code>、<code>nb</code>、<code>send_index</code> 属性，需要调用 <code>agile_modbus_slave_io_set</code> API 将 IO 数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
 </li>
@@ -165,25 +180,34 @@ $(function() {
 <li><p class="startli">AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS</p>
 <p class="startli">需要使用到 <code>address</code>、<code>buf</code>、<code>send_index</code> 属性，通过 <code>(buf[0] &lt;&lt; 8) + buf[1]</code> 获取要读取的寄存器数目，通过 <code>(buf[2] &lt;&lt; 8) + buf[3]</code> 获取要写入的寄存器地址，通过 <code>(buf[4] &lt;&lt; 8) + buf[5]</code> 获取要写入的寄存器数目。需要调用 <code>agile_modbus_slave_register_get</code> API 获取要写入的寄存器数据，调用 <code>agile_modbus_slave_register_set</code> API 将寄存器数据存放到 <code>ctx-&gt;send_buf + send_index</code> 开始的数据区域。</p>
 </li>
-<li>自定义功能码</li>
-</ul>
+<li><p class="startli">自定义功能码</p>
 <p class="startli">需要使用到 <code>send_index</code>、<code>nb</code>、<code>buf</code> 属性，用户在回调中处理数据。</p>
 <p class="startli">send_index: 发送缓冲区当前索引</p>
 <p class="startli">nb: PUD - 1，也就是 modbus 数据域长度</p>
 <p class="startli">buf: modbus 数据域起始位置</p>
+<p class="startli"><b>注意</b>: 用户在回调中往发送缓冲区填入数据后，需要更新 <code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code> 的 <code>rsp_length</code> 值。</p>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md15"></a>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md18"></a>
 2.1、示例</h2>
-<p >使用示例在 <a href="./examples">examples</a> 下。</p>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<p ><a href="./examples">examples</a> 文件夹中提供 PC 上的示例，可以在 <code>WSL</code> 或 <code>Linux</code> 下编译运行。</p>
+<ul>
+<li>RTU / TCP 主机、从机的示例</li>
+<li><p class="startli">特殊功能码的示例</p>
+<p class="startli">RTU 点对点传输文件: 演示特殊功能码的使用方式</p>
+<p class="startli">RTU 广播传输文件: 演示 <code>agile_modbus_slave_handle</code> 中 <code>frame_length</code> 的用处</p>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md19"></a>
 2.2、Doxygen 文档生成</h2>
 <ul>
 <li>使用 <code>Doxywizard</code> 打开 <a href="./doc/doxygen/Doxyfile">Doxyfile</a> 运行，生成的文件在 <a href="./doc/doxygen/output">doxygen/output</a> 下。</li>
 <li>需要更改 <code>Graphviz</code> 路径。</li>
 <li><code>HTML</code> 生成未使用 <code>chm</code> 格式的，如果使能需要更改 <code>hhc.exe</code> 路径。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<h1><a class="anchor" id="autotoc_md20"></a>
 3、联系方式 &amp; 感谢</h1>
 <ul>
 <li>维护：马龙伟</li>

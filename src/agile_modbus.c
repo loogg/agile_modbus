@@ -226,8 +226,6 @@ static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int
 {
     int remain_len = msg_length;
 
-    if (remain_len > (int)ctx->backend->max_adu_length)
-        return -1;
     remain_len -= (ctx->backend->header_length + 1);
     if (remain_len < 0)
         return -1;
@@ -1033,7 +1031,7 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
  */
 int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length)
 {
-    if ((raw_req_length < 2) || (raw_req_length > (AGILE_MODBUS_MAX_PDU_LENGTH + 1))) {
+    if (raw_req_length < 2) {
         /* The raw request must contain function and slave at least and
            must not be longer than the maximum pdu length plus the slave
            address. */
@@ -1241,7 +1239,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
     slave_info.address = address;
 
     if (slave_strict) {
-        if (slave != ctx->slave)
+        if ((slave != ctx->slave) && (slave != AGILE_MODBUS_BROADCAST_ADDRESS))
             return 0;
     }
 

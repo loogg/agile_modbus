@@ -5,7 +5,8 @@ OBJSDIR = ./build
 
 .PHONY: all clean
 
-TARGETS = ./rtu_master/RtuMaster ./tcp_master/TcpMaster ./slave/ModbusSlave
+TARGETS = ./rtu_master/RtuMaster ./tcp_master/TcpMaster ./slave/ModbusSlave \
+		  ./rtu_p2p/p2p_master ./rtu_p2p/p2p_slave
 
 COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ./common/*.c)
 COMMON_OBJS = $(patsubst %.c,./$(OBJSDIR)/%.o,$(notdir $(COMMON_SRCS)))
@@ -24,6 +25,12 @@ all: $(TARGETS)
 ./slave/ModbusSlave : $(COMMON_OBJS) $(SLAVE_OBJS)
 	${CC} $^ -g -o $@ ${LDFLAGS}
 
+./rtu_p2p/p2p_master : $(COMMON_OBJS) ./$(OBJSDIR)/p2p_master.o
+	${CC} $^ -g -o $@ ${LDFLAGS}
+
+./rtu_p2p/p2p_slave : $(COMMON_OBJS) ./$(OBJSDIR)/p2p_slave.o
+	${CC} $^ -g -o $@ ${LDFLAGS}
+
 ./$(OBJSDIR)/%.o : ../src/%.c
 	@if [ ! -d $(OBJSDIR) ]; then \
 		mkdir -p $(OBJSDIR); \
@@ -40,6 +47,12 @@ all: $(TARGETS)
 	${CC} -g -c $< -o $@ ${CFLAGS}
 
 ./$(OBJSDIR)/%.o : ./slave/%.c
+	${CC} -g -c $< -o $@ ${CFLAGS}
+
+./$(OBJSDIR)/%.o : ./rtu_p2p/%.c
+	${CC} -g -c $< -o $@ ${CFLAGS}
+
+./$(OBJSDIR)/%.o : ./rtu_broadcast/%.c
 	${CC} -g -c $< -o $@ ${CFLAGS}
 
 clean:
