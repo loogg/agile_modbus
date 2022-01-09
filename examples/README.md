@@ -149,13 +149,13 @@
   | 0x00 | 失败 |
   | 0x01 | 成功 |
 
-#### 2.3.1、点对点传输
-
 - 使用虚拟串口软件虚拟出 3 个串口，组成串口群组
 
   这里我使用的时 MX 虚拟串口
 
   ![VirtualComGroup](./figures/VirtualComGroup.jpg)
+
+#### 2.3.1、点对点传输
 
 - 进入 `rtu_p2p` 目录，打开 `Linux Shell`，演示效果如下
 
@@ -173,8 +173,28 @@
 
 该例子主要演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处。
 
-`broadcast_master` 中，使用广播地址 0，周期 5ms 发送数据包。
+`broadcast_master` 中，使用广播地址 0，周期 5ms 发送数据包。同时每包数据后都发送 100 字节的脏数据。
+
+```C
+
+int send_len = agile_modbus_serialize_raw_request(ctx, raw_req, raw_req_len);
+serial_send(_fd, ctx->send_buf, send_len);
+
+//脏数据
+serial_send(_fd, _dirty_buf, sizeof(_dirty_buf));
+
+```
 
 在如此快速的数据流下，`broadcast_slave` 必须使用 `agile_modbus_slave_handle` 中 `frame_length` 参数来对粘包进行处理。
 
+- 进入 `rtu_broadcast` 目录，打开 `Linux Shell`，演示效果如下
 
+  **注意**:
+
+  - 传输的文件必须是一般文件，像可执行文件、目录等不支持
+
+  - 文件路径必须是 `Linux` 环境下的路径
+
+  - 从机接收到数据后修改文件名称 (从机地址_原文件名) 写入在当前目录。
+
+  ![rtu_broadcast](./figures/rtu_broadcast.gif)

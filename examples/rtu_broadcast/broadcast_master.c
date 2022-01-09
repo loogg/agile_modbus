@@ -15,7 +15,7 @@
 
 static int _fd = -1;
 static struct termios _old_tios = {0};
-static const uint8_t _dirty_buf[5] = {1, 2, 3, 4, 5};
+static const uint8_t _dirty_buf[100] = {1, 2, 3, 4, 5};
 
 #define AGILE_MODBUS_FC_TRANS_FILE 0x50
 #define TRANS_FILE_CMD_START       0x0001
@@ -254,6 +254,8 @@ static int trans_file(int slave, char *file_path)
         serial_flush(_fd);
         int send_len = agile_modbus_serialize_raw_request(ctx, raw_req, raw_req_len);
         serial_send(_fd, ctx->send_buf, send_len);
+
+        //脏数据
         serial_send(_fd, _dirty_buf, sizeof(_dirty_buf));
 
         print_progress(write_file_size, file_size);
@@ -264,6 +266,8 @@ static int trans_file(int slave, char *file_path)
 
     fclose(fp);
     fp = NULL;
+
+    printf("\r\n\r\n");
 
     return ret;
 }

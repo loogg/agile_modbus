@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <semaphore.h>
 #include "ringbuffer.h"
 
 #define DBG_ENABLE
@@ -20,8 +21,9 @@ static int _slave = 0;
 static int _file_size = 0;
 static int _write_file_size = 0;
 static pthread_mutex_t _mtx;
+static sem_t _notice;
 static struct rt_ringbuffer _recv_rb;
-static uint8_t _recv_rb_buf[20480 + 10240];
+static uint8_t _recv_rb_buf[20480];
 
 #define AGILE_MODBUS_FC_TRANS_FILE 0x50
 #define TRANS_FILE_CMD_START       0x0001
@@ -187,11 +189,14 @@ static int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
         if (flag == TRANS_FILE_FLAG_END) {
             fclose(_fp);
             _fp = NULL;
+            printf("\r\n\r\n");
             if (_write_file_size != _file_size) {
                 LOG_W("_write_file_size (%d) != _file_size (%d)", _write_file_size, _file_size);
                 ret = -1;
                 break;
             }
+
+            LOG_I("success.");
         }
 
     } break;
@@ -222,11 +227,43 @@ static void *recv_entry(void *param)
 
             read_len -= rb_recv_len;
 
-            if (rb_recv_len == 0) {
+            if (rb_recv_len > 0)
+                sem_post(&_notice);
+            else
                 usleep(1000);
-            }
         }
     }
+}
+
+static int rb_receive(uint8_t *buf, int bufsz, int timeout)
+{
+    int len = 0;
+
+    while (1) {
+        while (sem_trywait(&_notice) == 0)
+            ;
+        pthread_mutex_lock(&_mtx);
+        int read_len = rt_ringbuffer_get(&_recv_rb, buf + len, bufsz);
+        pthread_mutex_unlock(&_mtx);
+
+        if (read_len > 0) {
+            len += read_len;
+            bufsz -= read_len;
+            if (bufsz == 0)
+                break;
+
+            continue;
+        }
+
+        struct timespec ts;
+        clock_gettime(CLOCK_REALTIME, &ts);
+        ts.tv_sec += timeout / 1000;
+        ts.tv_nsec += (timeout % 1000) * 1000;
+        if (sem_timedwait(&_notice, &ts) != 0)
+            break;
+    }
+
+    return len;
 }
 
 static void *cycle_entry(void *param)
@@ -249,13 +286,14 @@ static void *cycle_entry(void *param)
     LOG_I("slave %d running.", _slave);
 
     while (1) {
-        usleep(2000);
-
-        pthread_mutex_lock(&_mtx);
-        int read_len = rt_ringbuffer_get(&_recv_rb, ctx->read_buf + remain_length, ctx->read_bufsz - remain_length);
-        pthread_mutex_unlock(&_mtx);
+        int read_len = rb_receive(ctx->read_buf + remain_length, ctx->read_bufsz - remain_length, 1000);
 
         int total_len = read_len + remain_length;
+
+        int is_reset = 0;
+
+        if(total_len && read_len == 0)
+            is_reset = 1;
 
         // 解包，为了防止脏数据，不能直接丢，往后挪一个字节继续解析
         while (total_len > 0) {
@@ -267,9 +305,12 @@ static void *cycle_entry(void *param)
                 remain_length = total_len - frame_length;
                 total_len = remain_length;
             } else {
-                if (total_len == sizeof(ctx_read_buf1)) {
-                    total_len--;
+
+                if(total_len > 1600 || is_reset) {
                     ctx->read_buf++;
+                    ctx->read_bufsz--;
+                    total_len--;
+                    continue;
                 }
 
                 if (used_buf_ptr == ctx_read_buf1) {
@@ -290,6 +331,14 @@ static void *cycle_entry(void *param)
 
                 break;
             }
+        }
+
+        if (total_len == 0) {
+            remain_length = 0;
+
+            ctx->read_buf = ctx_read_buf1;
+            ctx->read_bufsz = sizeof(ctx_read_buf1);
+            used_buf_ptr = ctx_read_buf1;
         }
     }
 
@@ -316,6 +365,7 @@ int main(int argc, char *argv[])
     }
 
     pthread_mutex_init(&_mtx, NULL);
+    sem_init(&_notice, 0, 0);
     rt_ringbuffer_init(&_recv_rb, _recv_rb_buf, sizeof(_recv_rb_buf));
 
     pthread_t tid1, tid2;
