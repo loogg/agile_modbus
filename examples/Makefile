@@ -6,7 +6,8 @@ OBJSDIR = ./build
 .PHONY: all clean
 
 TARGETS = ./rtu_master/RtuMaster ./tcp_master/TcpMaster ./slave/ModbusSlave \
-		  ./rtu_p2p/p2p_master ./rtu_p2p/p2p_slave
+		  ./rtu_p2p/p2p_master ./rtu_p2p/p2p_slave \
+		  ./rtu_broadcast/broadcast_master ./rtu_broadcast/broadcast_slave
 
 COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ./common/*.c)
 COMMON_OBJS = $(patsubst %.c,./$(OBJSDIR)/%.o,$(notdir $(COMMON_SRCS)))
@@ -29,6 +30,12 @@ all: $(TARGETS)
 	${CC} $^ -g -o $@ ${LDFLAGS}
 
 ./rtu_p2p/p2p_slave : $(COMMON_OBJS) ./$(OBJSDIR)/p2p_slave.o
+	${CC} $^ -g -o $@ ${LDFLAGS}
+
+./rtu_broadcast/broadcast_master : $(COMMON_OBJS) ./$(OBJSDIR)/broadcast_master.o
+	${CC} $^ -g -o $@ ${LDFLAGS}
+
+./rtu_broadcast/broadcast_slave : $(COMMON_OBJS) ./$(OBJSDIR)/broadcast_slave.o
 	${CC} $^ -g -o $@ ${LDFLAGS}
 
 ./$(OBJSDIR)/%.o : ../src/%.c
