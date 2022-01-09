@@ -185,11 +185,14 @@ static int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
         if (flag == TRANS_FILE_FLAG_END) {
             fclose(_fp);
             _fp = NULL;
+            printf("\r\n\r\n");
             if (_write_file_size != _file_size) {
                 LOG_W("_write_file_size (%d) != _file_size (%d)", _write_file_size, _file_size);
                 ret = -1;
                 break;
             }
+
+            LOG_I("success.");
         }
 
     } break;
@@ -253,7 +256,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    _fd = serial_init(argv[1], 9600, 'N', 8, 1, &_old_tios);
+    _fd = serial_init(argv[1], 115200, 'N', 8, 1, &_old_tios);
     if (_fd < 0) {
         LOG_E("Open %s failed!", argv[1]);
         return -1;
