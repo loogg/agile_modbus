@@ -292,7 +292,7 @@ static void *cycle_entry(void *param)
 
         int is_reset = 0;
 
-        if(total_len && read_len == 0)
+        if (total_len && read_len == 0)
             is_reset = 1;
 
         // 解包，为了防止脏数据，不能直接丢，往后挪一个字节继续解析
@@ -306,7 +306,7 @@ static void *cycle_entry(void *param)
                 total_len = remain_length;
             } else {
 
-                if(total_len > 1600 || is_reset) {
+                if (total_len > 1600 || is_reset) {
                     ctx->read_buf++;
                     ctx->read_bufsz--;
                     total_len--;
