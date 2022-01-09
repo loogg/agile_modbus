@@ -358,7 +358,7 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    _fd = serial_init(argv[1], 9600, 'N', 8, 1, &_old_tios);
+    _fd = serial_init(argv[1], 115200, 'N', 8, 1, &_old_tios);
     if (_fd < 0) {
         LOG_E("Open %s failed!", argv[1]);
         return -1;

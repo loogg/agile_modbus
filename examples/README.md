@@ -16,7 +16,7 @@
 | tcp_master  | TCP 主机示例 |
 | slave  | RTU + TCP 从机示例 |
 | rtu_p2p  | RTU 点对点传输文件 |
-| rtu_broadcast  | RTU 广播传输文件 |
+| rtu_broadcast  | RTU 广播传输文件 (粘包处理示例) |
 
 ## 2、使用
 
