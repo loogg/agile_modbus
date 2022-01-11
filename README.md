@@ -204,6 +204,8 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
   RTU 广播传输文件: 演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处
 
+`agile_modbus_mcu_demos` <https://github.com/loogg/agile_modbus_mcu_demos> 提供在 MCU 上的例子。
+
 ### 2.2、Doxygen 文档生成
 
 - 使用 `Doxywizard` 打开 [Doxyfile](./doc/doxygen/Doxyfile) 运行，生成的文件在 [doxygen/output](./doc/doxygen/output) 下。
