@@ -10,6 +10,8 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 
 - MCU 上的示例查看 <https://github.com/loogg/agile_modbus_mcu_demos>
 
+- 在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：[AT32F437_Boot](https://github.com/loogg/AT32F437_Boot)
+
 ### 1.1、特性
 
 1. 支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。

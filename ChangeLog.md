@@ -31,3 +31,11 @@
 
 * 去除接收数据判断中长度限制
 * 去除 `agile_modbus_serialize_raw_request` 对于原始数据的长度限制
+
+## Agile Modbus 1.1.1 发布
+
+### 修改
+
+2022-06-22：马龙伟
+
+* README.md 增加在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader 链接
