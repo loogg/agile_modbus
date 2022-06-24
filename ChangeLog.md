@@ -39,3 +39,4 @@
 2022-06-22：马龙伟
 
 * README.md 增加在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader 链接
+* 增加 HPM6750_Boot 链接
