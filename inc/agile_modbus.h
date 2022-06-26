@@ -2,7 +2,6 @@
  * @file    agile_modbus.h
  * @brief   Agile Modbus 软件包通用头文件
  * @author  马龙伟 (2544047213@qq.com)
- * @version 1.1.0
  * @date    2021-12-01
  *
  * @attention

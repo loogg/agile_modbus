@@ -25,7 +25,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">Agile Modbus<span id="projectnumber">&#160;1.1.0</span>
+   <div id="projectname">Agile Modbus<span id="projectnumber">&#160;1.1.1</span>
    </div>
    <div id="projectbrief">Lightweight modbus protocol stack.</div>
   </td>
@@ -86,16 +86,18 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Agile Modbus </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_test_packages_agile_modbus_latest_README"></a> </p>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_agile_modbus_README"></a> </p>
+<h1><a class="anchor" id="autotoc_md15"></a>
 1、介绍</h1>
 <p >Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。</p>
 <p ><img src="./figures/ModbusProtocol.jpg" alt="ModbusProtocol" class="inline"/></p>
 <ul>
 <li><code>examples</code> 文件夹提供 PC 上的示例</li>
-<li>MCU 上的示例查看 <a href="https://github.com/loogg/agile_modbus_mcu_demos">https://github.com/loogg/agile_modbus_mcu_demos</a></li>
+<li>MCU 上的示例查看 <a href="https://github.com/loogg/agile_modbus_mcu_demos">mcu_demos</a></li>
+<li>在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：<a href="https://github.com/loogg/AT32F437_Boot">AT32F437_Boot</a></li>
+<li>在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：<a href="https://github.com/loogg/HPM6750_Boot">HPM6750_Boot</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md14"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 1.1、特性</h2>
 <ol type="1">
 <li>支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
@@ -104,7 +106,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>同时支持多主机和多从机。</li>
 <li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<h2><a class="anchor" id="autotoc_md17"></a>
 1.2、目录结构</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -120,7 +122,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">src   </td><td class="markdownTableBodyNone">源代码   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md18"></a>
 1.3、资源占用</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -130,10 +132,10 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">GCC   </td><td class="markdownTableBodyNone">13970   </td><td class="markdownTableBodyNone">24   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md17"></a>
+<h2><a class="anchor" id="autotoc_md19"></a>
 1.4、许可证</h2>
-<p >Agile Modbus 遵循 LGPLv2.1 许可，详见 <code>LICENSE</code> 文件。</p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<p >Agile Modbus 遵循 <code>Apache-2.0</code> 许可，详见 <code>LICENSE</code> 文件。</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 2、使用 Agile Modbus</h1>
 <ul>
 <li>帮助文档请查看 <a href="./doc/doxygen/Agile_Modbus.chm">doc/doxygen/Agile_Modbus.chm</a></li>
@@ -191,9 +193,9 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li><p class="startli"><code>agile_modbus_slave_handle</code> 介绍</p>
 <div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a>(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keywordtype">int</span> msg_length, uint8_t slave_strict,</div>
 <div class="line">                            <a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a> slave_cb, <span class="keywordtype">int</span> *frame_length)</div>
-<div class="ttc" id="agroup___slave___exported___types_html_ga5df67b94293bd33bdd5ff6b5ccb0901e"><div class="ttname"><a href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a></div><div class="ttdeci">int(* agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">从机回调函数</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00251">agile_modbus.h:251</a></div></div>
-<div class="ttc" id="agroup___slave___operation___functions_html_ga35776da46b116038a0395e56f2750403"><div class="ttname"><a href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a></div><div class="ttdeci">int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict, agile_modbus_slave_callback_t slave_cb, int *frame_length)</div><div class="ttdoc">从机数据处理</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01203">agile_modbus.c:1203</a></div></div>
-<div class="ttc" id="astructagile__modbus_html"><div class="ttname"><a href="structagile__modbus.html">agile_modbus</a></div><div class="ttdoc">Agile Modbus 结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00204">agile_modbus.h:204</a></div></div>
+<div class="ttc" id="agroup___slave___exported___types_html_ga5df67b94293bd33bdd5ff6b5ccb0901e"><div class="ttname"><a href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a></div><div class="ttdeci">int(* agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">从机回调函数</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00250">agile_modbus.h:250</a></div></div>
+<div class="ttc" id="agroup___slave___operation___functions_html_ga35776da46b116038a0395e56f2750403"><div class="ttname"><a href="group___slave___operation___functions.html#ga35776da46b116038a0395e56f2750403">agile_modbus_slave_handle</a></div><div class="ttdeci">int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict, agile_modbus_slave_callback_t slave_cb, int *frame_length)</div><div class="ttdoc">从机数据处理</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01202">agile_modbus.c:1202</a></div></div>
+<div class="ttc" id="astructagile__modbus_html"><div class="ttname"><a href="structagile__modbus.html">agile_modbus</a></div><div class="ttdoc">Agile Modbus 结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00203">agile_modbus.h:203</a></div></div>
 </div><!-- fragment --><p class="startli">msg_length: <code>等待数据接收结束</code> 后接收到的数据长度</p>
 <p class="startli">slave_strict: 从机地址严格性检查 (0: 不判断地址是否一致，由用户回调处理; 1: 地址必须一致，否则不会调用回调，也不打包响应数据)。</p>
 <p class="startli">slave_cb: <code>agile_modbus_slave_callback_t</code> 类型回调函数，用户实现并传入。如果为 NULL，所有功能码都能响应且为成功，但寄存器数据依然为 0。</p>
@@ -206,7 +208,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li><p class="startli"><code>agile_modbus_slave_callback_t</code> 介绍</p>
 <div class="fragment"><div class="line"> </div>
 <div class="line"><span class="keyword">typedef</span> int (*<a class="code hl_typedef" href="group___slave___exported___types.html#ga5df67b94293bd33bdd5ff6b5ccb0901e">agile_modbus_slave_callback_t</a>)(<a class="code hl_struct" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code hl_struct" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info);</div>
-<div class="ttc" id="astructagile__modbus__slave__info_html"><div class="ttname"><a href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a></div><div class="ttdoc">Agile Modbus 从机信息结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00233">agile_modbus.h:233</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__info_html"><div class="ttname"><a href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a></div><div class="ttdoc">Agile Modbus 从机信息结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00232">agile_modbus.h:232</a></div></div>
 </div><!-- fragment --><p class="startli"><code><a class="el" href="structagile__modbus__slave__info.html" title="Agile Modbus 从机信息结构体">agile_modbus_slave_info</a></code>:</p>
 <p class="startli">sft: 包含从机地址和功能码属性，回调中可利用</p>
 <p class="startli">rsp_length: 响应数据长度指针，回调中处理 <code>特殊功能码</code> 时需要更新其值，否则 <b>不准更改</b></p>
@@ -247,25 +249,29 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 2.1、示例</h2>
-<p ><a href="./examples">examples</a> 文件夹中提供 PC 上的示例，可以在 <code>WSL</code> 或 <code>Linux</code> 下编译运行。</p>
 <ul>
+<li><a href="./examples">examples</a> 文件夹中提供 PC 上的示例，可以在 <code>WSL</code> 或 <code>Linux</code> 下编译运行。<ul>
 <li>RTU / TCP 主机、从机的示例</li>
 <li><p class="startli">特殊功能码的示例</p>
 <p class="startli">RTU 点对点传输文件: 演示特殊功能码的使用方式</p>
 <p class="startli">RTU 广播传输文件: 演示 <code>agile_modbus_slave_handle</code> 中 <code>frame_length</code> 的用处</p>
 </li>
 </ul>
-<p ><code>agile_modbus_mcu_demos</code> <a href="https://github.com/loogg/agile_modbus_mcu_demos">https://github.com/loogg/agile_modbus_mcu_demos</a> 提供在 MCU 上的例子。</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+</li>
+<li><a href="https://github.com/loogg/agile_modbus_mcu_demos">mcu_demos</a> 提供在 MCU 上的例子。</li>
+<li><a href="https://github.com/loogg/AT32F437_Boot">AT32F437_Boot</a> 在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。</li>
+<li><a href="https://github.com/loogg/HPM6750_Boot">HPM6750_Boot</a> 在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md22"></a>
 2.2、Doxygen 文档生成</h2>
 <ul>
 <li>使用 <code>Doxywizard</code> 打开 <a href="./doc/doxygen/Doxyfile">Doxyfile</a> 运行，生成的文件在 <a href="./doc/doxygen/output">doxygen/output</a> 下。</li>
 <li>需要更改 <code>Graphviz</code> 路径。</li>
 <li><code>HTML</code> 生成未使用 <code>chm</code> 格式的，如果使能需要更改 <code>hhc.exe</code> 路径。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 3、联系方式 &amp; 感谢</h1>
 <ul>
 <li>维护：马龙伟</li>

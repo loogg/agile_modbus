@@ -8,7 +8,7 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 
 - `examples` 文件夹提供 PC 上的示例
 
-- MCU 上的示例查看 <https://github.com/loogg/agile_modbus_mcu_demos>
+- MCU 上的示例查看 [mcu_demos](https://github.com/loogg/agile_modbus_mcu_demos)
 
 - 在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：[AT32F437_Boot](https://github.com/loogg/AT32F437_Boot)
 
@@ -41,7 +41,7 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 
 ### 1.4、许可证
 
-Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
+Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
 ## 2、使用 Agile Modbus
 
@@ -202,17 +202,21 @@ Agile Modbus 遵循 LGPLv2.1 许可，详见 `LICENSE` 文件。
 
 ### 2.1、示例
 
-[examples](./examples) 文件夹中提供 PC 上的示例，可以在 `WSL` 或 `Linux` 下编译运行。
+- [examples](./examples) 文件夹中提供 PC 上的示例，可以在 `WSL` 或 `Linux` 下编译运行。
 
-- RTU / TCP 主机、从机的示例
+  - RTU / TCP 主机、从机的示例
 
-- 特殊功能码的示例
+  - 特殊功能码的示例
 
-  RTU 点对点传输文件: 演示特殊功能码的使用方式
+    RTU 点对点传输文件: 演示特殊功能码的使用方式
 
-  RTU 广播传输文件: 演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处
+    RTU 广播传输文件: 演示 `agile_modbus_slave_handle` 中 `frame_length` 的用处
 
-`agile_modbus_mcu_demos` <https://github.com/loogg/agile_modbus_mcu_demos> 提供在 MCU 上的例子。
+- [mcu_demos](https://github.com/loogg/agile_modbus_mcu_demos) 提供在 MCU 上的例子。
+
+- [AT32F437_Boot](https://github.com/loogg/AT32F437_Boot) 在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。
+
+- [HPM6750_Boot](https://github.com/loogg/HPM6750_Boot) 在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。
 
 ### 2.2、Doxygen 文档生成
 
