@@ -1,6 +1,6 @@
 CFLAGS = -I../inc -I./common
 LDFLAGS = -lpthread
-CC = gcc
+CC = gcc -std=gnu99
 OBJSDIR = ./build
 
 .PHONY: all clean
