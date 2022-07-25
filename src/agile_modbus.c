@@ -426,8 +426,8 @@ static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
         case AGILE_MODBUS_FC_READ_COILS:
         case AGILE_MODBUS_FC_READ_DISCRETE_INPUTS:
             /* Read functions, 8 values in a byte (nb
-                * of values in the request and byte count in
-                * the response. */
+             * of values in the request and byte count in
+             * the response. */
             req_nb_value = (req[offset + 3] << 8) + req[offset + 4];
             req_nb_value = (req_nb_value / 8) + ((req_nb_value % 8) ? 1 : 0);
             rsp_nb_value = rsp[offset + 1];
