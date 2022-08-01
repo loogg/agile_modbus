@@ -55,7 +55,7 @@ static const agile_modbus_slave_util_map_t *get_map_by_addr(const agile_modbus_s
  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
  *             (其他负数异常码: 从机会打包异常响应数据)
  */
-static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, agile_modbus_slave_util_t *slave_util)
+static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
     uint8_t map_buf[AGILE_MODBUS_MAX_PDU_LENGTH];
     int function = slave_info->sft->function;
@@ -138,7 +138,7 @@ static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
  *             (其他负数异常码: 从机会打包异常响应数据)
  */
-static int set_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, agile_modbus_slave_util_t *slave_util)
+static int set_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
     uint8_t map_buf[AGILE_MODBUS_MAX_PDU_LENGTH];
     int function = slave_info->sft->function;
@@ -253,7 +253,7 @@ int agile_modbus_slave_util_callback(agile_modbus_t *ctx, struct agile_modbus_sl
 {
     int function = slave_info->sft->function;
     int ret = 0;
-    agile_modbus_slave_util_t *slave_util = (agile_modbus_slave_util_t *)data;
+    const agile_modbus_slave_util_t *slave_util = (const agile_modbus_slave_util_t *)data;
 
     if (slave_util == NULL)
         return 0;
