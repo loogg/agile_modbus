@@ -31,15 +31,9 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 | figures | 素材 |
 | inc  | 头文件 |
 | src  | 源代码 |
+| util | 提供简单实用的组件 |
 
-### 1.3、资源占用
-
-| 环境 | FLASH | RAM |
-| ---- | ---- | ---- |
-| KEIL | 7192 | 0 |
-| GCC | 13970 | 24 |
-
-### 1.4、许可证
+### 1.3、许可证
 
 Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
@@ -115,15 +109,17 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
   ```C
 
   int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
-                              agile_modbus_slave_callback_t slave_cb, int *frame_length)
+                                agile_modbus_slave_callback_t slave_cb, const void *slave_data, int *frame_length)
 
   ```
 
-  msg_length: `等待数据接收结束` 后接收到的数据长度
+  msg_length: `等待数据接收结束` 后接收到的数据长度。
 
   slave_strict: 从机地址严格性检查 (0: 不判断地址是否一致，由用户回调处理; 1: 地址必须一致，否则不会调用回调，也不打包响应数据)。
 
   slave_cb: `agile_modbus_slave_callback_t` 类型回调函数，用户实现并传入。如果为 NULL，所有功能码都能响应且为成功，但寄存器数据依然为 0。
+
+  slave_data: 从机回调函数私有数据。
 
   frame_length: 获取解析出的 modbus 数据帧长度。这个参数的意义在于：
     1. 尾部有脏数据: 仍能解析成功，并告诉用户真实的 modbus 帧长，用户可以进行处理
@@ -135,12 +131,16 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
   ```C
 
   /**
-  * @return  =0:正常;
-  *          <0:异常
-  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
-  *             (其他负数异常码: 从机会打包异常响应数据)
-  */
-  typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
+   * @brief   从机回调函数
+   * @param   ctx modbus 句柄
+   * @param   slave_info 从机信息体
+   * @param   data 私有数据
+   * @return  =0:正常;
+   *          <0:异常
+   *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
+   *             (其他负数异常码: 从机会打包异常响应数据)
+   */
+  typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data);
 
   ```
 

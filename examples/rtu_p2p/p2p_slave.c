@@ -91,12 +91,13 @@ static void print_progress(size_t cur_size, size_t total_size)
  * @brief   从机回调函数
  * @param   ctx modbus 句柄
  * @param   slave_info 从机信息体
+ * @param   data 私有数据
  * @return  =0:正常;
  *          <0:异常
  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
  *             (其他负数异常码: 从机会打包异常响应数据)
  */
-static int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)
+static int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data)
 {
     int function = slave_info->sft->function;
 
@@ -234,7 +235,7 @@ static void *cycle_entry(void *param)
         if (read_len == 0)
             continue;
 
-        int send_len = agile_modbus_slave_handle(ctx, read_len, 1, slave_callback, NULL);
+        int send_len = agile_modbus_slave_handle(ctx, read_len, 1, slave_callback, NULL, NULL);
         serial_flush(_fd);
         if (send_len > 0)
             serial_send(_fd, ctx->send_buf, send_len);

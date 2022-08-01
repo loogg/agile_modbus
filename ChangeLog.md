@@ -41,3 +41,19 @@
 * README.md 增加在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader 链接
 * 增加 HPM6750_Boot 链接
 * 更改 LICENSE 为 `Apache-2.0`
+
+## Agile Modbus 1.1.2 发布
+
+### 新功能
+
+2022-07-28：马龙伟
+
+* 提供简易从机接入 `agile_modbus_slave_util_callback ` 接口
+
+### 修改
+
+2022-07-28：马龙伟
+
+* `agile_modbus_slave_handle` 增加 `从机回调私有数据` 参数
+* `agile_modbus_slave_callback_t` 增加 `私有数据` 参数
+* `examples` 中从机示例使用 `agile_modbus_slave_util_callback` 接口实现寄存器读写

@@ -6,9 +6,12 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include <pthread.h>
 #include "agile_modbus.h"
+#include "agile_modbus_slave_util.h"
 
-int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
+extern pthread_mutex_t slave_mtx;
+extern const agile_modbus_slave_util_t slave_util;
 
 #ifdef __cplusplus
 }

@@ -1,4 +1,4 @@
-CFLAGS = -I../inc -I./common
+CFLAGS = -I../inc -I../util -I./common
 LDFLAGS = -lpthread
 CC = gcc -std=gnu99
 OBJSDIR = ./build
@@ -9,7 +9,7 @@ TARGETS = ./rtu_master/RtuMaster ./tcp_master/TcpMaster ./slave/ModbusSlave \
 		  ./rtu_p2p/p2p_master ./rtu_p2p/p2p_slave \
 		  ./rtu_broadcast/broadcast_master ./rtu_broadcast/broadcast_slave
 
-COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ./common/*.c)
+COMMON_SRCS = $(wildcard ../src/*.c) $(wildcard ../util/*.c) $(wildcard ./common/*.c)
 COMMON_OBJS = $(patsubst %.c,./$(OBJSDIR)/%.o,$(notdir $(COMMON_SRCS)))
 
 SLAVE_SRCS = $(wildcard ./slave/*.c)
@@ -42,6 +42,9 @@ all: $(TARGETS)
 	@if [ ! -d $(OBJSDIR) ]; then \
 		mkdir -p $(OBJSDIR); \
 	fi
+	${CC} -g -c $< -o $@ ${CFLAGS}
+
+./$(OBJSDIR)/%.o : ../util/%.c
 	${CC} -g -c $< -o $@ ${CFLAGS}
 
 ./$(OBJSDIR)/%.o : ./common/%.c

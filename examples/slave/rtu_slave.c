@@ -36,7 +36,7 @@ static void *rtu_entry(void *param)
         if (read_len == 0)
             continue;
 
-        int send_len = agile_modbus_slave_handle(ctx, read_len, 0, slave_callback, NULL);
+        int send_len = agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &slave_util, NULL);
         serial_flush(_fd);
         if (send_len > 0)
             serial_send(_fd, ctx->send_buf, send_len);

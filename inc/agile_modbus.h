@@ -2,7 +2,7 @@
  * @file    agile_modbus.h
  * @brief   Agile Modbus 软件包通用头文件
  * @author  马龙伟 (2544047213@qq.com)
- * @date    2021-12-01
+ * @date    2022-07-28
  *
  * @attention
  *
@@ -242,12 +242,13 @@ struct agile_modbus_slave_info {
  * @brief   从机回调函数
  * @param   ctx modbus 句柄
  * @param   slave_info 从机信息体
+ * @param   data 私有数据
  * @return  =0:正常;
  *          <0:异常
  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
  *             (其他负数异常码: 从机会打包异常响应数据)
  */
-typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);
+typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data);
 
 /**
  * @}
@@ -330,7 +331,7 @@ int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length);
  * @{
  */
 int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
-                              agile_modbus_slave_callback_t slave_cb, int *frame_length);
+                              agile_modbus_slave_callback_t slave_cb, const void *slave_data, int *frame_length);
 void agile_modbus_slave_io_set(uint8_t *buf, int index, int status);
 uint8_t agile_modbus_slave_io_get(uint8_t *buf, int index);
 void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data);

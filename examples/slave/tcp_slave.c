@@ -86,7 +86,7 @@ static void *mbtcp_session_entry(void *param)
         if (rc < 0)
             break;
         if (rc > 0) {
-            int send_len = agile_modbus_slave_handle(ctx, rc, 0, slave_callback, NULL);
+            int send_len = agile_modbus_slave_handle(ctx, rc, 0, agile_modbus_slave_util_callback, &slave_util, NULL);
             tcp_flush(session->fd);
             if (send_len > 0) {
                 session->tick_timeout = rt_tick_get() + rt_tick_from_millisecond(MBTCP_SESSION_TIMEOUT * 1000);
