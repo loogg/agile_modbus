@@ -39,7 +39,9 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
 ## 2、使用 Agile Modbus
 
-- 帮助文档请查看 [doc/doxygen/Agile_Modbus.chm](./doc/doxygen/Agile_Modbus.chm)
+帮助文档请查看 [doc/doxygen/Agile_Modbus.chm](./doc/doxygen/Agile_Modbus.chm)
+
+### 2.1、移植
 
 - 用户需要实现硬件接口的 `发送数据` 、 `等待数据接收结束` 、 `清空接收缓存` 函数
 
@@ -103,6 +105,14 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
   发送缓冲区设置：如果 `预期请求的数据长度` 或 `预期响应的数据长度` 大于 `设置的发送缓冲区大小`，返回异常。
 
   接收缓冲区设置：如果 `主机请求的报文长度` 大于 `设置的接收缓冲区大小`，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。
+
+### 2.2、主机
+
+见 `2.1、移植`。
+
+### 2.3、从机
+
+#### 2.3.1、接口说明
 
 - `agile_modbus_slave_handle` 介绍
 
@@ -200,7 +210,98 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
     **注意**: 用户在回调中往发送缓冲区填入数据后，需要更新 `agile_modbus_slave_info` 的 `rsp_length` 值。
 
-### 2.1、示例
+#### 2.3.2、简易从机接入接口
+
+Agile Modbus 提供了 `agile_modbus_slave_callback_t` 的一种实现方式，使用户能够简单方便接入。
+
+使用示例可查看 [examples/slave](./examples/slave)。
+
+使用方式：
+
+```C
+
+#include "agile_modbus.h"
+#include "agile_modbus_slave_util.h"
+
+const agile_modbus_slave_util_t slave_util = {
+  /* User implementation */
+
+};
+
+agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &slave_util, NULL);
+
+```
+
+- `agile_modbus_slave_util_callback` 介绍
+
+  - Agile Modbus 提供的一种 `agile_modbus_slave_callback_t` 实现方式，需要 `agile_modbus_slave_util_t` 类型变量指针作为私有数据。
+
+  - 私有数据为 NULL，所有功能码都能响应且为成功，但寄存器数据依然为 0。
+
+- `agile_modbus_slave_util_t` 介绍
+
+  ```C
+
+  typedef struct agile_modbus_slave_util {
+      const agile_modbus_slave_util_map_t *tab_bits;                                            /**< 线圈寄存器定义数组 */
+      int nb_bits;                                                                              /**< 线圈寄存器定义数组数目 */
+      const agile_modbus_slave_util_map_t *tab_input_bits;                                      /**< 离散量输入寄存器定义数组 */
+      int nb_input_bits;                                                                        /**< 离散量输入寄存器定义数组数目 */
+      const agile_modbus_slave_util_map_t *tab_registers;                                       /**< 保持寄存器定义数组 */
+      int nb_registers;                                                                         /**< 保持寄存器定义数组数目 */
+      const agile_modbus_slave_util_map_t *tab_input_registers;                                 /**< 输入寄存器定义数组 */
+      int nb_input_registers;                                                                   /**< 输入寄存器定义数组数目 */
+      int (*addr_check)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);       /**< 地址检查接口 */
+      int (*special_function)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info); /**< 特殊功能码处理接口 */
+      int (*done)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, int ret);    /**< 处理结束接口 */
+  } agile_modbus_slave_util_t;
+
+  ```
+
+  - 寄存器相关
+
+    用户需要实现 `bits`、`input_bits`、`registers`、`input_registers` 定义。如果某个寄存器定义为 NULL，该寄存器对应的功能码能响应且为成功，但寄存器数据都为 0。
+
+  - 接口调用过程
+
+    ![SlaveCallback](./figures/SlaveCallback.jpg)
+
+- `agile_modbus_slave_util_map` 介绍
+
+  ```C
+
+  typedef struct agile_modbus_slave_util_map {
+      int start_addr;                                       /**< 起始地址 */
+      int end_addr;                                         /**< 结束地址 */
+      int (*get)(void *buf, int bufsz);                     /**< 获取寄存器数据接口 */
+      int (*set)(int index, int len, void *buf, int bufsz); /**< 设置寄存器数据接口 */
+  } agile_modbus_slave_util_map_t;
+
+  ```
+
+  - **注意事项**:
+
+    - 起始地址和结束地址决定的寄存器个数有限制。更改函数内部 `map_buf` 数组大小可使其变大。
+
+      - bit 寄存器 < 250
+
+      - register 寄存器 < 125
+
+    - 接口函数为 NULL，寄存器对应的功能码能响应且为成功。
+
+  - `get` 接口
+
+    将地址域内的数据全部拷贝到 `buf` 中。
+
+  - `set` 接口
+
+    - `index`: 地址域内的偏移
+
+    - `len`: 长度
+
+    根据 `index` 和 `len` 修改数据。
+
+### 2.4、示例
 
 - [examples](./examples) 文件夹中提供 PC 上的示例，可以在 `WSL` 或 `Linux` 下编译运行。
 
@@ -218,7 +319,7 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
 - [HPM6750_Boot](https://github.com/loogg/HPM6750_Boot) 在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。
 
-### 2.2、Doxygen 文档生成
+### 2.5、Doxygen 文档生成
 
 - 使用 `Doxywizard` 打开 [Doxyfile](./doc/doxygen/Doxyfile) 运行，生成的文件在 [doxygen/output](./doc/doxygen/output) 下。
 - 需要更改 `Graphviz` 路径。
