@@ -129,7 +129,7 @@ static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
 }
 
 /**
- * @brief   设置寄存器
+ * @brief   写寄存器
  * @param   ctx modbus 句柄
  * @param   slave_info 从机信息体
  * @param   slave_util 从机功能结构体
@@ -138,7 +138,7 @@ static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
  *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
  *             (其他负数异常码: 从机会打包异常响应数据)
  */
-static int set_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
+static int write_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
     uint8_t map_buf[AGILE_MODBUS_MAX_PDU_LENGTH];
     int function = slave_info->sft->function;
@@ -232,6 +232,141 @@ static int set_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *sl
 }
 
 /**
+ * @brief   掩码写寄存器
+ * @param   ctx modbus 句柄
+ * @param   slave_info 从机信息体
+ * @param   slave_util 从机功能结构体
+ * @return  =0:正常;
+ *          <0:异常
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
+ *             (其他负数异常码: 从机会打包异常响应数据)
+ */
+static int mask_write_register(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
+{
+    uint8_t map_buf[AGILE_MODBUS_MAX_PDU_LENGTH];
+    int address = slave_info->address;
+    const agile_modbus_slave_util_map_t *maps = slave_util->tab_registers;
+    int nb_maps = slave_util->nb_registers;
+
+    if (maps == NULL)
+        return 0;
+
+    const agile_modbus_slave_util_map_t *map = get_map_by_addr(maps, nb_maps, address);
+    if (map == NULL)
+        return 0;
+
+    if (map->set) {
+        memset(map_buf, 0, sizeof(map_buf));
+        if (map->get) {
+            map->get(map_buf, sizeof(map_buf));
+        }
+
+        int index = address - map->start_addr;
+        uint16_t *ptr = (uint16_t *)map_buf;
+        uint16_t data = ptr[index];
+        uint16_t and = (slave_info->buf[0] << 8) + slave_info->buf[1];
+        uint16_t or = (slave_info->buf[2] << 8) + slave_info->buf[3];
+
+        data = (data & and) | (or &(~and));
+        ptr[index] = data;
+
+        int rc = map->set(index, 1, map_buf, sizeof(map_buf));
+        if (rc != 0)
+            return rc;
+    }
+
+    return 0;
+}
+
+/**
+ * @brief   写并读寄存器
+ * @param   ctx modbus 句柄
+ * @param   slave_info 从机信息体
+ * @param   slave_util 从机功能结构体
+ * @return  =0:正常;
+ *          <0:异常
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
+ *             (其他负数异常码: 从机会打包异常响应数据)
+ */
+static int write_read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
+{
+    uint8_t map_buf[AGILE_MODBUS_MAX_PDU_LENGTH];
+    int address = slave_info->address;
+    int nb = (slave_info->buf[0] << 8) + slave_info->buf[1];
+    int address_write = (slave_info->buf[2] << 8) + slave_info->buf[3];
+    int nb_write = (slave_info->buf[4] << 8) + slave_info->buf[5];
+    int send_index = slave_info->send_index;
+
+    const agile_modbus_slave_util_map_t *maps = slave_util->tab_registers;
+    int nb_maps = slave_util->nb_registers;
+
+    if (maps == NULL)
+        return 0;
+
+    /* Write first. 7 is the offset of the first values to write */
+    for (int now_address = address_write, i = 0; now_address < address_write + nb_write; now_address++, i++) {
+        const agile_modbus_slave_util_map_t *map = get_map_by_addr(maps, nb_maps, now_address);
+        if (map == NULL)
+            continue;
+
+        int map_len = map->end_addr - now_address + 1;
+        if (map->set) {
+            memset(map_buf, 0, sizeof(map_buf));
+            if (map->get) {
+                map->get(map_buf, sizeof(map_buf));
+            }
+
+            int index = now_address - map->start_addr;
+            uint16_t *ptr = (uint16_t *)map_buf;
+            int need_len = address_write + nb_write - now_address;
+            if (need_len > map_len) {
+                need_len = map_len;
+            }
+
+            for (int j = 0; j < need_len; j++) {
+                uint16_t data = agile_modbus_slave_register_get(slave_info->buf + 7, i + j);
+                ptr[index + j] = data;
+            }
+
+            int rc = map->set(index, need_len, map_buf, sizeof(map_buf));
+            if (rc != 0)
+                return rc;
+        }
+
+        now_address += map_len - 1;
+        i += map_len - 1;
+    }
+
+    /* and read the data for the response */
+    for (int now_address = address, i = 0; now_address < address + nb; now_address++, i++) {
+        const agile_modbus_slave_util_map_t *map = get_map_by_addr(maps, nb_maps, now_address);
+        if (map == NULL)
+            continue;
+
+        int map_len = map->end_addr - now_address + 1;
+        if (map->get) {
+            memset(map_buf, 0, sizeof(map_buf));
+            map->get(map_buf, sizeof(map_buf));
+            int index = now_address - map->start_addr;
+            uint16_t *ptr = (uint16_t *)map_buf;
+            int need_len = address + nb - now_address;
+            if (need_len > map_len) {
+                need_len = map_len;
+            }
+
+            for (int j = 0; j < need_len; j++) {
+                agile_modbus_slave_register_set(ctx->send_buf + send_index, i + j, ptr[index + j]);
+            }
+        }
+
+        now_address += map_len - 1;
+        i += map_len - 1;
+    }
+
+    return 0;
+}
+
+/**
  * @}
  */
 
@@ -276,7 +411,15 @@ int agile_modbus_slave_util_callback(agile_modbus_t *ctx, struct agile_modbus_sl
     case AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS:
     case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER:
     case AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS:
-        ret = set_registers(ctx, slave_info, slave_util);
+        ret = write_registers(ctx, slave_info, slave_util);
+        break;
+
+    case AGILE_MODBUS_FC_MASK_WRITE_REGISTER:
+        ret = mask_write_register(ctx, slave_info, slave_util);
+        break;
+
+    case AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS:
+        ret = write_read_registers(ctx, slave_info, slave_util);
         break;
 
     default: {
