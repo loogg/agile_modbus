@@ -325,7 +325,13 @@ agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &s
 - 需要更改 `Graphviz` 路径。
 - `HTML` 生成未使用 `chm` 格式的，如果使能需要更改 `hhc.exe` 路径。
 
-## 3、联系方式 & 感谢
+## 3、支持
+
+![zanshang](./figures/zanshang.jpg)
+
+如果 Agile Modbus 解决了你的问题，不妨扫描上面二维码请我 **喝杯咖啡** ~
+
+## 4、联系方式 & 感谢
 
 - 维护：马龙伟
 - 主页：<https://github.com/loogg/agile_modbus>
