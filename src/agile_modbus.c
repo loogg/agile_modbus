@@ -1264,7 +1264,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         slave_info.send_index = rsp_length;
         rsp_length += slave_info.nb;
         slave_info.nb = nb;
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1290,17 +1290,20 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         slave_info.send_index = rsp_length;
         rsp_length += slave_info.nb;
         slave_info.nb = nb;
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
     } break;
 
     case AGILE_MODBUS_FC_WRITE_SINGLE_COIL: {
+        //! warning: comparison is always false due to limited range of data type [-Wtype-limits]
+        #if 0
         if (address > 0xFFFF) {
             exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
             break;
         }
+        #endif
 
         int data = (req[offset + 3] << 8) + req[offset + 4];
         if (data == 0xFF00 || data == 0x0)
@@ -1312,7 +1315,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
 
         slave_info.buf = (uint8_t *)&data;
         rsp_length = req_length;
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1320,16 +1323,19 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
     } break;
 
     case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER: {
+        //! warning: comparison is always false due to limited range of data type [-Wtype-limits]
+        #if 0
         if (address > 0xFFFF) {
             exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
             break;
         }
+        #endif
 
         int data = (req[offset + 3] << 8) + req[offset + 4];
 
         slave_info.buf = (uint8_t *)&data;
         rsp_length = req_length;
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1353,7 +1359,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         rsp_length = ctx->backend->build_response_basis(&sft, rsp);
         slave_info.nb = nb;
         slave_info.buf = &req[offset + 6];
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + 4)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length + 4)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1379,7 +1385,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         rsp_length = ctx->backend->build_response_basis(&sft, rsp);
         slave_info.nb = nb;
         slave_info.buf = &req[offset + 6];
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + 4)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length + 4)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1402,7 +1408,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         rsp[rsp_length++] = 0xFF;
 
         str_len = strlen(AGILE_MODBUS_VERSION_STRING);
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length + str_len)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length + str_len)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1416,14 +1422,17 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         break;
 
     case AGILE_MODBUS_FC_MASK_WRITE_REGISTER: {
+        //! warning: comparison is always false due to limited range of data type [-Wtype-limits]
+        #if 0
         if (address > 0xFFFF) {
             exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS;
             break;
         }
+        #endif
 
         slave_info.buf = &req[offset + 3];
         rsp_length = req_length;
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
@@ -1454,7 +1463,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         slave_info.buf = &req[offset + 3];
         slave_info.send_index = rsp_length;
         rsp_length += (nb << 1);
-        if (ctx->send_bufsz < (rsp_length + ctx->backend->checksum_length)) {
+        if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
             break;
         }
