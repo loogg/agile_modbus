@@ -1219,6 +1219,7 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
     uint16_t address;
     int rsp_length = 0;
     int exception_code = 0;
+    int reg_data = 0;
     agile_modbus_sft_t sft;
     uint8_t *req = ctx->read_buf;
     uint8_t *rsp = ctx->send_buf;
@@ -1305,15 +1306,15 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         }
         #endif
 
-        int data = (req[offset + 3] << 8) + req[offset + 4];
-        if (data == 0xFF00 || data == 0x0)
-            data = data ? 1 : 0;
+        reg_data = (req[offset + 3] << 8) + req[offset + 4];
+        if (reg_data == 0xFF00 || reg_data == 0x0)
+            reg_data = reg_data ? 1 : 0;
         else {
             exception_code = AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE;
             break;
         }
 
-        slave_info.buf = (uint8_t *)&data;
+        slave_info.buf = (uint8_t *)&reg_data;
         rsp_length = req_length;
         if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;
@@ -1331,9 +1332,9 @@ int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave
         }
         #endif
 
-        int data = (req[offset + 3] << 8) + req[offset + 4];
+        reg_data = (req[offset + 3] << 8) + req[offset + 4];
 
-        slave_info.buf = (uint8_t *)&data;
+        slave_info.buf = (uint8_t *)&reg_data;
         rsp_length = req_length;
         if (ctx->send_bufsz < (int)(rsp_length + ctx->backend->checksum_length)) {
             exception_code = AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE;

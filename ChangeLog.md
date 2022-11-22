@@ -57,3 +57,11 @@
 * `agile_modbus_slave_handle` 增加 `从机回调私有数据` 参数
 * `agile_modbus_slave_callback_t` 增加 `私有数据` 参数
 * `examples` 中从机示例使用 `agile_modbus_slave_util_callback` 接口实现寄存器读写
+
+## Agile Modbus 1.1.3 发布
+
+### 修改
+
+2022-11-22：马龙伟
+
+* `agile_modbus_slave_handle` 中写单个寄存器将 `slave_info.buf` 指针指向局部变量地址，开启编译器优化后该地址被其他变量使用。修改为指向函数内全局变量地址。
