@@ -86,18 +86,19 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">Agile Modbus </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_C__Users_25440_Desktop_stm32f407_atk_explorer_packages_agile_modbus_README"></a> </p>
-<h1><a class="anchor" id="autotoc_md18"></a>
+<div class="textblock"><p ><a class="anchor" id="md_D__AgilePackages_agile_modbus_README"></a> </p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 1、介绍</h1>
 <p >Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的使用需求。</p>
 <p ><img src="./figures/ModbusProtocol.jpg" alt="ModbusProtocol" class="inline"/></p>
 <ul>
+<li>在线文档：<a href="https://loogg.github.io/AgileModbus_API/">API Manual</a></li>
 <li><code>examples</code> 文件夹提供 PC 上的示例</li>
 <li>MCU 上的示例查看 <a href="https://github.com/loogg/agile_modbus_mcu_demos">mcu_demos</a></li>
 <li>在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：<a href="https://github.com/loogg/AT32F437_Boot">AT32F437_Boot</a></li>
 <li>在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader：<a href="https://github.com/loogg/HPM6750_Boot">HPM6750_Boot</a></li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 1.1、特性</h2>
 <ol type="1">
 <li>支持 rtu 及 tcp 协议，使用纯 C 开发，不涉及任何硬件接口，可在任何形式的硬件上直接使用。</li>
@@ -106,7 +107,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>同时支持多主机和多从机。</li>
 <li>使用简单，只需要将 rtu 或 tcp 句柄初始化好后，调用相应 API 进行组包和解包即可。</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 1.2、目录结构</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -124,13 +125,13 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone">util   </td><td class="markdownTableBodyNone">提供简单实用的组件   </td></tr>
 </table>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 1.3、许可证</h2>
 <p >Agile Modbus 遵循 <code>Apache-2.0</code> 许可，详见 <code>LICENSE</code> 文件。</p>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 2、使用 Agile Modbus</h1>
 <p >帮助文档请查看 <a href="./doc/doxygen/Agile_Modbus.chm">doc/doxygen/Agile_Modbus.chm</a></p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 2.1、移植</h2>
 <ul>
 <li><p class="startli">用户需要实现硬件接口的 <code>发送数据</code> 、 <code>等待数据接收结束</code> 、 <code>清空接收缓存</code> 函数</p>
@@ -185,12 +186,12 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p class="startli">接收缓冲区设置：如果 <code>主机请求的报文长度</code> 大于 <code>设置的接收缓冲区大小</code>，返回异常。这个是合理的，小内存 MCU 做从机肯定是需要对某些功能码做限制的。</p>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md26"></a>
 2.2、主机</h2>
 <p >见 <code>2.1、移植</code>。</p>
-<h2><a class="anchor" id="autotoc_md25"></a>
+<h2><a class="anchor" id="autotoc_md27"></a>
 2.3、从机</h2>
-<h3><a class="anchor" id="autotoc_md26"></a>
+<h3><a class="anchor" id="autotoc_md28"></a>
 2.3.1、接口说明</h3>
 <ul>
 <li><p class="startli"><code>agile_modbus_slave_handle</code> 介绍</p>
@@ -253,7 +254,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </li>
 </ul>
-<h3><a class="anchor" id="autotoc_md27"></a>
+<h3><a class="anchor" id="autotoc_md29"></a>
 2.3.2、简易从机接入接口</h3>
 <p >Agile Modbus 提供了 <code>agile_modbus_slave_callback_t</code> 的一种实现方式，使用户能够简单方便接入。</p>
 <p >使用示例可查看 <a href="./examples/slave">examples/slave</a>。</p>
@@ -347,7 +348,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </ul>
 </li>
 </ul>
-<h2><a class="anchor" id="autotoc_md28"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 2.4、示例</h2>
 <ul>
 <li><a href="./examples">examples</a> 文件夹中提供 PC 上的示例，可以在 <code>WSL</code> 或 <code>Linux</code> 下编译运行。<ul>
@@ -362,18 +363,18 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li><a href="https://github.com/loogg/AT32F437_Boot">AT32F437_Boot</a> 在 AT32F437 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。</li>
 <li><a href="https://github.com/loogg/HPM6750_Boot">HPM6750_Boot</a> 在 HPM6750 上基于 RT-Thread 实现的支持 Modbus 固件升级的 Bootloader。</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md29"></a>
+<h2><a class="anchor" id="autotoc_md31"></a>
 2.5、Doxygen 文档生成</h2>
 <ul>
 <li>使用 <code>Doxywizard</code> 打开 <a href="./doc/doxygen/Doxyfile">Doxyfile</a> 运行，生成的文件在 <a href="./doc/doxygen/output">doxygen/output</a> 下。</li>
 <li>需要更改 <code>Graphviz</code> 路径。</li>
 <li><code>HTML</code> 生成未使用 <code>chm</code> 格式的，如果使能需要更改 <code>hhc.exe</code> 路径。</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md30"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 3、支持</h1>
 <p ><img src="./figures/zanshang.jpg" alt="zanshang" class="inline"/></p>
 <p >如果 Agile Modbus 解决了你的问题，不妨扫描上面二维码请我 <b>喝杯咖啡</b> ~</p>
-<h1><a class="anchor" id="autotoc_md31"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 4、联系方式 &amp; 感谢</h1>
 <ul>
 <li>维护：马龙伟</li>
