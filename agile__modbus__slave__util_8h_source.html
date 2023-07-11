@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Agile Modbus: /home/runner/work/agile_modbus/agile_modbus/util/agile_modbus_slave_util.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Agile Modbus
+   &#160;<span id="projectnumber">1.1.2</span>
+   </div>
+   <div id="projectbrief">Lightweight modbus protocol stack.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('agile__modbus__slave__util_8h_source.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">agile_modbus_slave_util.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="agile__modbus__slave__util_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef __PKG_AGILE_MODBUS_SLAVE_UTIL_H</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define __PKG_AGILE_MODBUS_SLAVE_UTIL_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util__map.html">   38</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util__map.html#a9b130b4a875dca0d63c31d81fbc8b0f1">   39</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util__map.html#a9b130b4a875dca0d63c31d81fbc8b0f1">start_addr</a>;                                       </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util__map.html#ace624a13ffd6380963e9173d6f8f4eb9">   40</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util__map.html#ace624a13ffd6380963e9173d6f8f4eb9">end_addr</a>;                                         </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util__map.html#a7fd43329330824f98bdd5da3e8b8f170">   41</a></span>&#160;    int (*<a class="code" href="structagile__modbus__slave__util__map.html#a7fd43329330824f98bdd5da3e8b8f170">get</a>)(<span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> bufsz);                     </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util__map.html#aeb703aff86edfb371edb56e0122d51ab">   42</a></span>&#160;    int (*<a class="code" href="structagile__modbus__slave__util__map.html#aeb703aff86edfb371edb56e0122d51ab">set</a>)(<span class="keywordtype">int</span> index, <span class="keywordtype">int</span> len, <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> bufsz); </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga704dafcb7fb13e228bfbf8744dd5a3f8">   43</a></span>&#160;} <a class="code" href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga704dafcb7fb13e228bfbf8744dd5a3f8">agile_modbus_slave_util_map_t</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html">   48</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structagile__modbus__slave__util.html">agile_modbus_slave_util</a> {</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#adf60d2aacae135df7fb77f1fd567a0f3">   49</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *<a class="code" href="structagile__modbus__slave__util.html#adf60d2aacae135df7fb77f1fd567a0f3">tab_bits</a>;                                            </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a54d8cd5ea2ece03fc4748f857d433470">   50</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util.html#a54d8cd5ea2ece03fc4748f857d433470">nb_bits</a>;                                                                              </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#ab8dd5a6fa6cb534aa90460cf9a71ae6f">   51</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *<a class="code" href="structagile__modbus__slave__util.html#ab8dd5a6fa6cb534aa90460cf9a71ae6f">tab_input_bits</a>;                                      </div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a81fb44a47ea6e8dc7eb190b87ddb6dc4">   52</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util.html#a81fb44a47ea6e8dc7eb190b87ddb6dc4">nb_input_bits</a>;                                                                        </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#ae21eece6d89b5d46839496e9281108f8">   53</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *<a class="code" href="structagile__modbus__slave__util.html#ae21eece6d89b5d46839496e9281108f8">tab_registers</a>;                                       </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#ac7c7bd2cc1687ae7c291a054d3071114">   54</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util.html#ac7c7bd2cc1687ae7c291a054d3071114">nb_registers</a>;                                                                         </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a67c8df610dcb3f8dee4d32ed920f4886">   55</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *<a class="code" href="structagile__modbus__slave__util.html#a67c8df610dcb3f8dee4d32ed920f4886">tab_input_registers</a>;                                 </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a3c2c64bb74a0cab7f34f303fa3a37b31">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structagile__modbus__slave__util.html#a3c2c64bb74a0cab7f34f303fa3a37b31">nb_input_registers</a>;                                                                   </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a134270ba34165c677e85490b2bb6719c">   57</a></span>&#160;    int (*<a class="code" href="structagile__modbus__slave__util.html#a134270ba34165c677e85490b2bb6719c">addr_check</a>)(<a class="code" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info);       </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#a70de0b2f19492b188c99ba332e2b2ffa">   58</a></span>&#160;    int (*<a class="code" href="structagile__modbus__slave__util.html#a70de0b2f19492b188c99ba332e2b2ffa">special_function</a>)(<a class="code" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info); </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structagile__modbus__slave__util.html#abc6323db9d3873c30bee0e7efe96f4b8">   59</a></span>&#160;    int (*<a class="code" href="structagile__modbus__slave__util.html#abc6323db9d3873c30bee0e7efe96f4b8">done</a>)(<a class="code" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct </span><a class="code" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info, <span class="keywordtype">int</span> ret);    </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga48cf733bea0cf7ad09b52b139348de50">   60</a></span>&#160;} <a class="code" href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga48cf733bea0cf7ad09b52b139348de50">agile_modbus_slave_util_t</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">int</span> <a class="code" href="group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b">agile_modbus_slave_util_callback</a>(<a class="code" href="structagile__modbus.html">agile_modbus_t</a> *ctx, <span class="keyword">struct</span> <a class="code" href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a> *slave_info, <span class="keyword">const</span> <span class="keywordtype">void</span> *data);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PKG_AGILE_MODBUS_SLAVE_UTIL_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agroup___s_l_a_v_e___u_t_i_l___exported___functions_html_ga6d7613fbda26c40a969df673cf9b8c5b"><div class="ttname"><a href="group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b">agile_modbus_slave_util_callback</a></div><div class="ttdeci">int agile_modbus_slave_util_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data)</div><div class="ttdoc">从机回调函数</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8c_source.html#l00387">agile_modbus_slave_util.c:387</a></div></div>
+<div class="ttc" id="agroup___s_l_a_v_e___u_t_i_l___exported___types_html_ga48cf733bea0cf7ad09b52b139348de50"><div class="ttname"><a href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga48cf733bea0cf7ad09b52b139348de50">agile_modbus_slave_util_t</a></div><div class="ttdeci">struct agile_modbus_slave_util agile_modbus_slave_util_t</div><div class="ttdoc">从机功能结构体</div></div>
+<div class="ttc" id="agroup___s_l_a_v_e___u_t_i_l___exported___types_html_ga704dafcb7fb13e228bfbf8744dd5a3f8"><div class="ttname"><a href="group___s_l_a_v_e___u_t_i_l___exported___types.html#ga704dafcb7fb13e228bfbf8744dd5a3f8">agile_modbus_slave_util_map_t</a></div><div class="ttdeci">struct agile_modbus_slave_util_map agile_modbus_slave_util_map_t</div><div class="ttdoc">从机寄存器映射结构体</div></div>
+<div class="ttc" id="astructagile__modbus__slave__info_html"><div class="ttname"><a href="structagile__modbus__slave__info.html">agile_modbus_slave_info</a></div><div class="ttdoc">Agile Modbus 从机信息结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00232">agile_modbus.h:232</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util__map_html"><div class="ttname"><a href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map</a></div><div class="ttdoc">从机寄存器映射结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00038">agile_modbus_slave_util.h:38</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util__map_html_a7fd43329330824f98bdd5da3e8b8f170"><div class="ttname"><a href="structagile__modbus__slave__util__map.html#a7fd43329330824f98bdd5da3e8b8f170">agile_modbus_slave_util_map::get</a></div><div class="ttdeci">int(* get)(void *buf, int bufsz)</div><div class="ttdoc">获取寄存器数据接口</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00041">agile_modbus_slave_util.h:41</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util__map_html_a9b130b4a875dca0d63c31d81fbc8b0f1"><div class="ttname"><a href="structagile__modbus__slave__util__map.html#a9b130b4a875dca0d63c31d81fbc8b0f1">agile_modbus_slave_util_map::start_addr</a></div><div class="ttdeci">int start_addr</div><div class="ttdoc">起始地址</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00039">agile_modbus_slave_util.h:39</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util__map_html_ace624a13ffd6380963e9173d6f8f4eb9"><div class="ttname"><a href="structagile__modbus__slave__util__map.html#ace624a13ffd6380963e9173d6f8f4eb9">agile_modbus_slave_util_map::end_addr</a></div><div class="ttdeci">int end_addr</div><div class="ttdoc">结束地址</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00040">agile_modbus_slave_util.h:40</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util__map_html_aeb703aff86edfb371edb56e0122d51ab"><div class="ttname"><a href="structagile__modbus__slave__util__map.html#aeb703aff86edfb371edb56e0122d51ab">agile_modbus_slave_util_map::set</a></div><div class="ttdeci">int(* set)(int index, int len, void *buf, int bufsz)</div><div class="ttdoc">设置寄存器数据接口</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00042">agile_modbus_slave_util.h:42</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html"><div class="ttname"><a href="structagile__modbus__slave__util.html">agile_modbus_slave_util</a></div><div class="ttdoc">从机功能结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00048">agile_modbus_slave_util.h:48</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a134270ba34165c677e85490b2bb6719c"><div class="ttname"><a href="structagile__modbus__slave__util.html#a134270ba34165c677e85490b2bb6719c">agile_modbus_slave_util::addr_check</a></div><div class="ttdeci">int(* addr_check)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">地址检查接口</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00057">agile_modbus_slave_util.h:57</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a3c2c64bb74a0cab7f34f303fa3a37b31"><div class="ttname"><a href="structagile__modbus__slave__util.html#a3c2c64bb74a0cab7f34f303fa3a37b31">agile_modbus_slave_util::nb_input_registers</a></div><div class="ttdeci">int nb_input_registers</div><div class="ttdoc">输入寄存器定义数组数目</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00056">agile_modbus_slave_util.h:56</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a54d8cd5ea2ece03fc4748f857d433470"><div class="ttname"><a href="structagile__modbus__slave__util.html#a54d8cd5ea2ece03fc4748f857d433470">agile_modbus_slave_util::nb_bits</a></div><div class="ttdeci">int nb_bits</div><div class="ttdoc">线圈寄存器定义数组数目</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00050">agile_modbus_slave_util.h:50</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a67c8df610dcb3f8dee4d32ed920f4886"><div class="ttname"><a href="structagile__modbus__slave__util.html#a67c8df610dcb3f8dee4d32ed920f4886">agile_modbus_slave_util::tab_input_registers</a></div><div class="ttdeci">const agile_modbus_slave_util_map_t * tab_input_registers</div><div class="ttdoc">输入寄存器定义数组</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00055">agile_modbus_slave_util.h:55</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a70de0b2f19492b188c99ba332e2b2ffa"><div class="ttname"><a href="structagile__modbus__slave__util.html#a70de0b2f19492b188c99ba332e2b2ffa">agile_modbus_slave_util::special_function</a></div><div class="ttdeci">int(* special_function)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)</div><div class="ttdoc">特殊功能码处理接口</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00058">agile_modbus_slave_util.h:58</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_a81fb44a47ea6e8dc7eb190b87ddb6dc4"><div class="ttname"><a href="structagile__modbus__slave__util.html#a81fb44a47ea6e8dc7eb190b87ddb6dc4">agile_modbus_slave_util::nb_input_bits</a></div><div class="ttdeci">int nb_input_bits</div><div class="ttdoc">离散量输入寄存器定义数组数目</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00052">agile_modbus_slave_util.h:52</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_ab8dd5a6fa6cb534aa90460cf9a71ae6f"><div class="ttname"><a href="structagile__modbus__slave__util.html#ab8dd5a6fa6cb534aa90460cf9a71ae6f">agile_modbus_slave_util::tab_input_bits</a></div><div class="ttdeci">const agile_modbus_slave_util_map_t * tab_input_bits</div><div class="ttdoc">离散量输入寄存器定义数组</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00051">agile_modbus_slave_util.h:51</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_abc6323db9d3873c30bee0e7efe96f4b8"><div class="ttname"><a href="structagile__modbus__slave__util.html#abc6323db9d3873c30bee0e7efe96f4b8">agile_modbus_slave_util::done</a></div><div class="ttdeci">int(* done)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, int ret)</div><div class="ttdoc">处理结束接口</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00059">agile_modbus_slave_util.h:59</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_ac7c7bd2cc1687ae7c291a054d3071114"><div class="ttname"><a href="structagile__modbus__slave__util.html#ac7c7bd2cc1687ae7c291a054d3071114">agile_modbus_slave_util::nb_registers</a></div><div class="ttdeci">int nb_registers</div><div class="ttdoc">保持寄存器定义数组数目</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00054">agile_modbus_slave_util.h:54</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_adf60d2aacae135df7fb77f1fd567a0f3"><div class="ttname"><a href="structagile__modbus__slave__util.html#adf60d2aacae135df7fb77f1fd567a0f3">agile_modbus_slave_util::tab_bits</a></div><div class="ttdeci">const agile_modbus_slave_util_map_t * tab_bits</div><div class="ttdoc">线圈寄存器定义数组</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00049">agile_modbus_slave_util.h:49</a></div></div>
+<div class="ttc" id="astructagile__modbus__slave__util_html_ae21eece6d89b5d46839496e9281108f8"><div class="ttname"><a href="structagile__modbus__slave__util.html#ae21eece6d89b5d46839496e9281108f8">agile_modbus_slave_util::tab_registers</a></div><div class="ttdeci">const agile_modbus_slave_util_map_t * tab_registers</div><div class="ttdoc">保持寄存器定义数组</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus__slave__util_8h_source.html#l00053">agile_modbus_slave_util.h:53</a></div></div>
+<div class="ttc" id="astructagile__modbus_html"><div class="ttname"><a href="structagile__modbus.html">agile_modbus</a></div><div class="ttdoc">Agile Modbus 结构体</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8h_source.html#l00203">agile_modbus.h:203</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_23ec12649285f9fabf3a6b7380226c28.html">util</a></li><li class="navelem"><a class="el" href="agile__modbus__slave__util_8h.html">agile_modbus_slave_util.h</a></li>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

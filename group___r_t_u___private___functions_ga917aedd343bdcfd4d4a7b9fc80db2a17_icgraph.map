@@ -1,0 +1,5 @@
+<map id="agile_modbus_rtu_crc16" name="agile_modbus_rtu_crc16">
+<area shape="rect" id="node1" title="RTU CRC16 计算" alt="" coords="236,46,416,73"/>
+<area shape="rect" id="node2" href="$group___r_t_u___private___functions.html#gaa7ff9945c4910eafae9b737957ae6cad" title="RTU 检查接收数据完整性接口(CRC16 对比)" alt="" coords="5,5,188,47"/>
+<area shape="rect" id="node3" href="$group___r_t_u___private___functions.html#ga1cb91eb00f06868c4c5b85e67f7ef126" title="RTU 预发送数据接口" alt="" coords="9,71,185,112"/>
+</map>

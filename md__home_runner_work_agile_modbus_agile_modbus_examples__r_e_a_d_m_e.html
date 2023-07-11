@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Agile Modbus: 示例说明</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Agile Modbus
+   &#160;<span id="projectnumber">1.1.2</span>
+   </div>
+   <div id="projectbrief">Lightweight modbus protocol stack.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="PageDoc"><div class="header">
+  <div class="headertitle">
+<div class="title">示例说明 </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="autotoc_md12"></a>
+1、介绍</h1>
+<p>该示例提供 RTU / TCP 主机和从机的功能演示。</p>
+<p><code>WSL</code> 或 <code>Linux</code> 下使用 <code>gcc</code> 可直接 <code>make all</code> 编译出所有示例，在电脑上运行测试程序。</p>
+<p>目录结构：</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">名称   </th><th class="markdownTableHeadNone">说明    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">common   </td><td class="markdownTableBodyNone">公用源码    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">figures   </td><td class="markdownTableBodyNone">素材    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">rtu_master   </td><td class="markdownTableBodyNone">RTU 主机示例    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">tcp_master   </td><td class="markdownTableBodyNone">TCP 主机示例    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">slave   </td><td class="markdownTableBodyNone">RTU + TCP 从机示例    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">rtu_p2p   </td><td class="markdownTableBodyNone">RTU 点对点传输文件    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">rtu_broadcast   </td><td class="markdownTableBodyNone">RTU 广播传输文件 (粘包处理示例)   </td></tr>
+</table>
+<h1><a class="anchor" id="autotoc_md13"></a>
+2、使用</h1>
+<p>需要准备的工具如下：</p>
+<ul>
+<li>虚拟串口软件</li>
+<li>Modbus Poll</li>
+<li>Modbus Slave</li>
+</ul>
+<p>命令行敲击 <code>make clean</code> 、 <code>make all</code> 。</p>
+<h2><a class="anchor" id="autotoc_md14"></a>
+2.1、主机</h2>
+<ul>
+<li>RTU (rtu_master)<ul>
+<li><p class="startli">使用虚拟串口软件虚拟出一对串口</p>
+<p class="startli"><img src="./figures/VirtualCom.jpg" alt="VirtualCom" class="inline"/></p>
+</li>
+<li><p class="startli">打开 <code>Modbus Slave</code> ，按下图设置</p>
+<p class="startli"><img src="./figures/ModbusSlaveSetup.jpg" alt="ModbusSlaveSetup" class="inline"/></p>
+</li>
+<li><p class="startli"><code>Modbus Slave</code> 连接，按下图设置</p>
+<p class="startli"><img src="./figures/ModbusSlaveRTUConnection.jpg" alt="ModbusSlaveRTUConnection" class="inline"/></p>
+</li>
+<li><p class="startli">进入 <code>rtu_master</code> 目录，<code>./RtuMaster /dev/ttySX</code> 运行 <code>RTU</code> 主机示例，<code>ttySX</code> 为一对虚拟串口中的另一个</p>
+<p class="startli"><img src="./figures/RTUMaster.jpg" alt="RTUMaster" class="inline"/></p>
+</li>
+</ul>
+</li>
+<li>TCP (tcp_master)<ul>
+<li>打开 <code>Modbus Slave</code>，<code>SetUp</code> 设置同 <code>RTU</code> 一致</li>
+<li><p class="startli"><code>Modbus Slave</code> 连接，按下图设置</p>
+<p class="startli"><img src="./figures/ModbusSlaveTCPConnection.jpg" alt="ModbusSlaveTCPConnection" class="inline"/></p>
+</li>
+<li><p class="startli">进入 <code>tcp_master</code> 目录，<code>./TcpMaster 127.0.0.1 502</code> 运行 <code>TCP</code> 主机示例</p>
+<p class="startli"><img src="./figures/TCPMaster.jpg" alt="TCPMaster" class="inline"/></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md15"></a>
+2.2、从机</h2>
+<ul>
+<li>该示例 (slave) 同时提供 <code>RTU</code> 和 <code>TCP</code> 从机功能演示，控制的是同一片内存。<code>TCP</code> 最大可接入 5 个客户端，每个客户端无数据超时为 10s, 10s 后自动断开。</li>
+<li>示例支持所有功能码(除了功能码 0x07)。</li>
+<li>对 <code>bit</code>、<code>input_bit</code>、<code>register</code>、<code>input_register</code> 寄存器每个文件单独定义。</li>
+<li>使用 <code>agile_modbus_slave_util_callback</code> 。</li>
+<li>寄存器地址域：</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">寄存器   </th><th class="markdownTableHeadNone">地址范围    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">线圈寄存器   </td><td class="markdownTableBodyNone">0x041A ~ 0x0423 (1050 ~ 1059)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">离散量输入寄存器   </td><td class="markdownTableBodyNone">0x041A ~ 0x0423 (1050 ~ 1059)    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">保持寄存器   </td><td class="markdownTableBodyNone">0xFFF6 ~ 0xFFFF (65526 ~ 65535)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">输入寄存器   </td><td class="markdownTableBodyNone">0xFFF6 ~ 0xFFFF (65526 ~ 65535)   </td></tr>
+</table>
+<p><b>注意</b>: 读写其他地址寄存器都能成功，但值都为 0。</p>
+<p>使用：</p>
+<ul>
+<li><p class="startli">使用虚拟串口软件虚拟出一对串口</p>
+<p class="startli"><img src="./figures/VirtualCom.jpg" alt="VirtualCom" class="inline"/></p>
+</li>
+<li><p class="startli">进入 <code>slave</code> 目录，<code>./ModbusSlave /dev/ttyS2 1025</code> 运行示例</p>
+<p class="startli">/dev/ttySX: 虚拟串口中的一个</p>
+<p class="startli">1025：监听端口号，如果不是 <code>root</code> 权限，端口号必须大于 <code>1024</code></p>
+</li>
+<li><p class="startli">打开 <code>Modbus Poll</code> 按下图设置和连接 RTU</p>
+<p class="startli"><img src="./figures/ModbusPollSetup.jpg" alt="ModbusPollSetup" class="inline"/></p>
+<p class="startli"><img src="./figures/ModbusPollRTUConnection.jpg" alt="ModbusPollRTUConnection" class="inline"/></p>
+</li>
+<li><p class="startli">打开 5 个 <code>Modbus Poll</code> ，设置同 RTU，连接如下图</p>
+<p class="startli"><img src="./figures/ModbusPollTCPConnection.jpg" alt="ModbusPollTCPConnection" class="inline"/></p>
+</li>
+<li><p class="startli">效果演示</p>
+<p class="startli"><img src="./figures/ModbusSlaveShow.jpg" alt="ModbusSlaveShow" class="inline"/></p>
+</li>
+<li><p class="startli">超时断开演示</p>
+<p class="startli">将 <code>Modbus Poll</code> 的 poll 界面关闭，看控制台打印可以看到 close 报文。</p>
+<p class="startli"><img src="./figures/ModbusSlaveTimeoutShow.jpg" alt="ModbusSlaveTimeoutShow" class="inline"/></p>
+</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md16"></a>
+2.3、RTU 传输文件</h2>
+<p><img src="./figures/ModbusProtocol.jpg" alt="ModbusProtocol" class="inline"/></p>
+<p>使用 <code>0x50</code> 作为传输文件的特殊功能码。</p>
+<p>分包传输文件数据，每包数据最大 1024 字节。</p>
+<p><code>Data</code> 字段协议定义：</p>
+<ul>
+<li>主机请求</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">命令   </th><th class="markdownTableHeadNone">字节数   </th><th class="markdownTableHeadNone">数据    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2 Bytes   </td><td class="markdownTableBodyNone">2 Bytes   </td><td class="markdownTableBodyNone">N Bytes   </td></tr>
+</table>
+<p>命令:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">命令   </th><th class="markdownTableHeadNone">说明   </th><th class="markdownTableHeadNone">数据    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0x0001   </td><td class="markdownTableBodyNone">开始发送   </td><td class="markdownTableBodyNone">文件大小(4 Bytes) + 文件名称(字符串)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x0002   </td><td class="markdownTableBodyNone">传输数据   </td><td class="markdownTableBodyNone">标志(1 Byte) + 文件数据   </td></tr>
+</table>
+<p>标志:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">状态   </th><th class="markdownTableHeadNone">说明    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0x00   </td><td class="markdownTableBodyNone">最后一包数据    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x01   </td><td class="markdownTableBodyNone">不是最后一包数据   </td></tr>
+</table>
+<ul>
+<li>从机响应</li>
+</ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">命令   </th><th class="markdownTableHeadNone">状态    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2 Bytes   </td><td class="markdownTableBodyNone">1 Byte   </td></tr>
+</table>
+<p>状态:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">状态   </th><th class="markdownTableHeadNone">说明    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0x00   </td><td class="markdownTableBodyNone">失败    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">0x01   </td><td class="markdownTableBodyNone">成功   </td></tr>
+</table>
+<ul>
+<li><p class="startli">使用虚拟串口软件虚拟出 3 个串口，组成串口群组</p>
+<p class="startli">这里我使用的时 MX 虚拟串口</p>
+<p class="startli"><img src="./figures/VirtualComGroup.jpg" alt="VirtualComGroup" class="inline"/></p>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md17"></a>
+2.3.1、点对点传输</h3>
+<ul>
+<li><p class="startli">进入 <code>rtu_p2p</code> 目录，打开 <code>Linux Shell</code>，演示效果如下</p>
+<p class="startli"><b>注意</b>:</p><ul>
+<li>传输的文件必须是一般文件，像可执行文件、目录等不支持</li>
+<li>文件路径必须是 <code>Linux</code> 环境下的路径</li>
+<li>从机接收到数据后修改文件名称 (从机地址_原文件名) 写入在当前目录。</li>
+</ul>
+<p class="startli"><img src="./figures/rtu_p2p.gif" alt="rtu_p2p" class="inline"/></p>
+</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md18"></a>
+2.3.2、广播传输</h3>
+<p>该例子主要演示 <code>agile_modbus_slave_handle</code> 中 <code>frame_length</code> 的用处。</p>
+<p><code>broadcast_master</code> 中，使用广播地址 0，周期 5ms 发送数据包。同时每包数据后都发送 100 字节的脏数据。</p>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> send_len = <a class="code" href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">agile_modbus_serialize_raw_request</a>(ctx, raw_req, raw_req_len);</div>
+<div class="line">serial_send(_fd, ctx-&gt;send_buf, send_len);</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">//脏数据</span></div>
+<div class="line">serial_send(_fd, _dirty_buf, <span class="keyword">sizeof</span>(_dirty_buf));</div>
+<div class="ttc" id="agroup___master___raw___operation___functions_html_ga933c935a47f59cac74bcec545d266a4e"><div class="ttname"><a href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">agile_modbus_serialize_raw_request</a></div><div class="ttdeci">int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length)</div><div class="ttdoc">将原始数据打包成请求报文</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01031">agile_modbus.c:1031</a></div></div>
+</div><!-- fragment --><p>在如此快速的数据流下，<code>broadcast_slave</code> 必须使用 <code>agile_modbus_slave_handle</code> 中 <code>frame_length</code> 参数来对粘包进行处理。</p>
+<ul>
+<li><p class="startli">进入 <code>rtu_broadcast</code> 目录，打开 <code>Linux Shell</code>，演示效果如下</p>
+<p class="startli"><b>注意</b>:</p><ul>
+<li>传输的文件必须是一般文件，像可执行文件、目录等不支持</li>
+<li>文件路径必须是 <code>Linux</code> 环境下的路径</li>
+<li>从机接收到数据后修改文件名称 (从机地址_原文件名) 写入在当前目录。</li>
+</ul>
+<p class="startli"><img src="./figures/rtu_broadcast.gif" alt="rtu_broadcast" class="inline"/> </p>
+</li>
+</ul>
+</div></div><!-- contents -->
+</div><!-- PageDoc -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

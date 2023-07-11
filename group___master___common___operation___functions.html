@@ -1,0 +1,1104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.9.1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Agile Modbus: Master Common Operation Functions</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Agile Modbus
+   &#160;<span id="projectnumber">1.1.2</span>
+   </div>
+   <div id="projectbrief">Lightweight modbus protocol stack.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.1 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索','.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('group___master___common___operation___functions.html',''); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle">
+<div class="title">Master Common Operation Functions<div class="ingroups"><a class="el" href="group___c_o_m_m_o_n.html">Common</a> &raquo; <a class="el" href="group___modbus___master.html">Modbus Master</a></div></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>常用 modbus 主机操作函数  
+<a href="#details">更多...</a></p>
+<div class="dynheader">
+Master Common Operation Functions 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions.png" border="0" usemap="#agroup______master______common______operation______functions" alt=""/></div>
+<map name="agroup______master______common______operation______functions" id="agroup______master______common______operation______functions">
+<area shape="rect" title="常用 modbus 主机操作函数" alt="" coords="176,5,375,45"/>
+<area shape="rect" href="group___modbus___master.html" title=" " alt="" coords="5,13,128,38"/>
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ga5d43985cad3f09f0d6596760b941edbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga5d43985cad3f09f0d6596760b941edbc">agile_modbus_serialize_read_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb)</td></tr>
+<tr class="separator:ga5d43985cad3f09f0d6596760b941edbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7908f73260d9afeba6ac2b571f163a97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga7908f73260d9afeba6ac2b571f163a97">agile_modbus_deserialize_read_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, uint8_t *dest)</td></tr>
+<tr class="separator:ga7908f73260d9afeba6ac2b571f163a97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf7de4137539de1bed2e607e846f415c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#gaf7de4137539de1bed2e607e846f415c2">agile_modbus_serialize_read_input_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb)</td></tr>
+<tr class="separator:gaf7de4137539de1bed2e607e846f415c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4124e9e8e7048da83855cb92ee7f6e63"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga4124e9e8e7048da83855cb92ee7f6e63">agile_modbus_deserialize_read_input_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, uint8_t *dest)</td></tr>
+<tr class="separator:ga4124e9e8e7048da83855cb92ee7f6e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d6724cd3f77e007cd2f6672e7beb3f8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga3d6724cd3f77e007cd2f6672e7beb3f8">agile_modbus_serialize_read_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb)</td></tr>
+<tr class="separator:ga3d6724cd3f77e007cd2f6672e7beb3f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadcc32581d649bf2cef5eee596bd67c6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#gadcc32581d649bf2cef5eee596bd67c6f">agile_modbus_deserialize_read_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, uint16_t *dest)</td></tr>
+<tr class="separator:gadcc32581d649bf2cef5eee596bd67c6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1c9ec6c01a6ea61ddbf5c7977b1d1ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#gad1c9ec6c01a6ea61ddbf5c7977b1d1ca">agile_modbus_serialize_read_input_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb)</td></tr>
+<tr class="separator:gad1c9ec6c01a6ea61ddbf5c7977b1d1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73504a775e6c4686d65987278599b3cf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga73504a775e6c4686d65987278599b3cf">agile_modbus_deserialize_read_input_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, uint16_t *dest)</td></tr>
+<tr class="separator:ga73504a775e6c4686d65987278599b3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a8154791b050691e15eb4ae7da97574"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga8a8154791b050691e15eb4ae7da97574">agile_modbus_serialize_write_bit</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int status)</td></tr>
+<tr class="separator:ga8a8154791b050691e15eb4ae7da97574"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga311e3dec8ebbcd502aebe99c6c964638"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga311e3dec8ebbcd502aebe99c6c964638">agile_modbus_deserialize_write_bit</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length)</td></tr>
+<tr class="separator:ga311e3dec8ebbcd502aebe99c6c964638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga134947aa1eba3f64d26844f4c8bf57cb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga134947aa1eba3f64d26844f4c8bf57cb">agile_modbus_serialize_write_register</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, const uint16_t value)</td></tr>
+<tr class="separator:ga134947aa1eba3f64d26844f4c8bf57cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c566ab6fae153760cc24a18e0210fff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga8c566ab6fae153760cc24a18e0210fff">agile_modbus_deserialize_write_register</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length)</td></tr>
+<tr class="separator:ga8c566ab6fae153760cc24a18e0210fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4620bc2594720eba79a9c9ffa76d3796"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga4620bc2594720eba79a9c9ffa76d3796">agile_modbus_serialize_write_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb, const uint8_t *src)</td></tr>
+<tr class="separator:ga4620bc2594720eba79a9c9ffa76d3796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabd1613828b12acc5ecf56a7bd4f9e9d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#gabd1613828b12acc5ecf56a7bd4f9e9d1">agile_modbus_deserialize_write_bits</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length)</td></tr>
+<tr class="separator:gabd1613828b12acc5ecf56a7bd4f9e9d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5d763faf3f10ea0e48d799f4eac27857"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga5d763faf3f10ea0e48d799f4eac27857">agile_modbus_serialize_write_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, int nb, const uint16_t *src)</td></tr>
+<tr class="separator:ga5d763faf3f10ea0e48d799f4eac27857"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2dc807ba747675d754e8095ab7dfb39f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga2dc807ba747675d754e8095ab7dfb39f">agile_modbus_deserialize_write_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length)</td></tr>
+<tr class="separator:ga2dc807ba747675d754e8095ab7dfb39f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9553eb261f886f650b8c207a442b3787"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga9553eb261f886f650b8c207a442b3787">agile_modbus_serialize_mask_write_register</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int addr, uint16_t and_mask, uint16_t or_mask)</td></tr>
+<tr class="separator:ga9553eb261f886f650b8c207a442b3787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2bd3952a30caed034f553123d822e9f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga2bd3952a30caed034f553123d822e9f0">agile_modbus_deserialize_mask_write_register</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length)</td></tr>
+<tr class="separator:ga2bd3952a30caed034f553123d822e9f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1404336e09246d48a72dd8ed6ff958be"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga1404336e09246d48a72dd8ed6ff958be">agile_modbus_serialize_write_and_read_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int write_addr, int write_nb, const uint16_t *src, int read_addr, int read_nb)</td></tr>
+<tr class="separator:ga1404336e09246d48a72dd8ed6ff958be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga16f67b00a3a19f98ee69b2cce4b61d4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga16f67b00a3a19f98ee69b2cce4b61d4e">agile_modbus_deserialize_write_and_read_registers</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, uint16_t *dest)</td></tr>
+<tr class="separator:ga16f67b00a3a19f98ee69b2cce4b61d4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeeb30388d6a90405340ab42f22412946"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#gaeeb30388d6a90405340ab42f22412946">agile_modbus_serialize_report_slave_id</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx)</td></tr>
+<tr class="separator:gaeeb30388d6a90405340ab42f22412946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga63e99beaa9aa8350bbe2746bd8c123a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga63e99beaa9aa8350bbe2746bd8c123a1">agile_modbus_deserialize_report_slave_id</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, int max_dest, uint8_t *dest)</td></tr>
+<tr class="separator:ga63e99beaa9aa8350bbe2746bd8c123a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>常用 modbus 主机操作函数 </p>
+<pre class="fragment">   API 形式如下：
+   - agile_modbus_serialize_xxx    打包请求数据
+   返回值:
+       &gt;0:请求数据长度
+       其他:异常
+
+   - agile_modbus_deserialize_xxx  解析响应数据
+   返回值:
+       &gt;=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数)
+       其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)</pre> <h2 class="groupheader">函数说明</h2>
+<a id="ga5d43985cad3f09f0d6596760b941edbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5d43985cad3f09f0d6596760b941edbc">&#9670;&nbsp;</a></span>agile_modbus_serialize_read_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_read_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00493">493</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga7908f73260d9afeba6ac2b571f163a97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7908f73260d9afeba6ac2b571f163a97">&#9670;&nbsp;</a></span>agile_modbus_deserialize_read_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_read_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00509">509</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga7908f73260d9afeba6ac2b571f163a97_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga7908f73260d9afeba6ac2b571f163a97_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga7908f73260d9afeba6ac2b571f163a97_cgraph" id="agroup___master___common___operation___functions_ga7908f73260d9afeba6ac2b571f163a97_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaf7de4137539de1bed2e607e846f415c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf7de4137539de1bed2e607e846f415c2">&#9670;&nbsp;</a></span>agile_modbus_serialize_read_input_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_read_input_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00548">548</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga4124e9e8e7048da83855cb92ee7f6e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4124e9e8e7048da83855cb92ee7f6e63">&#9670;&nbsp;</a></span>agile_modbus_deserialize_read_input_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_read_input_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00564">564</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga4124e9e8e7048da83855cb92ee7f6e63_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga4124e9e8e7048da83855cb92ee7f6e63_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga4124e9e8e7048da83855cb92ee7f6e63_cgraph" id="agroup___master___common___operation___functions_ga4124e9e8e7048da83855cb92ee7f6e63_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga3d6724cd3f77e007cd2f6672e7beb3f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d6724cd3f77e007cd2f6672e7beb3f8">&#9670;&nbsp;</a></span>agile_modbus_serialize_read_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_read_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00603">603</a> 行定义.</p>
+
+</div>
+</div>
+<a id="gadcc32581d649bf2cef5eee596bd67c6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadcc32581d649bf2cef5eee596bd67c6f">&#9670;&nbsp;</a></span>agile_modbus_deserialize_read_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_read_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00619">619</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_gadcc32581d649bf2cef5eee596bd67c6f_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_gadcc32581d649bf2cef5eee596bd67c6f_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_gadcc32581d649bf2cef5eee596bd67c6f_cgraph" id="agroup___master___common___operation___functions_gadcc32581d649bf2cef5eee596bd67c6f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gad1c9ec6c01a6ea61ddbf5c7977b1d1ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad1c9ec6c01a6ea61ddbf5c7977b1d1ca">&#9670;&nbsp;</a></span>agile_modbus_serialize_read_input_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_read_input_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00647">647</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga73504a775e6c4686d65987278599b3cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga73504a775e6c4686d65987278599b3cf">&#9670;&nbsp;</a></span>agile_modbus_deserialize_read_input_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_read_input_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00663">663</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga73504a775e6c4686d65987278599b3cf_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga73504a775e6c4686d65987278599b3cf_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga73504a775e6c4686d65987278599b3cf_cgraph" id="agroup___master___common___operation___functions_ga73504a775e6c4686d65987278599b3cf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga8a8154791b050691e15eb4ae7da97574"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8a8154791b050691e15eb4ae7da97574">&#9670;&nbsp;</a></span>agile_modbus_serialize_write_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_write_bit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>status</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00691">691</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga311e3dec8ebbcd502aebe99c6c964638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga311e3dec8ebbcd502aebe99c6c964638">&#9670;&nbsp;</a></span>agile_modbus_deserialize_write_bit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_write_bit </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00704">704</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga311e3dec8ebbcd502aebe99c6c964638_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga311e3dec8ebbcd502aebe99c6c964638_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga311e3dec8ebbcd502aebe99c6c964638_cgraph" id="agroup___master___common___operation___functions_ga311e3dec8ebbcd502aebe99c6c964638_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga134947aa1eba3f64d26844f4c8bf57cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga134947aa1eba3f64d26844f4c8bf57cb">&#9670;&nbsp;</a></span>agile_modbus_serialize_write_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_write_register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00721">721</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga8c566ab6fae153760cc24a18e0210fff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8c566ab6fae153760cc24a18e0210fff">&#9670;&nbsp;</a></span>agile_modbus_deserialize_write_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_write_register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00734">734</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga8c566ab6fae153760cc24a18e0210fff_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga8c566ab6fae153760cc24a18e0210fff_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga8c566ab6fae153760cc24a18e0210fff_cgraph" id="agroup___master___common___operation___functions_ga8c566ab6fae153760cc24a18e0210fff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga4620bc2594720eba79a9c9ffa76d3796"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4620bc2594720eba79a9c9ffa76d3796">&#9670;&nbsp;</a></span>agile_modbus_serialize_write_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_write_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00751">751</a> 行定义.</p>
+
+</div>
+</div>
+<a id="gabd1613828b12acc5ecf56a7bd4f9e9d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabd1613828b12acc5ecf56a7bd4f9e9d1">&#9670;&nbsp;</a></span>agile_modbus_deserialize_write_bits()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_write_bits </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00796">796</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_gabd1613828b12acc5ecf56a7bd4f9e9d1_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_gabd1613828b12acc5ecf56a7bd4f9e9d1_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_gabd1613828b12acc5ecf56a7bd4f9e9d1_cgraph" id="agroup___master___common___operation___functions_gabd1613828b12acc5ecf56a7bd4f9e9d1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga5d763faf3f10ea0e48d799f4eac27857"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga5d763faf3f10ea0e48d799f4eac27857">&#9670;&nbsp;</a></span>agile_modbus_serialize_write_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_write_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t *&#160;</td>
+          <td class="paramname"><em>src</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00813">813</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga2dc807ba747675d754e8095ab7dfb39f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2dc807ba747675d754e8095ab7dfb39f">&#9670;&nbsp;</a></span>agile_modbus_deserialize_write_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_write_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00844">844</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga2dc807ba747675d754e8095ab7dfb39f_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga2dc807ba747675d754e8095ab7dfb39f_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga2dc807ba747675d754e8095ab7dfb39f_cgraph" id="agroup___master___common___operation___functions_ga2dc807ba747675d754e8095ab7dfb39f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga9553eb261f886f650b8c207a442b3787"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9553eb261f886f650b8c207a442b3787">&#9670;&nbsp;</a></span>agile_modbus_serialize_mask_write_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_mask_write_register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>and_mask</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>or_mask</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00861">861</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga2bd3952a30caed034f553123d822e9f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2bd3952a30caed034f553123d822e9f0">&#9670;&nbsp;</a></span>agile_modbus_deserialize_mask_write_register()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_mask_write_register </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00883">883</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga2bd3952a30caed034f553123d822e9f0_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga2bd3952a30caed034f553123d822e9f0_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga2bd3952a30caed034f553123d822e9f0_cgraph" id="agroup___master___common___operation___functions_ga2bd3952a30caed034f553123d822e9f0_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ga1404336e09246d48a72dd8ed6ff958be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1404336e09246d48a72dd8ed6ff958be">&#9670;&nbsp;</a></span>agile_modbus_serialize_write_and_read_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_write_and_read_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>write_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>write_nb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint16_t *&#160;</td>
+          <td class="paramname"><em>src</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>read_addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>read_nb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00900">900</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga16f67b00a3a19f98ee69b2cce4b61d4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga16f67b00a3a19f98ee69b2cce4b61d4e">&#9670;&nbsp;</a></span>agile_modbus_deserialize_write_and_read_registers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_write_and_read_registers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00941">941</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga16f67b00a3a19f98ee69b2cce4b61d4e_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga16f67b00a3a19f98ee69b2cce4b61d4e_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga16f67b00a3a19f98ee69b2cce4b61d4e_cgraph" id="agroup___master___common___operation___functions_ga16f67b00a3a19f98ee69b2cce4b61d4e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,199,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="251,17,410,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="247,86,415,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="478,5,655,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="475,86,659,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="463,151,671,193"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="gaeeb30388d6a90405340ab42f22412946"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaeeb30388d6a90405340ab42f22412946">&#9670;&nbsp;</a></span>agile_modbus_serialize_report_slave_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_serialize_report_slave_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00969">969</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ga63e99beaa9aa8350bbe2746bd8c123a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga63e99beaa9aa8350bbe2746bd8c123a1">&#9670;&nbsp;</a></span>agile_modbus_deserialize_report_slave_id()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_deserialize_report_slave_id </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>msg_length</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_dest</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a> 第 <a class="el" href="agile__modbus_8c_source.html#l00984">984</a> 行定义.</p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___common___operation___functions_ga63e99beaa9aa8350bbe2746bd8c123a1_cgraph.png" border="0" usemap="#agroup___master___common___operation___functions_ga63e99beaa9aa8350bbe2746bd8c123a1_cgraph" alt=""/></div>
+<map name="agroup___master___common___operation___functions_ga63e99beaa9aa8350bbe2746bd8c123a1_cgraph" id="agroup___master___common___operation___functions_ga63e99beaa9aa8350bbe2746bd8c123a1_cgraph">
+<area shape="rect" title=" " alt="" coords="5,54,196,95"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="检查确认从机响应的数据" alt="" coords="249,17,407,58"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="244,86,412,127"/>
+<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="计算预期响应数据长度" alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="472,86,656,127"/>
+<area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="460,151,668,193"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">制作者 <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
+  </ul>
+</div>
+</body>
+</html>

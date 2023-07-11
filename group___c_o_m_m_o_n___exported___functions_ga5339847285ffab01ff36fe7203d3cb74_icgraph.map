@@ -1,0 +1,4 @@
+<map id="agile_modbus_receive_judge" name="agile_modbus_receive_judge">
+<area shape="rect" id="node1" title="校验接收数据正确性" alt="" coords="208,5,376,47"/>
+<area shape="rect" id="node2" href="$group___slave___operation___functions.html#ga9ddc38e7ac14384c02b07b8927165247" title="从机数据处理" alt="" coords="5,5,160,47"/>
+</map>

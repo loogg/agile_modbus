@@ -1,0 +1,6 @@
+<map id="write_read_registers" name="write_read_registers">
+<area shape="rect" id="node1" title="写并读寄存器" alt="" coords="5,78,160,105"/>
+<area shape="rect" id="node2" href="$group___slave___operation___functions.html#gac82879249cfa7d8926aa9381a0264a72" title="读取从机寄存器数据" alt="" coords="208,5,363,47"/>
+<area shape="rect" id="node3" href="$group___slave___operation___functions.html#gae9ba6989bbe265b05caeba41a28db038" title="从机寄存器设置" alt="" coords="208,71,363,112"/>
+<area shape="rect" id="node4" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga30993ba8e98dab4ab152116fa0cc6742" title="根据寄存器地址从映射对象数组中获取映射对象" alt="" coords="216,137,355,163"/>
+</map>

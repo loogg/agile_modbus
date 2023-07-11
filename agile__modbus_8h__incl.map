@@ -1,0 +1,6 @@
+<map id="/home/runner/work/agile_modbus/agile_modbus/inc/agile_modbus.h" name="/home/runner/work/agile_modbus/agile_modbus/inc/agile_modbus.h">
+<area shape="rect" id="node1" title="Agile Modbus 软件包通用头文件" alt="" coords="5,5,204,61"/>
+<area shape="rect" id="node2" title=" " alt="" coords="69,184,140,211"/>
+<area shape="rect" id="node3" href="$agile__modbus__rtu_8h.html" title="Agile Modbus 软件包 RTU 头文件" alt="" coords="29,109,180,136"/>
+<area shape="rect" id="node4" href="$agile__modbus__tcp_8h.html" title="Agile Modbus 软件包 TCP 头文件" alt="" coords="205,109,357,136"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="agile_modbus_receive_judge" name="agile_modbus_receive_judge">
+<area shape="rect" id="node1" title="校验接收数据正确性" alt="" coords="5,39,173,80"/>
+<area shape="rect" id="node2" href="$group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="检验接收数据正确性" alt="" coords="221,39,389,80"/>
+<area shape="rect" id="node3" href="$group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="计算数据元之后要接收的数据长度" alt="" coords="449,5,633,47"/>
+<area shape="rect" id="node4" href="$group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="计算功能码后要接收的数据元长度" alt="" coords="437,71,645,112"/>
+</map>

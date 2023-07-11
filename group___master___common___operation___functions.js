@@ -1,0 +1,25 @@
+var group___master___common___operation___functions =
+[
+    [ "agile_modbus_serialize_read_bits", "group___master___common___operation___functions.html#ga5d43985cad3f09f0d6596760b941edbc", null ],
+    [ "agile_modbus_deserialize_read_bits", "group___master___common___operation___functions.html#ga7908f73260d9afeba6ac2b571f163a97", null ],
+    [ "agile_modbus_serialize_read_input_bits", "group___master___common___operation___functions.html#gaf7de4137539de1bed2e607e846f415c2", null ],
+    [ "agile_modbus_deserialize_read_input_bits", "group___master___common___operation___functions.html#ga4124e9e8e7048da83855cb92ee7f6e63", null ],
+    [ "agile_modbus_serialize_read_registers", "group___master___common___operation___functions.html#ga3d6724cd3f77e007cd2f6672e7beb3f8", null ],
+    [ "agile_modbus_deserialize_read_registers", "group___master___common___operation___functions.html#gadcc32581d649bf2cef5eee596bd67c6f", null ],
+    [ "agile_modbus_serialize_read_input_registers", "group___master___common___operation___functions.html#gad1c9ec6c01a6ea61ddbf5c7977b1d1ca", null ],
+    [ "agile_modbus_deserialize_read_input_registers", "group___master___common___operation___functions.html#ga73504a775e6c4686d65987278599b3cf", null ],
+    [ "agile_modbus_serialize_write_bit", "group___master___common___operation___functions.html#ga8a8154791b050691e15eb4ae7da97574", null ],
+    [ "agile_modbus_deserialize_write_bit", "group___master___common___operation___functions.html#ga311e3dec8ebbcd502aebe99c6c964638", null ],
+    [ "agile_modbus_serialize_write_register", "group___master___common___operation___functions.html#ga134947aa1eba3f64d26844f4c8bf57cb", null ],
+    [ "agile_modbus_deserialize_write_register", "group___master___common___operation___functions.html#ga8c566ab6fae153760cc24a18e0210fff", null ],
+    [ "agile_modbus_serialize_write_bits", "group___master___common___operation___functions.html#ga4620bc2594720eba79a9c9ffa76d3796", null ],
+    [ "agile_modbus_deserialize_write_bits", "group___master___common___operation___functions.html#gabd1613828b12acc5ecf56a7bd4f9e9d1", null ],
+    [ "agile_modbus_serialize_write_registers", "group___master___common___operation___functions.html#ga5d763faf3f10ea0e48d799f4eac27857", null ],
+    [ "agile_modbus_deserialize_write_registers", "group___master___common___operation___functions.html#ga2dc807ba747675d754e8095ab7dfb39f", null ],
+    [ "agile_modbus_serialize_mask_write_register", "group___master___common___operation___functions.html#ga9553eb261f886f650b8c207a442b3787", null ],
+    [ "agile_modbus_deserialize_mask_write_register", "group___master___common___operation___functions.html#ga2bd3952a30caed034f553123d822e9f0", null ],
+    [ "agile_modbus_serialize_write_and_read_registers", "group___master___common___operation___functions.html#ga1404336e09246d48a72dd8ed6ff958be", null ],
+    [ "agile_modbus_deserialize_write_and_read_registers", "group___master___common___operation___functions.html#ga16f67b00a3a19f98ee69b2cce4b61d4e", null ],
+    [ "agile_modbus_serialize_report_slave_id", "group___master___common___operation___functions.html#gaeeb30388d6a90405340ab42f22412946", null ],
+    [ "agile_modbus_deserialize_report_slave_id", "group___master___common___operation___functions.html#ga63e99beaa9aa8350bbe2746bd8c123a1", null ]
+];

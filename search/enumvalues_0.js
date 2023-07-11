@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['agile_5fmodbus_5fbackend_5ftype_5frtu_363',['AGILE_MODBUS_BACKEND_TYPE_RTU',['../group___c_o_m_m_o_n___exported___types.html#gga88d4f826eda73ae5fc071856f70683fdab0a15fe132d3f733ee4052ea2f0bd391',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fbackend_5ftype_5ftcp_364',['AGILE_MODBUS_BACKEND_TYPE_TCP',['../group___c_o_m_m_o_n___exported___types.html#gga88d4f826eda73ae5fc071856f70683fdaf4f989f5d3eaf37ca4175e7bd6560714',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5facknowledge_365',['AGILE_MODBUS_EXCEPTION_ACKNOWLEDGE',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba33e2240b5812482471e66ae97397825f',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fgateway_5fpath_366',['AGILE_MODBUS_EXCEPTION_GATEWAY_PATH',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba0ed56108402939a0c6f181c1d639205d',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fgateway_5ftarget_367',['AGILE_MODBUS_EXCEPTION_GATEWAY_TARGET',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba2f8205e4b63716964c6bbf7deadd4949',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fillegal_5fdata_5faddress_368',['AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_ADDRESS',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55baf726441ad31971e171a2a25401c60af2',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fillegal_5fdata_5fvalue_369',['AGILE_MODBUS_EXCEPTION_ILLEGAL_DATA_VALUE',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55baab1bfcc730df364863e14f7675acbc13',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fillegal_5ffunction_370',['AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba175253ca676ad5c5791b0afa9d6f20ac',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fmemory_5fparity_371',['AGILE_MODBUS_EXCEPTION_MEMORY_PARITY',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55bab0a2def6bc1f4bced8c82da1ddf146da',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fnegative_5facknowledge_372',['AGILE_MODBUS_EXCEPTION_NEGATIVE_ACKNOWLEDGE',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55baff47f16ef50cf30c15983b3181343af6',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fnot_5fdefined_373',['AGILE_MODBUS_EXCEPTION_NOT_DEFINED',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba9888b4565cba5b54042d3bd469abc7d8',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fslave_5for_5fserver_5fbusy_374',['AGILE_MODBUS_EXCEPTION_SLAVE_OR_SERVER_BUSY',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba8ffc92d333e20f8eba2463ec277748d1',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5fslave_5for_5fserver_5ffailure_375',['AGILE_MODBUS_EXCEPTION_SLAVE_OR_SERVER_FAILURE',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55bae1bb21560582b2a4c509f4ca6b249956',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fexception_5funknow_376',['AGILE_MODBUS_EXCEPTION_UNKNOW',['../group___c_o_m_m_o_n___exported___types.html#gga06fc87d81c62e9abb8790b6e5713c55ba14cb4b03d87baae67e83b3bfea7f64b2',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fmsg_5fconfirmation_377',['AGILE_MODBUS_MSG_CONFIRMATION',['../group___c_o_m_m_o_n___exported___types.html#ggaed0f4c33339c8ae9c8730abef9e0f02fac6dd2ba8a1de6b58ce9ec199d4875da4',1,'agile_modbus.h']]],
+  ['agile_5fmodbus_5fmsg_5findication_378',['AGILE_MODBUS_MSG_INDICATION',['../group___c_o_m_m_o_n___exported___types.html#ggaed0f4c33339c8ae9c8730abef9e0f02faf9852866360e261fba1cafe87a964b01',1,'agile_modbus.h']]]
+];

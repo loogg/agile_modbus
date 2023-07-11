@@ -1,0 +1,5 @@
+<map id="agile_modbus_common_init" name="agile_modbus_common_init">
+<area shape="rect" id="node1" title="初始化 modbus 句柄" alt="" coords="221,31,427,57"/>
+<area shape="rect" id="node2" href="$group___r_t_u___exported___functions.html#ga96821440a21db41bb7b662ea8ff346ec" title="RTU 初始化" alt="" coords="6,5,173,32"/>
+<area shape="rect" id="node3" href="$group___t_c_p___exported___functions.html#ga4f9b3e37c01e6f112f63e7194dad7b33" title="TCP 初始化" alt="" coords="5,56,173,83"/>
+</map>
