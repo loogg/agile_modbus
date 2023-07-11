@@ -6,7 +6,7 @@ Agile Modbus 即：轻量型 modbus 协议栈，满足用户任何场景下的�
 
 ![ModbusProtocol](./figures/ModbusProtocol.jpg)
 
-- 在线文档：[API Manual](https://loogg.github.io/AgileModbus_API/)
+- 在线文档：[API Manual](https://loogg.github.io/agile_modbus/)
 
 - `examples` 文件夹提供 PC 上的示例
 
