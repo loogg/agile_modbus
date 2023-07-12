@@ -182,7 +182,7 @@
 
 `broadcast_master` 中，使用广播地址 0，周期 5ms 发送数据包。同时每包数据后都发送 100 字节的脏数据。
 
-```C
+```c
 
 int send_len = agile_modbus_serialize_raw_request(ctx, raw_req, raw_req_len);
 serial_send(_fd, ctx->send_buf, send_len);

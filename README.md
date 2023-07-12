@@ -118,7 +118,7 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
 - `agile_modbus_slave_handle` 介绍
 
-  ```C
+  ```c
 
   int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
                                 agile_modbus_slave_callback_t slave_cb, const void *slave_data, int *frame_length)
@@ -140,7 +140,7 @@ Agile Modbus 遵循 `Apache-2.0` 许可，详见 `LICENSE` 文件。
 
 - `agile_modbus_slave_callback_t` 介绍
 
-  ```C
+  ```c
 
   /**
    * @brief   从机回调函数
@@ -220,7 +220,7 @@ Agile Modbus 提供了 `agile_modbus_slave_callback_t` 的一种实现方式，�
 
 使用方式：
 
-```C
+```c
 
 #include "agile_modbus.h"
 #include "agile_modbus_slave_util.h"
@@ -242,7 +242,7 @@ agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &s
 
 - `agile_modbus_slave_util_t` 介绍
 
-  ```C
+  ```c
 
   typedef struct agile_modbus_slave_util {
       const agile_modbus_slave_util_map_t *tab_bits;                                            /**< 线圈寄存器定义数组 */
@@ -270,7 +270,7 @@ agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &s
 
 - `agile_modbus_slave_util_map` 介绍
 
-  ```C
+  ```c
 
   typedef struct agile_modbus_slave_util_map {
       int start_addr;                                       /**< 起始地址 */
