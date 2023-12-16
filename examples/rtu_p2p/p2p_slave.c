@@ -88,14 +88,14 @@ static void print_progress(size_t cur_size, size_t total_size)
 }
 
 /**
- * @brief   从机回调函数
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   data 私有数据
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   Slave callback function
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   data private data
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 static int slave_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data)
 {
