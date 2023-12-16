@@ -1,5 +1,5 @@
 <map id="Modbus Master" name="Modbus Master">
-<area shape="rect" id="node1" href="$group___master___common___operation___functions.html" title="常用 modbus 主机操作函数" alt="" coords="305,5,504,45"/>
+<area shape="rect" id="node1" href="$group___master___common___operation___functions.html" title="Commonly used modbus host operation functions." alt="" coords="305,5,504,45"/>
 <area shape="rect" id="node2" href="$group___master___private___functions.html" title=" " alt="" coords="313,70,496,95"/>
 <area shape="rect" id="node3" title=" " alt="" coords="135,70,257,95"/>
 <area shape="rect" id="node4" href="$group___master___raw___operation___functions.html" title=" " alt="" coords="321,120,488,160"/>

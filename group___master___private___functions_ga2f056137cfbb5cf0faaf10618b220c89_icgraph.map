@@ -1,7 +1,7 @@
 <map id="agile_modbus_check_confirmation" name="agile_modbus_check_confirmation">
-<area shape="rect" id="node1" title="检查确认从机响应的数据" alt="" coords="247,365,405,407"/>
+<area shape="rect" id="node1" title="Check and confirm the slave response data." alt="" coords="247,365,405,407"/>
 <area shape="rect" id="node2" href="$group___master___common___operation___functions.html#ga2bd3952a30caed034f553123d822e9f0" title=" " alt="" coords="7,5,197,47"/>
-<area shape="rect" id="node3" href="$group___master___raw___operation___functions.html#ga601fca9b16febfb33bb26d780e672fc2" title="解析响应原始数据" alt="" coords="7,71,197,112"/>
+<area shape="rect" id="node3" href="$group___master___raw___operation___functions.html#ga601fca9b16febfb33bb26d780e672fc2" title="parses the original response data" alt="" coords="7,71,197,112"/>
 <area shape="rect" id="node4" href="$group___master___common___operation___functions.html#ga7908f73260d9afeba6ac2b571f163a97" title=" " alt="" coords="7,136,197,177"/>
 <area shape="rect" id="node5" href="$group___master___common___operation___functions.html#ga4124e9e8e7048da83855cb92ee7f6e63" title=" " alt="" coords="7,201,197,243"/>
 <area shape="rect" id="node6" href="$group___master___common___operation___functions.html#ga73504a775e6c4686d65987278599b3cf" title=" " alt="" coords="7,267,197,308"/>
