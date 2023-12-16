@@ -255,7 +255,7 @@ static int trans_file(int slave, char *file_path)
         int send_len = agile_modbus_serialize_raw_request(ctx, raw_req, raw_req_len);
         serial_send(_fd, ctx->send_buf, send_len);
 
-        //脏数据
+        //dirty data
         serial_send(_fd, _dirty_buf, sizeof(_dirty_buf));
 
         print_progress(write_file_size, file_size);

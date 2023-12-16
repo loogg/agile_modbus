@@ -1,7 +1,7 @@
 /**
  * @file    agile_modbus.h
- * @brief   Agile Modbus 软件包通用头文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus software package common header file
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2022-07-28
  *
  * @attention
@@ -50,9 +50,9 @@ extern "C" {
 /** @defgroup Modbus_Constants Modbus Constants
  * @{
  */
-#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.0" /**< Agile Modbus 版本号 */
+#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.0" /**< Agile Modbus version number */
 
-#define AGILE_MODBUS_BROADCAST_ADDRESS 0 /**< Modbus 广播地址 */
+#define AGILE_MODBUS_BROADCAST_ADDRESS 0 /**< Modbus broadcast address */
 
 /** @name Quantity limit of Coils
  @verbatim
@@ -127,7 +127,7 @@ extern "C" {
  */
 
 /**
- * @brief   Modbus 异常码
+ * @brief   Modbus exception code
  */
 enum {
     AGILE_MODBUS_EXCEPTION_ILLEGAL_FUNCTION = 0x01,
@@ -145,7 +145,7 @@ enum {
 };
 
 /**
- * @brief   Modbus 后端类型
+ *@ brief   Modbus backend type
  */
 typedef enum {
     AGILE_MODBUS_BACKEND_TYPE_RTU = 0, /**< RTU */
@@ -153,7 +153,7 @@ typedef enum {
 } agile_modbus_backend_type_t;
 
 /**
- * @brief   Modbus 收到消息类型
+ * @brief   Modbus received message type
  *
  @verbatim
     ---------- Request     Indication ----------
@@ -163,55 +163,55 @@ typedef enum {
  @endverbatim
  */
 typedef enum {
-    AGILE_MODBUS_MSG_INDICATION,  /**< 主机端的请求消息 */
-    AGILE_MODBUS_MSG_CONFIRMATION /**< 服务器端的请求消息 */
+    AGILE_MODBUS_MSG_INDICATION,  /**< Host-side request message */
+    AGILE_MODBUS_MSG_CONFIRMATION /**< Server-side request message */
 } agile_modbus_msg_type_t;
 
 /**
- * @brief   包含 modbus 头部参数结构体
+ * @brief   contains the modbus header parameter structure
  */
 typedef struct agile_modbus_sft {
-    int slave;    /**< 从机地址 */
-    int function; /**< 功能码 */
-    int t_id;     /**< 事务标识符 */
+    int slave;    /**< slave address */
+    int function; /**< function code */
+    int t_id;     /**< Transaction identifier */
 } agile_modbus_sft_t;
 
-typedef struct agile_modbus agile_modbus_t; /**< Agile Modbus 结构体 */
+typedef struct agile_modbus agile_modbus_t; /**< Agile Modbus structure */
 
 /**
- * @brief   Agile Modbus 后端接口结构体
+ * @brief   Agile Modbus backend interface structure
  */
 typedef struct agile_modbus_backend {
-    uint32_t backend_type;                            /**< 后端类型 */
-    uint32_t header_length;                           /**< 头部长度，不包含功能码 */
-    uint32_t checksum_length;                         /**< 校验数据长度 */
-    uint32_t max_adu_length;                          /**< 后端 ADU 长度 */
-    int (*set_slave)(agile_modbus_t *ctx, int slave); /**< 设置地址接口 */
+    uint32_t backend_type;                            /**< Backend type */
+    uint32_t header_length;                           /**<Header length, excluding function code */
+    uint32_t checksum_length;                         /**< Check data length */
+    uint32_t max_adu_length;                          /**< Backend ADU length */
+    int (*set_slave)(agile_modbus_t *ctx, int slave); /**< Set address interface */
     int (*build_request_basis)(agile_modbus_t *ctx, int function, int addr,
-                               int nb, uint8_t *req);                                /**< 构建基础请求报文接口 */
-    int (*build_response_basis)(agile_modbus_sft_t *sft, uint8_t *rsp);              /**< 构建基础响应报文接口 */
-    int (*prepare_response_tid)(const uint8_t *req, int *req_length);                /**< 准备响应接口 */
-    int (*send_msg_pre)(uint8_t *req, int req_length);                               /**< 预发送数据接口 */
-    int (*check_integrity)(agile_modbus_t *ctx, uint8_t *msg, const int msg_length); /**< 检查接收数据完整性接口 */
+                               int nb, uint8_t *req);                                /**< Build a basic request message interface */
+    int (*build_response_basis)(agile_modbus_sft_t *sft, uint8_t *rsp);              /**< Build a basic response message interface */
+    int (*prepare_response_tid)(const uint8_t *req, int *req_length);                /**< Prepare response interface */
+    int (*send_msg_pre)(uint8_t *req, int req_length);                               /**< Pre-send data interface */
+    int (*check_integrity)(agile_modbus_t *ctx, uint8_t *msg, const int msg_length); /**< Check the receive data integrity interface */
     int (*pre_check_confirmation)(agile_modbus_t *ctx, const uint8_t *req,
-                                  const uint8_t *rsp, int rsp_length); /**< 预检查确认接口 */
+                                  const uint8_t *rsp, int rsp_length); /**< Pre-check confirmation interface */
 } agile_modbus_backend_t;
 
 /**
- * @brief   Agile Modbus 结构体
+ * @brief   Agile Modbus structure
  */
 struct agile_modbus {
-    int slave;         /**< 从机地址 */
-    uint8_t *send_buf; /**< 发送缓冲区 */
-    int send_bufsz;    /**< 发送缓冲区大小 */
-    uint8_t *read_buf; /**< 接收缓冲区 */
-    int read_bufsz;    /**< 接收缓冲区大小 */
+    int slave;         /**< slave address */
+    uint8_t *send_buf; /**< Send buffer */
+    int send_bufsz;    /**<Send buffer size */
+    uint8_t *read_buf; /**<Receive buffer */
+    int read_bufsz;    /**<Receive buffer size */
     uint8_t (*compute_meta_length_after_function)(agile_modbus_t *ctx, int function,
-                                                  agile_modbus_msg_type_t msg_type); /**< 自定义计算数据元长度接口 */
+                                                  agile_modbus_msg_type_t msg_type); /**< Customized calculation data element length interface */
     int (*compute_data_length_after_meta)(agile_modbus_t *ctx, uint8_t *msg,
-                                          int msg_length, agile_modbus_msg_type_t msg_type); /**< 自定义计算数据长度接口 */
-    const agile_modbus_backend_t *backend;                                                   /**< 后端接口 */
-    void *backend_data;                                                                      /**< 后端数据，指向 RTU 或 TCP 结构体 */
+                                          int msg_length, agile_modbus_msg_type_t msg_type); /**< Customized calculation data length interface */
+    const agile_modbus_backend_t *backend;                                                   /**< Backend interface */
+    void *backend_data;                                                                      /**< Backend data, pointing to RTU or TCP structure */
 };
 
 /**
@@ -227,26 +227,26 @@ struct agile_modbus {
  */
 
 /**
- * @brief   Agile Modbus 从机信息结构体
+ * @brief   Agile Modbus slave information structure
  */
 struct agile_modbus_slave_info {
-    agile_modbus_sft_t *sft; /**< sft 结构体指针 */
-    int *rsp_length;         /**< 响应数据长度指针 */
-    int address;             /**< 寄存器地址 */
-    int nb;                  /**< 数目 */
-    uint8_t *buf;            /**< 不同功能码需要使用的数据域 */
-    int send_index;          /**< 发送缓冲区当前索引 */
+    agile_modbus_sft_t *sft; /**< sft structure pointer */
+    int *rsp_length;         /**<Response data length pointer */
+    int address;             /**< Register address */
+    int nb;                  /**< number */
+    uint8_t *buf;            /**< Data fields required for different function codes */
+    int send_index;          /**< Current index of sending buffer */
 };
 
 /**
- * @brief   从机回调函数
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   data 私有数据
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   Slave callback function
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   data private data
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 typedef int (*agile_modbus_slave_callback_t)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data);
 

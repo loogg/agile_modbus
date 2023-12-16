@@ -1,31 +1,31 @@
 /**
  * @file    agile_modbus.c
- * @brief   Agile Modbus 软件包通用源文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus software package common source file
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2022-07-28
  *
  @verbatim
-    使用：
-    用户需要实现硬件接口的 `发送数据` 、 `等待数据接收结束` 、 `清空接收缓存` 函数
+    use:
+    Users need to implement the `send data`, `wait for data reception to end` and `clear the receive buffer` functions of the hardware interface.
 
-    - 主机：
-        1. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
-        2. `agile_modbus_set_slave` 设置从机地址
-        3. `清空接收缓存`
-        4. `agile_modbus_serialize_xxx` 打包请求数据
-        5. `发送数据`
-        6. `等待数据接收结束`
-        7. `agile_modbus_deserialize_xxx` 解析响应数据
-        8. 用户处理得到的数据
+    - Host:
+        1. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` initializes `RTU/TCP` environment
+        2. `agile_modbus_set_slave` sets the slave address
+        3. `Clear the receive cache`
+        4. `agile_modbus_serialize_xxx` package request data
+        5. `Send data`
+        6. `Waiting for data reception to end`
+        7. `agile_modbus_deserialize_xxx` Parse response data
+        8. Data processed by users
 
-    - 从机：
-        1. 实现 `agile_modbus_slave_callback_t` 类型回调函数
-        2. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` 初始化 `RTU/TCP` 环境
-        3. `agile_modbus_set_slave` 设置从机地址
-        4. `等待数据接收结束`
-        5. `agile_modbus_slave_handle` 处理请求数据
-        6. `清空接收缓存` (可选)
-        7. `发送数据`
+    - Slave machine:
+        1. Implement the `agile_modbus_slave_callback_t` type callback function
+        2. `agile_modbus_rtu_init` / `agile_modbus_tcp_init` initializes `RTU/TCP` environment
+        3. `agile_modbus_set_slave` sets the slave address
+        4. `Waiting for data reception to end`
+        5. `agile_modbus_slave_handle` processes request data
+        6. `Clear the receive buffer` (optional)
+        7. `Send data`
 
  @endverbatim
  *
@@ -46,7 +46,7 @@
 /** @defgroup COMMON_Private_Constants Common Private Constants
  * @{
  */
-#define AGILE_MODBUS_MSG_LENGTH_UNDEFINED -1 /**< 对应功能码数据长度未定义 */
+#define AGILE_MODBUS_MSG_LENGTH_UNDEFINED -1 /**< The corresponding function code data length is undefined */
 /**
  * @}
  */
@@ -56,13 +56,13 @@
  */
 
 /**
- * @brief   计算功能码后要接收的数据元长度
+ * @brief   The length of the data element to be received after calculating the function code
  @verbatim
     ---------- Request     Indication ----------
     | Client | ---------------------->| Server |
     ---------- Confirmation  Response ----------
 
-    以 03 功能码请求报文举例
+    Take the 03 function code request message as an example
 
     ---------- ------ --------------- ---------
     | header | | 03 | | 00 00 00 01 | | CRC16 |
@@ -71,19 +71,19 @@
     ----------
     | header |
     ----------
-        RTU: 设备地址
-        TCP: | 事务处理标识  协议标识  长度  单元标识符 |
+        RTU: device address
+        TCP: | transaction identifier  protocol identifier  length  unit identifier |
 
     ---------------
     | 00 00 00 01 |
     ---------------
-        数据元: 与功能码相关的数据，如 03 功能码数据元中包含寄存器起始地址和寄存器长度
+        Data element: Data related to the function code, such as 03. The function code data element contains the register starting address and register length.
 
  @endverbatim
- * @param   ctx modbus 句柄
- * @param   function 功能码
- * @param   msg_type 消息类型
- * @return  数据元长度
+ * @param   ctx modbus handle
+ * @param   function function code
+ * @param   msg_type message type
+ * @return  data element length
  */
 static uint8_t agile_modbus_compute_meta_length_after_function(agile_modbus_t *ctx, int function, agile_modbus_msg_type_t msg_type)
 {
@@ -139,13 +139,13 @@ static uint8_t agile_modbus_compute_meta_length_after_function(agile_modbus_t *c
 }
 
 /**
- * @brief   计算数据元之后要接收的数据长度
+ * @brief The length of data to be received after calculating the data element
  @verbatim
     ---------- Request     Indication ----------
     | Client | ---------------------->| Server |
     ---------- Confirmation  Response ----------
 
-    以 03 功能码响应报文举例
+    Example of responding to a message with function code 03
 
     ---------- ------ ------ --------- ---------
     | header | | 03 | | 02 | | 00 00 | | CRC16 |
@@ -154,25 +154,25 @@ static uint8_t agile_modbus_compute_meta_length_after_function(agile_modbus_t *c
     ----------
     | header |
     ----------
-        RTU: 设备地址
-        TCP: | 事务处理标识  协议标识  长度  单元标识符 |
+        RTU: device address
+        TCP: | transaction identifier  protocol identifier  length  unit identifier |
 
     ------
     | 02 |
     ------
-        数据元: 两个字节数据
+        Data element: two bytes of data
 
     ---------
     | 00 00 |
     ---------
-        数据
+        data
 
  @endverbatim
- * @param   ctx modbus 句柄
- * @param   msg 消息指针
- * @param   msg_length 消息长度
- * @param   msg_type 消息类型
- * @return  数据长度
+ * @param   ctx modbus handle
+ * @param   msg message pointer
+ * @param   msg_length message length
+ * @param   msg_type message type
+ * @return  data length
  */
 static int agile_modbus_compute_data_length_after_meta(agile_modbus_t *ctx, uint8_t *msg, int msg_length, agile_modbus_msg_type_t msg_type)
 {
@@ -214,12 +214,12 @@ static int agile_modbus_compute_data_length_after_meta(agile_modbus_t *ctx, uint
 }
 
 /**
- * @brief   检验接收数据正确性
- * @param   ctx modbus 句柄
- * @param   msg 消息指针
- * @param   msg_length 消息长度
- * @param   msg_type 消息类型
- * @return  >0:正确，modbus 数据帧长度; 其他:异常
+ * @brief   Check the correctness of received data
+ * @param   ctx modbus handle
+ * @param   msg message pointer
+ * @param   msg_length message length
+ * @param   msg_type message type
+ * @return  >0: correct, modbus data frame length; others: exception
  */
 static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int msg_length, agile_modbus_msg_type_t msg_type)
 {
@@ -247,12 +247,12 @@ static int agile_modbus_receive_msg_judge(agile_modbus_t *ctx, uint8_t *msg, int
  */
 
 /**
- * @brief   初始化 modbus 句柄
- * @param   ctx modbus 句柄
- * @param   send_buf 发送缓冲区
- * @param   send_bufsz 发送缓冲区大小
- * @param   read_buf 接收缓冲区
- * @param   read_bufsz 接收缓冲区大小
+ * @brief   initialize modbus handle
+ * @param   ctx modbus handle
+ * @param   send_buf send buffer
+ * @param   send_bufsz send buffer size
+ * @param   read_buf receive buffer
+ * @param   read_bufsz receive buffer size
  */
 void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
 {
@@ -265,10 +265,10 @@ void agile_modbus_common_init(agile_modbus_t *ctx, uint8_t *send_buf, int send_b
 }
 
 /**
- * @brief   设置地址
- * @param   ctx modbus 句柄
- * @param   slave 地址
- * @return  0:成功
+ * @brief   set address
+ * @param   ctx modbus handle
+ * @param   slave address
+ * @return  0: success
  */
 int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
 {
@@ -276,9 +276,9 @@ int agile_modbus_set_slave(agile_modbus_t *ctx, int slave)
 }
 
 /**
- * @brief   设置 modbus 对象的计算功能码后要接收的数据元长度回调函数
- * @param   ctx modbus 句柄
- * @param   cb 计算功能码后要接收的数据元长度回调函数
+ * @brief   sets the data element length callback function to be received after calculating the function code of the modbus object
+ * @param   ctx modbus handle
+ * @param   cb callback function of the data element length to be received after calculating the function code
  * @see     agile_modbus_compute_meta_length_after_function
  */
 void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
@@ -289,9 +289,9 @@ void agile_modbus_set_compute_meta_length_after_function_cb(agile_modbus_t *ctx,
 }
 
 /**
- * @brief   设置 modbus 对象的计算数据元之后要接收的数据长度回调函数
- * @param   ctx modbus 句柄
- * @param   cb 计算数据元之后要接收的数据长度回调函数
+ * @brief   sets the data length callback function to be received after calculating the data element of the modbus object
+ * @param   ctx modbus handle
+ * @param   cb The data length callback function to be received after calculating the data element
  * @see     agile_modbus_compute_data_length_after_meta
  */
 void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
@@ -302,12 +302,12 @@ void agile_modbus_set_compute_data_length_after_meta_cb(agile_modbus_t *ctx,
 }
 
 /**
- * @brief   校验接收数据正确性
- * @note    该 API 返回的是 modbus 数据帧长度，比如 8 个字节的 modbus 数据帧 + 2 个字节的脏数据，返回 8
- * @param   ctx modbus 句柄
- * @param   msg_length 接收数据长度
- * @param   msg_type 消息类型
- * @return  >0:正确，modbus 数据帧长度; 其他:异常
+ * @brief   Verify the correctness of received data
+ * @note    This API returns the modbus data frame length, for example, 8 bytes of modbus data frame + 2 bytes of dirty data, returns 8
+ * @param   ctx modbus handle
+ * @param   msg_length received data length
+ * @param   msg_type message type
+ * @return  >0: correct, modbus data frame length; others: exception
  */
 int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus_msg_type_t msg_type)
 {
@@ -332,12 +332,12 @@ int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus
  */
 
 /**
- * @brief   计算预期响应数据长度
- * @note    如果是特殊的功能码，返回 AGILE_MODBUS_MSG_LENGTH_UNDEFINED ，但这不代表异常。
- *          agile_modbus_check_confirmation 调用该 API 处理时认为 AGILE_MODBUS_MSG_LENGTH_UNDEFINED 返回值也是有效的。
- * @param   ctx modbus 句柄
- * @param   req 请求数据指针
- * @return  预期响应数据长度
+ * @brief   Calculate the expected response data length
+ * @note    If it is a special function code, AGILE_MODBUS_MSG_LENGTH_UNDEFINED is returned, but this does not mean an exception.
+ *          When agile_modbus_check_confirmation calls this API processing, it is considered that the return value of AGILE_MODBUS_MSG_LENGTH_UNDEFINED is also valid.
+ * @param   ctx modbus handle
+ * @param   req request data pointer
+ * @return  expected response data length
  */
 static int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx, uint8_t *req)
 {
@@ -380,13 +380,13 @@ static int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx
 }
 
 /**
- * @brief   检查确认从机响应的数据
- * @param   ctx modbus 句柄
- * @param   req 请求数据指针
- * @param   rsp 响应数据指针
- * @param   rsp_length 响应数据长度
- * @return  >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数);
- *          其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
+ * @brief   Check and confirm the slave response data
+ * @param   ctx modbus handle
+ * @param   req request data pointer
+ * @param   rsp response data pointer
+ * @param   rsp_length response data length
+ * @return  >=0: The length of the corresponding function code response object (such as 03 function code, the value represents the number of registers);
+ *          Others: exception (-1: message error; others: exception code can be obtained according to `-128 -$return value`)
  */
 static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
                                            uint8_t *rsp, int rsp_length)
@@ -473,18 +473,18 @@ static int agile_modbus_check_confirmation(agile_modbus_t *ctx, uint8_t *req,
  */
 
 /** @defgroup Master_Common_Operation_Functions Master Common Operation Functions
- *  @brief    常用 modbus 主机操作函数
+ *  @brief     Commonly used modbus host operation functions
  @verbatim
-    API 形式如下：
-    - agile_modbus_serialize_xxx    打包请求数据
-    返回值:
-        >0:请求数据长度
-        其他:异常
+    The API form is as follows:
+    - agile_modbus_serialize_xxx    package request data
+    return value:
+        >0: Request data length
+        Others: Abnormal
 
-    - agile_modbus_deserialize_xxx  解析响应数据
-    返回值:
-        >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数)
-        其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
+    - agile_modbus_deserialize_xxx  parses response data
+    return value:
+        >=0: The length of the corresponding function code response object (such as 03 function code, the value represents the number of registers)
+        Others: exception (-1: message error; others: exception code can be obtained according to `-128 -$return value`)
 
  @endverbatim
  * @{
@@ -1022,11 +1022,11 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
  */
 
 /**
- * @brief   将原始数据打包成请求报文
- * @param   ctx modbus 句柄
- * @param   raw_req 原始报文(PDU + Slave address)
- * @param   raw_req_length 原始报文长度
- * @return  >0:请求数据长度; 其他:异常
+ * @brief   Pack the original data into a request message
+ * @param   ctx modbus handle
+ * @param   raw_req original message (PDU + Slave address)
+ * @param   raw_req_length original message length
+ * @return  >0: Request data length; Others: Exception
  */
 int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length)
 {
@@ -1064,11 +1064,11 @@ int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_r
 }
 
 /**
- * @brief   解析响应原始数据
- * @param   ctx modbus 句柄
- * @param   msg_length 接收数据长度
- * @return  >=0:对应功能码响应对象的长度(如 03 功能码，值代表寄存器个数);
- *          其他:异常 (-1：报文错误；其他：可根据 `-128 - $返回值` 得到异常码)
+ * @brief    parses the original response data
+ * @param   ctx modbus handle
+ * @param   msg_length received data length
+ * @return  >=0: The length of the corresponding function code response object (such as 03 function code, the value represents the number of registers);
+ *          Others: exception (-1: message error; others: exception code can be obtained according to `-128 -$return value`)
  */
 int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length)
 {
@@ -1104,11 +1104,11 @@ int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length)
  */
 
 /**
- * @brief   打包异常响应数据
- * @param   ctx modbus 句柄
- * @param   sft modbus 信息头
- * @param   exception_code 异常码
- * @return  响应数据长度
+ * @brief    packaged exception response data
+ * @param   ctx modbus handle
+ * @param   sft modbus information header
+ * @param   exception_code exception code
+ * @return  response data length
  */
 static int agile_modbus_serialize_response_exception(agile_modbus_t *ctx, agile_modbus_sft_t *sft, int exception_code)
 {
@@ -1131,10 +1131,10 @@ static int agile_modbus_serialize_response_exception(agile_modbus_t *ctx, agile_
  */
 
 /**
- * @brief   从机 IO 设置
- * @param   buf 存放 IO 数据区
- * @param   index IO 索引(第几个 IO)
- * @param   status IO 状态
+ * @brief   slave IO settings
+ * @param   buf stores IO data area
+ * @param   index IO index (number of IO)
+ * @param   status IO status
  */
 void agile_modbus_slave_io_set(uint8_t *buf, int index, int status)
 {
@@ -1148,10 +1148,10 @@ void agile_modbus_slave_io_set(uint8_t *buf, int index, int status)
 }
 
 /**
- * @brief   读取从机 IO 状态
- * @param   buf IO 数据区域
- * @param   index IO 索引(第几个 IO)
- * @return  IO 状态(1/0)
+ * @brief   Read slave IO status
+ * @param   buf IO data area
+ * @param   index IO index (number of IO)
+ * @return  IO status (1/0)
  */
 uint8_t agile_modbus_slave_io_get(uint8_t *buf, int index)
 {
@@ -1164,10 +1164,10 @@ uint8_t agile_modbus_slave_io_get(uint8_t *buf, int index)
 }
 
 /**
- * @brief   从机寄存器设置
- * @param   buf 存放数据区
- * @param   index 寄存器索引(第几个寄存器)
- * @param   data 寄存器数据
+ * @brief   slave register settings
+ * @param   buf storage data area
+ * @param   index register index (register number)
+ * @param   data register data
  */
 void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data)
 {
@@ -1176,10 +1176,10 @@ void agile_modbus_slave_register_set(uint8_t *buf, int index, uint16_t data)
 }
 
 /**
- * @brief   读取从机寄存器数据
- * @param   buf 寄存器数据区域
- * @param   index 寄存器索引(第几个寄存器)
- * @return  寄存器数据
+ * @brief   Read slave register data
+ * @param   buf register data area
+ * @param   index register index (register number)
+ * @return  register data
  */
 uint16_t agile_modbus_slave_register_get(uint8_t *buf, int index)
 {
@@ -1189,16 +1189,16 @@ uint16_t agile_modbus_slave_register_get(uint8_t *buf, int index)
 }
 
 /**
- * @brief   从机数据处理
- * @param   ctx modbus 句柄
- * @param   msg_length 接收数据长度
- * @param   slave_strict 从机地址严格检查标志
- *     @arg 0: 不比对从机地址
- *     @arg 1: 比对从机地址
- * @param   slave_cb 从机回调函数
- * @param   slave_data 从机回调函数私有数据
- * @param   frame_length 存放 modbus 数据帧长度
- * @return  >=0:要响应的数据长度; 其他:异常
+ * @brief   slave data processing
+ * @param   ctx modbus handle
+ * @param   msg_length received data length
+ * @param   slave_strict slave address strict check flag
+ *     @arg 0: Do not compare slave addresses
+ *     @arg 1: Compare slave address
+ * @param   slave_cb slave callback function
+ * @param   slave_data slave callback function private data
+ * @param   frame_length stores modbus data frame length
+ * @return  >=0: length of data to be responded to; others: exception
  */
 int agile_modbus_slave_handle(agile_modbus_t *ctx, int msg_length, uint8_t slave_strict,
                               agile_modbus_slave_callback_t slave_cb, const void *slave_data, int *frame_length)

@@ -296,7 +296,7 @@ static void *cycle_entry(void *param)
         if (total_len && read_len == 0)
             is_reset = 1;
 
-        // 解包，为了防止脏数据，不能直接丢，往后挪一个字节继续解析
+        // Unpacking. In order to prevent dirty data, it cannot be discarded directly. Move one byte back to continue parsing.
         while (total_len > 0) {
             int rc = agile_modbus_slave_handle(ctx, total_len, 1, slave_callback, NULL, &frame_length);
             if (rc >= 0) {

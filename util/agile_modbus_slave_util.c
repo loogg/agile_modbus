@@ -1,7 +1,7 @@
 /**
  * @file    agile_modbus_slave_util.c
- * @brief   Agile Modbus 软件包提供的简易从机接入源文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus software package provides simple slave access source files
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2022-07-28
  *
  * @attention
@@ -28,11 +28,11 @@
  */
 
 /**
- * @brief   根据寄存器地址从映射对象数组中获取映射对象
- * @param   maps 映射对象数组
- * @param   nb_maps 数组数目
- * @param   address 寄存器地址
- * @return  !=NULL:映射对象; =NULL:失败
+ * @brief   Get the mapping object from the mapping object array according to the register address
+ * @param   maps mapping object array
+ * @param   nb_maps number of arrays
+ * @param   address register address
+ * @return  !=NULL: mapping object; =NULL: failure
  */
 static const agile_modbus_slave_util_map_t *get_map_by_addr(const agile_modbus_slave_util_map_t *maps, int nb_maps, int address)
 {
@@ -46,14 +46,14 @@ static const agile_modbus_slave_util_map_t *get_map_by_addr(const agile_modbus_s
 }
 
 /**
- * @brief   读取寄存器
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   slave_util 从机功能结构体
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   read register
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   slave_util slave function structure
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
@@ -129,14 +129,14 @@ static int read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *s
 }
 
 /**
- * @brief   写寄存器
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   slave_util 从机功能结构体
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   write register
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   slave_util slave function structure
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 static int write_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
@@ -232,14 +232,14 @@ static int write_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *
 }
 
 /**
- * @brief   掩码写寄存器
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   slave_util 从机功能结构体
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   mask write register
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   slave_util slave function structure
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 static int mask_write_register(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
@@ -279,14 +279,14 @@ static int mask_write_register(agile_modbus_t *ctx, struct agile_modbus_slave_in
 }
 
 /**
- * @brief   写并读寄存器
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   slave_util 从机功能结构体
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   Write and read registers
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   slave_util slave function structure
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 static int write_read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const agile_modbus_slave_util_t *slave_util)
 {
@@ -375,14 +375,14 @@ static int write_read_registers(agile_modbus_t *ctx, struct agile_modbus_slave_i
  */
 
 /**
- * @brief   从机回调函数
- * @param   ctx modbus 句柄
- * @param   slave_info 从机信息体
- * @param   data 私有数据
- * @return  =0:正常;
- *          <0:异常
- *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): 未知异常，从机不会打包响应数据)
- *             (其他负数异常码: 从机会打包异常响应数据)
+ * @brief   Slave callback function
+ * @param   ctx modbus handle
+ * @param   slave_info slave information body
+ * @param   data private data
+ * @return  =0: normal;
+ *          <0: Abnormal
+ *             (-AGILE_MODBUS_EXCEPTION_UNKNOW(-255): Unknown exception, the slave will not package the response data)
+ *             (Other negative exception codes: package exception response data from the opportunity)
  */
 int agile_modbus_slave_util_callback(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, const void *data)
 {

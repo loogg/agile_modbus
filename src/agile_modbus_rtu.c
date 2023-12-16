@@ -1,7 +1,7 @@
 /**
  * @file    agile_modbus_rtu.c
- * @brief   Agile Modbus 软件包 RTU 源文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus package RTU source file
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2021-12-02
  *
  * @attention
@@ -89,10 +89,10 @@ static const uint8_t _table_crc_lo[] =
  */
 
 /**
- * @brief   RTU CRC16 计算
- * @param   buffer 数据指针
- * @param   buffer_length 数据长度
- * @return  CRC16 值
+ * @brief   RTU CRC16 calculation
+ * @param   buffer data pointer
+ * @param   buffer_length data length
+ * @return  CRC16 value
  */
 static uint16_t agile_modbus_rtu_crc16(uint8_t *buffer, uint16_t buffer_length)
 {
@@ -111,10 +111,10 @@ static uint16_t agile_modbus_rtu_crc16(uint8_t *buffer, uint16_t buffer_length)
 }
 
 /**
- * @brief   RTU 设置地址接口
- * @param   ctx modbus 句柄
- * @param   slave 从机地址
- * @return  0:成功
+ * @brief   RTU sets the address interface
+ * @param   ctx modbus handle
+ * @param   slave slave address
+ * @return  0: success
  */
 static int agile_modbus_rtu_set_slave(agile_modbus_t *ctx, int slave)
 {
@@ -123,13 +123,13 @@ static int agile_modbus_rtu_set_slave(agile_modbus_t *ctx, int slave)
 }
 
 /**
- * @brief   RTU 构建基础请求报文接口(头部报文)
- * @param   ctx modbus 句柄
- * @param   function 功能码
- * @param   addr 寄存器地址
- * @param   nb 寄存器数目
- * @param   req 数据存放指针
- * @return  数据长度
+ * @brief   RTU builds the basic request message interface (header message)
+ * @param   ctx modbus handle
+ * @param   function function code
+ * @param   addr register address
+ * @param   nb number of registers
+ * @param   req data storage pointer
+ * @return  data length
  */
 static int agile_modbus_rtu_build_request_basis(agile_modbus_t *ctx, int function,
                                                 int addr, int nb,
@@ -146,10 +146,10 @@ static int agile_modbus_rtu_build_request_basis(agile_modbus_t *ctx, int functio
 }
 
 /**
- * @brief   RTU 构建基础响应报文接口(头部报文)
- * @param   sft modbus 头部参数结构体指针
- * @param   rsp 数据存放指针
- * @return  数据长度
+ * @brief   RTU builds the basic response message interface (header message)
+ * @param   sft modbus header parameter structure pointer
+ * @param   rsp data storage pointer
+ * @return  data length
  */
 static int agile_modbus_rtu_build_response_basis(agile_modbus_sft_t *sft, uint8_t *rsp)
 {
@@ -160,11 +160,11 @@ static int agile_modbus_rtu_build_response_basis(agile_modbus_sft_t *sft, uint8_
 }
 
 /**
- * @brief   RTU 准备响应接口
- * @note    该 API 会将 req_length 自动减去 AGILE_MODBUS_RTU_CHECKSUM_LENGTH 长度
- * @param   req 请求数据指针
- * @param   req_length 请求数据长度
- * @return  0 (RTU 没有事务标识符)
+ * @brief   RTU ready response interface
+ * @note    This API will automatically subtract the AGILE_MODBUS_RTU_CHECKSUM_LENGTH length from req_length
+ * @param   req request data pointer
+ * @param   req_length request data length
+ * @return  0 (RTU has no transaction identifier)
  */
 static int agile_modbus_rtu_prepare_response_tid(const uint8_t *req, int *req_length)
 {
@@ -174,11 +174,11 @@ static int agile_modbus_rtu_prepare_response_tid(const uint8_t *req, int *req_le
 }
 
 /**
- * @brief   RTU 预发送数据接口
- * @note    该 API 会计算 CRC16 并自动填入尾部
- * @param   req 数据存放指针
- * @param   req_length 已有数据长度
- * @return  数据长度
+ * @brief   RTU pre-send data interface
+ * @note    This API will calculate CRC16 and automatically fill in the tail
+ * @param   req data storage pointer
+ * @param   req_length existing data length
+ * @return  data length
  */
 static int agile_modbus_rtu_send_msg_pre(uint8_t *req, int req_length)
 {
@@ -190,11 +190,11 @@ static int agile_modbus_rtu_send_msg_pre(uint8_t *req, int req_length)
 }
 
 /**
- * @brief   RTU 检查接收数据完整性接口(CRC16 对比)
- * @param   ctx modbus 句柄
- * @param   msg 接收数据指针
- * @param   msg_length 有效数据长度
- * @return  >0:有效数据长度; 其他:异常
+ * @brief   RTU check received data integrity interface (CRC16 comparison)
+ * @param   ctx modbus handle
+ * @param   msg Receive data pointer
+ * @param   msg_length valid data length
+ * @return  >0: valid data length; others: exception
  */
 static int agile_modbus_rtu_check_integrity(agile_modbus_t *ctx, uint8_t *msg, const int msg_length)
 {
@@ -212,13 +212,13 @@ static int agile_modbus_rtu_check_integrity(agile_modbus_t *ctx, uint8_t *msg, c
 }
 
 /**
- * @brief   RTU 预检查确认接口(请求响应地址对比)
- * @note    如果请求地址是广播地址0，返回成功
- * @param   ctx modbus 句柄
- * @param   req 请求数据指针
- * @param   rsp 响应数据指针
- * @param   rsp_length 响应数据长度
- * @return  0:成功; 其他:异常
+ * @brief   RTU pre-check confirmation interface (request response address comparison)
+ * @note    If the request address is broadcast address 0, return success
+ * @param   ctx modbus handle
+ * @param   req request data pointer
+ * @param   rsp response data pointer
+ * @param   rsp_length response data length
+ * @return  0: success; others: exception
  */
 static int agile_modbus_rtu_pre_check_confirmation(agile_modbus_t *ctx, const uint8_t *req,
                                                    const uint8_t *rsp, int rsp_length)
@@ -240,7 +240,7 @@ static int agile_modbus_rtu_pre_check_confirmation(agile_modbus_t *ctx, const ui
  */
 
 /**
- * @brief   RTU 后端接口
+ * @brief   RTU backend interface
  */
 static const agile_modbus_backend_t agile_modbus_rtu_backend =
     {
@@ -265,13 +265,13 @@ static const agile_modbus_backend_t agile_modbus_rtu_backend =
  */
 
 /**
- * @brief   RTU 初始化
- * @param   ctx RTU 句柄
- * @param   send_buf 发送缓冲区
- * @param   send_bufsz 发送缓冲区大小
- * @param   read_buf 接收缓冲区
- * @param   read_bufsz 接收缓冲区大小
- * @return  0:成功
+ * @brief   RTU initialization
+ * @param   ctx RTU handle
+ * @param   send_buf send buffer
+ * @param   send_bufsz send buffer size
+ * @param   read_buf receive buffer
+ * @param   read_bufsz receive buffer size
+ * @return  0: success
  */
 int agile_modbus_rtu_init(agile_modbus_rtu_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
 {

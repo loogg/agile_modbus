@@ -134,9 +134,9 @@ static int mbtcp_session_create(int fd)
 static void *mbtcp_entry(void *param)
 {
     int server_fd = -1;
-    // select使用
+    // Select use
     fd_set readset, exceptset;
-    // select超时时间
+    // Select timeout
     struct timeval select_timeout;
 
 _tcp_start:

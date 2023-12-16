@@ -3,7 +3,7 @@ name: doxygen
 on:
   push:
     branches:
-      # 确保这是你正在使用的分支名称
+      # Make sure this is the branch name you are using
       - master
   workflow_dispatch:
 
@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          # 如果你文档需要 Git 子模块，取消注释下一行
+          # If your document requires Git submodules, uncomment the next line
           # submodules: true
 
       - name: Install Tools
@@ -34,9 +34,9 @@ jobs:
           cd doc/doxygen
           doxygen Doxyfile
 
-      - name: 部署文档
+      - name: Deployment documentation
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 这是文档部署到的分支名称
+          # This is the branch name to which the document is deployed
           branch: gh-pages
           folder: doc/doxygen/output

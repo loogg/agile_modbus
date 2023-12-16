@@ -1,7 +1,7 @@
 /**
  * @file    agile_modbus_tcp.c
- * @brief   Agile Modbus 软件包 TCP 源文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus package TCP source file
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2021-12-02
  *
  * @attention
@@ -23,10 +23,10 @@
  */
 
 /**
- * @brief   TCP 设置地址接口
- * @param   ctx modbus 句柄
- * @param   slave 从机地址
- * @return  0:成功
+ * @brief   TCP set address interface
+ * @param   ctx modbus handle
+ * @param   slave slave address
+ * @return  0: success
  */
 static int agile_modbus_tcp_set_slave(agile_modbus_t *ctx, int slave)
 {
@@ -35,13 +35,13 @@ static int agile_modbus_tcp_set_slave(agile_modbus_t *ctx, int slave)
 }
 
 /**
- * @brief   TCP 构建基础请求报文接口(头部报文)
- * @param   ctx modbus 句柄
- * @param   function 功能码
- * @param   addr 寄存器地址
- * @param   nb 寄存器数目
- * @param   req 数据存放指针
- * @return  数据长度
+ *@brief   TCP builds the basic request message interface (header message)
+ *@param   ctx modbus handle
+ *@param   function function code
+ *@param   addr register address
+ *@param   nb number of registers
+ *@param   req data storage pointer
+ *@return  data length
  */
 static int agile_modbus_tcp_build_request_basis(agile_modbus_t *ctx, int function,
                                                 int addr, int nb,
@@ -75,10 +75,10 @@ static int agile_modbus_tcp_build_request_basis(agile_modbus_t *ctx, int functio
 }
 
 /**
- * @brief   TCP 构建基础响应报文接口(头部报文)
- * @param   sft modbus 头部参数结构体指针
- * @param   rsp 数据存放指针
- * @return  数据长度
+ * @brief   TCP builds a basic response message interface (header message)
+ * @param   sft modbus header parameter structure pointer
+ * @param   rsp data storage pointer
+ * @return  data length
  */
 static int agile_modbus_tcp_build_response_basis(agile_modbus_sft_t *sft, uint8_t *rsp)
 {
@@ -103,10 +103,10 @@ static int agile_modbus_tcp_build_response_basis(agile_modbus_sft_t *sft, uint8_
 }
 
 /**
- * @brief   TCP 准备响应接口
- * @param   req 请求数据指针
- * @param   req_length 请求数据长度
- * @return  事务标识符
+ * @brief   TCP ready response interface
+ * @param   req request data pointer
+ * @param   req_length request data length
+ * @return  transaction identifier
  */
 static int agile_modbus_tcp_prepare_response_tid(const uint8_t *req, int *req_length)
 {
@@ -114,10 +114,10 @@ static int agile_modbus_tcp_prepare_response_tid(const uint8_t *req, int *req_le
 }
 
 /**
- * @brief   TCP 预发送数据接口(计算长度字段的值并存入)
- * @param   req 数据存放指针
- * @param   req_length 已有数据长度
- * @return  数据长度
+ * @brief   TCP pre-send data interface (calculate the value of the length field and store it)
+ * @param   req data storage pointer
+ * @param   req_length existing data length
+ * @return  data length
  */
 static int agile_modbus_tcp_send_msg_pre(uint8_t *req, int req_length)
 {
@@ -131,11 +131,11 @@ static int agile_modbus_tcp_send_msg_pre(uint8_t *req, int req_length)
 }
 
 /**
- * @brief   TCP 检查接收数据完整性接口
- * @param   ctx modbus 句柄
- * @param   msg 接收数据指针
- * @param   msg_length 有效数据长度
- * @return  有效数据长度
+ * @brief   TCP check receiving data integrity interface
+ * @param   ctx modbus handle
+ * @param   msg Receive data pointer
+ * @param   msg_length valid data length
+ * @return  valid data length
  */
 static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, const int msg_length)
 {
@@ -143,12 +143,12 @@ static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, c
 }
 
 /**
- * @brief   TCP 预检查确认接口(对比事务标识符和协议标识符)
- * @param   ctx modbus 句柄
- * @param   req 请求数据指针
- * @param   rsp 响应数据指针
- * @param   rsp_length 响应数据长度
- * @return  0:成功; 其他:异常
+ * @brief   TCP pre-check confirmation interface (compare transaction identifier and protocol identifier)
+ * @param   ctx modbus handle
+ * @param   req request data pointer
+ * @param   rsp response data pointer
+ * @param   rsp_length response data length
+ * @return  0: success; others: exception
  */
 static int agile_modbus_tcp_pre_check_confirmation(agile_modbus_t *ctx, const uint8_t *req,
                                                    const uint8_t *rsp, int rsp_length)
@@ -173,7 +173,7 @@ static int agile_modbus_tcp_pre_check_confirmation(agile_modbus_t *ctx, const ui
  */
 
 /**
- * @brief   TCP 后端接口
+ * @brief   TCP backend interface
  */
 static const agile_modbus_backend_t agile_modbus_tcp_backend =
     {
@@ -198,13 +198,13 @@ static const agile_modbus_backend_t agile_modbus_tcp_backend =
  */
 
 /**
- * @brief   TCP 初始化
- * @param   ctx TCP 句柄
- * @param   send_buf 发送缓冲区
- * @param   send_bufsz 发送缓冲区大小
- * @param   read_buf 接收缓冲区
- * @param   read_bufsz 接收缓冲区大小
- * @return  0:成功
+ * @brief   TCP initialization
+ * @param   ctx TCP handle
+ * @param   send_buf send buffer
+ * @param   send_bufsz send buffer size
+ * @param   read_buf receive buffer
+ * @param   read_bufsz receive buffer size
+ * @return  0: success
  */
 int agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_bufsz, uint8_t *read_buf, int read_bufsz)
 {

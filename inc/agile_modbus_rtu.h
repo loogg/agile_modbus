@@ -1,7 +1,7 @@
 /**
  * @file    agile_modbus_rtu.h
- * @brief   Agile Modbus 软件包 RTU 头文件
- * @author  马龙伟 (2544047213@qq.com)
+ * @brief   Agile Modbus package RTU header file
+ * @author  Ma Longwei (2544047213@qq.com)
  * @date    2021-12-02
  *
  * @attention
@@ -50,10 +50,10 @@ extern "C" {
  */
 
 /**
- * @brief   RTU 结构体
+ * @brief   RTU structure
  */
 typedef struct agile_modbus_rtu {
-    agile_modbus_t _ctx; /**< modbus 句柄 */
+    agile_modbus_t _ctx; /**< modbus handle */
 } agile_modbus_rtu_t;
 
 /**
