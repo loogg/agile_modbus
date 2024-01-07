@@ -14,6 +14,8 @@
 #ifndef __PKG_AGILE_MODBUS_RTU_H
 #define __PKG_AGILE_MODBUS_RTU_H
 
+#if AGILE_MODBUS_USING_RTU
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -75,5 +77,7 @@ int agile_modbus_rtu_init(agile_modbus_rtu_t *ctx, uint8_t *send_buf, int send_b
 #ifdef __cplusplus
 }
 #endif
+
+#endif /* AGILE_MODBUS_USING_RTU */
 
 #endif /* __PKG_AGILE_MODBUS_RTU_H */

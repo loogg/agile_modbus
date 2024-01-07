@@ -24,6 +24,20 @@ extern "C" {
  * @{
  */
 
+/** @defgroup Modbus_Module_Definition Modbus Module Definition
+ * @{
+ */
+#ifndef AGILE_MODBUS_USING_RTU
+#define AGILE_MODBUS_USING_RTU 1
+#endif /* AGILE_MODBUS_USING_RTU */
+
+#ifndef AGILE_MODBUS_USING_TCP
+#define AGILE_MODBUS_USING_TCP 1
+#endif /* AGILE_MODBUS_USING_TCP */
+/**
+ * @}
+ */
+
 /** @defgroup COMMON_Exported_Constants Common Exported Constants
  * @{
  */
@@ -50,7 +64,7 @@ extern "C" {
 /** @defgroup Modbus_Constants Modbus Constants
  * @{
  */
-#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.0" /**< Agile Modbus version number */
+#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.3" /**< Agile Modbus version number */
 
 #define AGILE_MODBUS_BROADCAST_ADDRESS 0 /**< Modbus broadcast address */
 
@@ -349,8 +363,13 @@ uint16_t agile_modbus_slave_register_get(uint8_t *buf, int index);
  */
 
 /* Include RTU and TCP module */
+#if AGILE_MODBUS_USING_RTU
 #include "agile_modbus_rtu.h"
+#endif /* AGILE_MODBUS_USING_RTU */
+
+#if AGILE_MODBUS_USING_TCP
 #include "agile_modbus_tcp.h"
+#endif /* AGILE_MODBUS_USING_TCP */
 
 #ifdef __cplusplus
 }

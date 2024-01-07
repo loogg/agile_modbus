@@ -14,6 +14,8 @@
 #ifndef __PKG_AGILE_MODBUS_TCP_H
 #define __PKG_AGILE_MODBUS_TCP_H
 
+#if AGILE_MODBUS_USING_TCP
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -80,4 +82,6 @@ int agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_b
 }
 #endif
 
-#endif
+#endif /* AGILE_MODBUS_USING_TCP */
+
+#endif /* __PKG_AGILE_MODBUS_TCP_H */

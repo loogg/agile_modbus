@@ -12,6 +12,9 @@
  */
 
 #include "agile_modbus.h"
+
+#if AGILE_MODBUS_USING_TCP
+
 #include "agile_modbus_tcp.h"
 
 /** @defgroup TCP TCP
@@ -224,3 +227,5 @@ int agile_modbus_tcp_init(agile_modbus_tcp_t *ctx, uint8_t *send_buf, int send_b
 /**
  * @}
  */
+
+#endif /* AGILE_MODBUS_USING_TCP */

@@ -12,6 +12,9 @@
  */
 
 #include "agile_modbus.h"
+
+#if AGILE_MODBUS_USING_RTU
+
 #include "agile_modbus_rtu.h"
 
 /** @defgroup RTU RTU
@@ -289,3 +292,5 @@ int agile_modbus_rtu_init(agile_modbus_rtu_t *ctx, uint8_t *send_buf, int send_b
 /**
  * @}
  */
+
+#endif /* AGILE_MODBUS_USING_RTU */

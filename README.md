@@ -266,7 +266,7 @@ agile_modbus_slave_handle(ctx, read_len, 0, agile_modbus_slave_util_callback, &s
 
   - Interface calling process
 
-    ![SlaveCallback](./figures/SlaveCallback.jpg)
+    ![agile_modbus_slave_util_callback](./figures/agile_modbus_slave_util_callback.png)
 
 - Introduction to `agile_modbus_slave_util_map`
 
