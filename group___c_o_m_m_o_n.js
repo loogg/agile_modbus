@@ -1,5 +1,6 @@
 var group___c_o_m_m_o_n =
 [
+    [ "Modbus Module Definition", "group___modbus___module___definition.html", null ],
     [ "Common Exported Constants", "group___c_o_m_m_o_n___exported___constants.html", "group___c_o_m_m_o_n___exported___constants" ],
     [ "Common Exported Types", "group___c_o_m_m_o_n___exported___types.html", "group___c_o_m_m_o_n___exported___types" ],
     [ "Common Private Constants", "group___c_o_m_m_o_n___private___constants.html", "group___c_o_m_m_o_n___private___constants" ],

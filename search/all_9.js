@@ -8,5 +8,6 @@ var searchData=
   ['modbus_20constants_170',['Modbus Constants',['../group___modbus___constants.html',1,'']]],
   ['modbus_20function_20codes_171',['Modbus Function Codes',['../group___modbus___function___codes.html',1,'']]],
   ['modbus_20master_172',['Modbus Master',['../group___modbus___master.html',1,'']]],
-  ['modbus_20slave_173',['Modbus Slave',['../group___modbus___slave.html',1,'']]]
+  ['modbus_20module_20definition_173',['Modbus Module Definition',['../group___modbus___module___definition.html',1,'']]],
+  ['modbus_20slave_174',['Modbus Slave',['../group___modbus___slave.html',1,'']]]
 ];
