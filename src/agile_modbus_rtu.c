@@ -171,6 +171,7 @@ static int agile_modbus_rtu_build_response_basis(agile_modbus_sft_t *sft, uint8_
  */
 static int agile_modbus_rtu_prepare_response_tid(const uint8_t *req, int *req_length)
 {
+    (void)req;
     (*req_length) -= AGILE_MODBUS_RTU_CHECKSUM_LENGTH;
     /* No TID */
     return 0;
@@ -203,7 +204,7 @@ static int agile_modbus_rtu_check_integrity(agile_modbus_t *ctx, uint8_t *msg, c
 {
     uint16_t crc_calculated;
     uint16_t crc_received;
-
+    (void)ctx;
     crc_calculated = agile_modbus_rtu_crc16(msg, msg_length - 2);
     crc_received = (msg[msg_length - 2] << 8) | msg[msg_length - 1];
 
@@ -228,6 +229,8 @@ static int agile_modbus_rtu_pre_check_confirmation(agile_modbus_t *ctx, const ui
 {
     /* Check responding slave is the slave we requested (except for broacast
      * request) */
+    (void)ctx;
+    (void)rsp_length;
     if (req[0] != rsp[0] && req[0] != AGILE_MODBUS_BROADCAST_ADDRESS)
         return -1;
 

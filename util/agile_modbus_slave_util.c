@@ -146,7 +146,7 @@ static int write_registers(agile_modbus_t *ctx, struct agile_modbus_slave_info *
     int nb = 0;
     const agile_modbus_slave_util_map_t *maps = NULL;
     int nb_maps = 0;
-
+    (void)ctx;
     switch (function) {
     case AGILE_MODBUS_FC_WRITE_SINGLE_COIL:
     case AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS: {
@@ -247,7 +247,7 @@ static int mask_write_register(agile_modbus_t *ctx, struct agile_modbus_slave_in
     int address = slave_info->address;
     const agile_modbus_slave_util_map_t *maps = slave_util->tab_registers;
     int nb_maps = slave_util->nb_registers;
-
+    (void)ctx;
     if (maps == NULL)
         return 0;
 
