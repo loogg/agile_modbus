@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Agile Modbus
-   &#160;<span id="projectnumber">1.1.3</span>
+   &#160;<span id="projectnumber">1.1.4</span>
    </div>
    <div id="projectbrief">Lightweight modbus protocol stack.</div>
   </td>
@@ -101,6 +101,9 @@ Collaboration diagram for Master Raw Operation Functions:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga393dc963d2fac3a2677e8b5f465e187a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a">agile_modbus_compute_response_length_from_request</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, uint8_t *req)</td></tr>
+<tr class="memdesc:ga393dc963d2fac3a2677e8b5f465e187a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the expected response data length.  <a href="group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a">More...</a><br /></td></tr>
+<tr class="separator:ga393dc963d2fac3a2677e8b5f465e187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga933c935a47f59cac74bcec545d266a4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">agile_modbus_serialize_raw_request</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, const uint8_t *raw_req, int raw_req_length)</td></tr>
 <tr class="memdesc:ga933c935a47f59cac74bcec545d266a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack the original data into a request message.  <a href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">More...</a><br /></td></tr>
 <tr class="separator:ga933c935a47f59cac74bcec545d266a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +113,68 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="ga393dc963d2fac3a2677e8b5f465e187a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga393dc963d2fac3a2677e8b5f465e187a">&#9670;&nbsp;</a></span>agile_modbus_compute_response_length_from_request()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int agile_modbus_compute_response_length_from_request </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *&#160;</td>
+          <td class="paramname"><em>ctx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>req</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the expected response data length. </p>
+<dl class="section note"><dt>Note</dt><dd>If it is a special function code, AGILE_MODBUS_MSG_LENGTH_UNDEFINED is returned, but this does not mean an exception. When agile_modbus_check_confirmation calls this API processing, it is considered that the return value of AGILE_MODBUS_MSG_LENGTH_UNDEFINED is also valid. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ctx</td><td>modbus handle </td></tr>
+    <tr><td class="paramname">req</td><td>request data pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>expected response data length </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="agile__modbus_8c_source.html#l00984">984</a> of file <a class="el" href="agile__modbus_8c_source.html">agile_modbus.c</a>.</p>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="group___master___raw___operation___functions_ga393dc963d2fac3a2677e8b5f465e187a_icgraph.png" border="0" usemap="#agroup___master___raw___operation___functions_ga393dc963d2fac3a2677e8b5f465e187a_icgraph" alt=""/></div>
+<map name="agroup___master___raw___operation___functions_ga393dc963d2fac3a2677e8b5f465e187a_icgraph" id="agroup___master___raw___operation___functions_ga393dc963d2fac3a2677e8b5f465e187a_icgraph">
+<area shape="rect" title="Calculate the expected response data length." alt="" coords="453,358,631,414"/>
+<area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="Check and confirm the slave response data." alt="" coords="247,365,405,407"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga2bd3952a30caed034f553123d822e9f0" title=" " alt="" coords="7,5,197,47"/>
+<area shape="rect" href="group___master___raw___operation___functions.html#ga601fca9b16febfb33bb26d780e672fc2" title="parses the original response data" alt="" coords="7,71,197,112"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga7908f73260d9afeba6ac2b571f163a97" title=" " alt="" coords="7,136,197,177"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga4124e9e8e7048da83855cb92ee7f6e63" title=" " alt="" coords="7,201,197,243"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga73504a775e6c4686d65987278599b3cf" title=" " alt="" coords="7,267,197,308"/>
+<area shape="rect" href="group___master___common___operation___functions.html#gadcc32581d649bf2cef5eee596bd67c6f" title=" " alt="" coords="7,332,197,373"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga63e99beaa9aa8350bbe2746bd8c123a1" title=" " alt="" coords="7,397,197,439"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga16f67b00a3a19f98ee69b2cce4b61d4e" title=" " alt="" coords="5,463,199,504"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga311e3dec8ebbcd502aebe99c6c964638" title=" " alt="" coords="7,528,197,569"/>
+<area shape="rect" href="group___master___common___operation___functions.html#gabd1613828b12acc5ecf56a7bd4f9e9d1" title=" " alt="" coords="7,593,197,635"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga8c566ab6fae153760cc24a18e0210fff" title=" " alt="" coords="7,659,197,700"/>
+<area shape="rect" href="group___master___common___operation___functions.html#ga2dc807ba747675d754e8095ab7dfb39f" title=" " alt="" coords="7,724,197,765"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ga933c935a47f59cac74bcec545d266a4e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ga933c935a47f59cac74bcec545d266a4e">&#9670;&nbsp;</a></span>agile_modbus_serialize_raw_request()</h2>
 
@@ -202,7 +267,7 @@ Here is the call graph for this function:</div>
 <area shape="rect" title="parses the original response data" alt="" coords="5,54,196,95"/>
 <area shape="rect" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="Check and confirm the slave response data." alt="" coords="249,17,407,58"/>
 <area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="Check the correctness of received data." alt="" coords="244,86,412,127"/>
-<area shape="rect" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="Calculate the expected response data length." alt="" coords="475,5,653,61"/>
+<area shape="rect" href="group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a" title="Calculate the expected response data length." alt="" coords="475,5,653,61"/>
 <area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="The length of data to be received after calculating the data element." alt="" coords="472,86,656,127"/>
 <area shape="rect" href="group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="The length of the data element to be received after calculating the function code." alt="" coords="460,151,668,193"/>
 </map>

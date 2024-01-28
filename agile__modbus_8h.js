@@ -61,6 +61,7 @@ var agile__modbus_8h =
     [ "agile_modbus_deserialize_write_and_read_registers", "group___master___common___operation___functions.html#ga16f67b00a3a19f98ee69b2cce4b61d4e", null ],
     [ "agile_modbus_serialize_report_slave_id", "group___master___common___operation___functions.html#gaeeb30388d6a90405340ab42f22412946", null ],
     [ "agile_modbus_deserialize_report_slave_id", "group___master___common___operation___functions.html#ga63e99beaa9aa8350bbe2746bd8c123a1", null ],
+    [ "agile_modbus_compute_response_length_from_request", "group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a", null ],
     [ "agile_modbus_serialize_raw_request", "group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e", null ],
     [ "agile_modbus_deserialize_raw_response", "group___master___raw___operation___functions.html#ga601fca9b16febfb33bb26d780e672fc2", null ],
     [ "agile_modbus_slave_handle", "group___slave___operation___functions.html#ga9ddc38e7ac14384c02b07b8927165247", null ],

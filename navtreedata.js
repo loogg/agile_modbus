@@ -25,23 +25,23 @@
 var NAVTREE =
 [
   [ "Agile Modbus", "index.html", [
-    [ "1. Introduction", "index.html#autotoc_md20", [
-      [ "1.1. Features", "index.html#autotoc_md21", null ],
-      [ "1.2. Directory structure", "index.html#autotoc_md22", null ],
-      [ "1.3. License", "index.html#autotoc_md23", null ]
+    [ "1. Introduction", "index.html#autotoc_md23", [
+      [ "1.1. Features", "index.html#autotoc_md24", null ],
+      [ "1.2. Directory structure", "index.html#autotoc_md25", null ],
+      [ "1.3. License", "index.html#autotoc_md26", null ]
     ] ],
-    [ "2. Use Agile Modbus", "index.html#autotoc_md24", [
-      [ "2.1. Transplantation", "index.html#autotoc_md25", null ],
-      [ "2.2. Host", "index.html#autotoc_md26", null ],
-      [ "2.3. Slave machine", "index.html#autotoc_md27", [
-        [ "2.3.1. Interface description", "index.html#autotoc_md28", null ],
-        [ "2.3.2. Simple slave access interface", "index.html#autotoc_md29", null ]
+    [ "2. Use Agile Modbus", "index.html#autotoc_md27", [
+      [ "2.1. Transplantation", "index.html#autotoc_md28", null ],
+      [ "2.2. Host", "index.html#autotoc_md29", null ],
+      [ "2.3. Slave machine", "index.html#autotoc_md30", [
+        [ "2.3.1. Interface description", "index.html#autotoc_md31", null ],
+        [ "2.3.2. Simple slave access interface", "index.html#autotoc_md32", null ]
       ] ],
-      [ "2.4. Example", "index.html#autotoc_md30", null ],
-      [ "2.5. Doxygen document generation", "index.html#autotoc_md31", null ]
+      [ "2.4. Example", "index.html#autotoc_md33", null ],
+      [ "2.5. Doxygen document generation", "index.html#autotoc_md34", null ]
     ] ],
-    [ "3. Support", "index.html#autotoc_md32", null ],
-    [ "4. Contact information & thanks", "index.html#autotoc_md33", null ],
+    [ "3. Support", "index.html#autotoc_md35", null ],
+    [ "4. Contact information & thanks", "index.html#autotoc_md36", null ],
     [ "Update record", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html", [
       [ "Agile Modbus 1.1.0 released", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md1", [
         [ "New function", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md2", null ],
@@ -56,16 +56,20 @@ var NAVTREE =
       ] ],
       [ "Agile Modbus 1.1.3 released", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md9", [
         [ "Revise", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md10", null ]
+      ] ],
+      [ "Agile Modbus 1.1.4 released", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md11", [
+        [ "Revise", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md12", null ],
+        [ "New function", "md__home_runner_work_agile_modbus_agile_modbus__change_log.html#autotoc_md13", null ]
       ] ]
     ] ],
     [ "Example description", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html", [
-      [ "1. Introduction", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md12", null ],
-      [ "2. Use", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md13", [
-        [ "2.1. Host", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md14", null ],
-        [ "2.2. Slave machine", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md15", null ],
-        [ "2.3. RTU transmission file", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md16", [
-          [ "2.3.1. Point-to-point transmission", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md17", null ],
-          [ "2.3.2. Broadcast transmission", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md18", null ]
+      [ "1. Introduction", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md15", null ],
+      [ "2. Use", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md16", [
+        [ "2.1. Host", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md17", null ],
+        [ "2.2. Slave machine", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md18", null ],
+        [ "2.3. RTU transmission file", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md19", [
+          [ "2.3.1. Point-to-point transmission", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md20", null ],
+          [ "2.3.2. Broadcast transmission", "md__home_runner_work_agile_modbus_agile_modbus_examples__r_e_a_d_m_e.html#autotoc_md21", null ]
         ] ]
       ] ]
     ] ],
@@ -96,7 +100,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "agile__modbus_8c.html",
-"group___r_t_u___private___functions.html#ga604461d9c9522b5352ceda519eeae006"
+"group___r_t_u___private___functions.html#ga1cb91eb00f06868c4c5b85e67f7ef126"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -16,7 +16,7 @@ var searchData=
   ['agile_5fmodbus_5fcommon_5finit_16',['agile_modbus_common_init',['../group___c_o_m_m_o_n___exported___functions.html#ga520bd6e5aa1521ebe24a058f8bc9e6f5',1,'agile_modbus.c']]],
   ['agile_5fmodbus_5fcompute_5fdata_5flength_5fafter_5fmeta_17',['agile_modbus_compute_data_length_after_meta',['../group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b',1,'agile_modbus.c']]],
   ['agile_5fmodbus_5fcompute_5fmeta_5flength_5fafter_5ffunction_18',['agile_modbus_compute_meta_length_after_function',['../group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9',1,'agile_modbus.c']]],
-  ['agile_5fmodbus_5fcompute_5fresponse_5flength_5ffrom_5frequest_19',['agile_modbus_compute_response_length_from_request',['../group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e',1,'agile_modbus.c']]],
+  ['agile_5fmodbus_5fcompute_5fresponse_5flength_5ffrom_5frequest_19',['agile_modbus_compute_response_length_from_request',['../group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a',1,'agile_modbus.c']]],
   ['agile_5fmodbus_5fdeserialize_5fmask_5fwrite_5fregister_20',['agile_modbus_deserialize_mask_write_register',['../group___master___common___operation___functions.html#ga2bd3952a30caed034f553123d822e9f0',1,'agile_modbus.c']]],
   ['agile_5fmodbus_5fdeserialize_5fraw_5fresponse_21',['agile_modbus_deserialize_raw_response',['../group___master___raw___operation___functions.html#ga601fca9b16febfb33bb26d780e672fc2',1,'agile_modbus.c']]],
   ['agile_5fmodbus_5fdeserialize_5fread_5fbits_22',['agile_modbus_deserialize_read_bits',['../group___master___common___operation___functions.html#ga7908f73260d9afeba6ac2b571f163a97',1,'agile_modbus.c']]],

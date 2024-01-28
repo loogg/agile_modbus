@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title=" " alt="" coords="5,54,199,95"/>
 <area shape="rect" id="node2" href="$group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89" title="Check and confirm the slave response data." alt="" coords="251,17,410,58"/>
 <area shape="rect" id="node4" href="$group___c_o_m_m_o_n___private___functions.html#ga20527b695df81a57b6244d30adaefecd" title="Check the correctness of received data." alt="" coords="247,86,415,127"/>
-<area shape="rect" id="node3" href="$group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e" title="Calculate the expected response data length." alt="" coords="478,5,655,61"/>
+<area shape="rect" id="node3" href="$group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a" title="Calculate the expected response data length." alt="" coords="478,5,655,61"/>
 <area shape="rect" id="node5" href="$group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="The length of data to be received after calculating the data element." alt="" coords="475,86,659,127"/>
 <area shape="rect" id="node6" href="$group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="The length of the data element to be received after calculating the function code." alt="" coords="463,151,671,193"/>
 </map>

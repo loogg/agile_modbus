@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Agile Modbus
-   &#160;<span id="projectnumber">1.1.3</span>
+   &#160;<span id="projectnumber">1.1.4</span>
    </div>
    <div id="projectbrief">Lightweight modbus protocol stack.</div>
   </td>
@@ -143,9 +143,6 @@ Functions</h2></td></tr>
 <tr class="memitem:ga5339847285ffab01ff36fe7203d3cb74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___c_o_m_m_o_n___exported___functions.html#ga5339847285ffab01ff36fe7203d3cb74">agile_modbus_receive_judge</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, <a class="el" href="group___c_o_m_m_o_n___exported___types.html#gaed0f4c33339c8ae9c8730abef9e0f02f">agile_modbus_msg_type_t</a> msg_type)</td></tr>
 <tr class="memdesc:ga5339847285ffab01ff36fe7203d3cb74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify the correctness of received data.  <a href="group___c_o_m_m_o_n___exported___functions.html#ga5339847285ffab01ff36fe7203d3cb74">More...</a><br /></td></tr>
 <tr class="separator:ga5339847285ffab01ff36fe7203d3cb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gace85a028849d8b24086d4443015bbe9e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e">agile_modbus_compute_response_length_from_request</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, uint8_t *req)</td></tr>
-<tr class="memdesc:gace85a028849d8b24086d4443015bbe9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the expected response data length.  <a href="group___master___private___functions.html#gace85a028849d8b24086d4443015bbe9e">More...</a><br /></td></tr>
-<tr class="separator:gace85a028849d8b24086d4443015bbe9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2f056137cfbb5cf0faaf10618b220c89"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89">agile_modbus_check_confirmation</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, uint8_t *req, uint8_t *rsp, int rsp_length)</td></tr>
 <tr class="memdesc:ga2f056137cfbb5cf0faaf10618b220c89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check and confirm the slave response data.  <a href="group___master___private___functions.html#ga2f056137cfbb5cf0faaf10618b220c89">More...</a><br /></td></tr>
 <tr class="separator:ga2f056137cfbb5cf0faaf10618b220c89"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,6 +190,9 @@ Functions</h2></td></tr>
 <tr class="separator:gaeeb30388d6a90405340ab42f22412946"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga63e99beaa9aa8350bbe2746bd8c123a1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___common___operation___functions.html#ga63e99beaa9aa8350bbe2746bd8c123a1">agile_modbus_deserialize_report_slave_id</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, int msg_length, int max_dest, uint8_t *dest)</td></tr>
 <tr class="separator:ga63e99beaa9aa8350bbe2746bd8c123a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga393dc963d2fac3a2677e8b5f465e187a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a">agile_modbus_compute_response_length_from_request</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, uint8_t *req)</td></tr>
+<tr class="memdesc:ga393dc963d2fac3a2677e8b5f465e187a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the expected response data length.  <a href="group___master___raw___operation___functions.html#ga393dc963d2fac3a2677e8b5f465e187a">More...</a><br /></td></tr>
+<tr class="separator:ga393dc963d2fac3a2677e8b5f465e187a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga933c935a47f59cac74bcec545d266a4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">agile_modbus_serialize_raw_request</a> (<a class="el" href="group___c_o_m_m_o_n___exported___types.html#gad07c76f52ecac865589bdea79112ccb6">agile_modbus_t</a> *ctx, const uint8_t *raw_req, int raw_req_length)</td></tr>
 <tr class="memdesc:ga933c935a47f59cac74bcec545d266a4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pack the original data into a request message.  <a href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">More...</a><br /></td></tr>
 <tr class="separator:ga933c935a47f59cac74bcec545d266a4e"><td class="memSeparator" colspan="2">&#160;</td></tr>

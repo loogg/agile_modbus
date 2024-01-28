@@ -26,7 +26,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Agile Modbus
-   &#160;<span id="projectnumber">1.1.3</span>
+   &#160;<span id="projectnumber">1.1.4</span>
    </div>
    <div id="projectbrief">Lightweight modbus protocol stack.</div>
   </td>
@@ -151,7 +151,19 @@ Agile Modbus 1.1.3 released</h1>
 Revise</h2>
 <p>2022-11-22: Ma Longwei</p>
 <ul>
-<li>Writing a single register in <code>agile_modbus_slave_handle</code> will point the <code>slave_info.buf</code> pointer to the local variable address. This address will be used by other variables after turning on compiler optimization. Modify it to point to the global variable address within the function. </li>
+<li>Writing a single register in <code>agile_modbus_slave_handle</code> will point the <code>slave_info.buf</code> pointer to the local variable address. This address will be used by other variables after turning on compiler optimization. Modify it to point to the global variable address within the function.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md11"></a>
+Agile Modbus 1.1.4 released</h1>
+<h2><a class="anchor" id="autotoc_md12"></a>
+Revise</h2>
+<ul>
+<li>fixed some warnings for some compiltion IDE such as ses</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md13"></a>
+New function</h2>
+<ul>
+<li>Add API <code>agile_modbus_compute_response_length_from_request</code>: Obtain the length of the response from the slave based on the request </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
