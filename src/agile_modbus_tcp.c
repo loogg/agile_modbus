@@ -113,6 +113,7 @@ static int agile_modbus_tcp_build_response_basis(agile_modbus_sft_t *sft, uint8_
  */
 static int agile_modbus_tcp_prepare_response_tid(const uint8_t *req, int *req_length)
 {
+    (void)req_length;
     return (req[0] << 8) + req[1];
 }
 
@@ -142,6 +143,8 @@ static int agile_modbus_tcp_send_msg_pre(uint8_t *req, int req_length)
  */
 static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, const int msg_length)
 {
+    (void)ctx;
+    (void)msg;
     return msg_length;
 }
 
@@ -156,6 +159,8 @@ static int agile_modbus_tcp_check_integrity(agile_modbus_t *ctx, uint8_t *msg, c
 static int agile_modbus_tcp_pre_check_confirmation(agile_modbus_t *ctx, const uint8_t *req,
                                                    const uint8_t *rsp, int rsp_length)
 {
+    (void)ctx;
+    (void)rsp_length;
     /* Check transaction ID */
     if (req[0] != rsp[0] || req[1] != rsp[1])
         return -1;
