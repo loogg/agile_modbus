@@ -184,7 +184,7 @@ $(document).ready(function(){initNavTree('agile__modbus__slave__util_8c_source.h
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">int</span> nb = 0;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *maps = NULL;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <span class="keywordtype">int</span> nb_maps = 0;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    (void)ctx;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="keywordflow">switch</span> (<span class="keyword">function</span>) {</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group___modbus___function___codes.html#ga4eaf03c1474a3397f847edd94200ec2f">AGILE_MODBUS_FC_WRITE_SINGLE_COIL</a>:</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="group___modbus___function___codes.html#ga437dc2cfaa22f7cfcafdd1f85b5a6955">AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS</a>: {</div>
@@ -275,7 +275,7 @@ $(document).ready(function(){initNavTree('agile__modbus__slave__util_8c_source.h
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordtype">int</span> address = slave_info-&gt;<a class="code" href="structagile__modbus__slave__info.html#a9e347581c0d5f0c54bd8aaf2ef920e00">address</a>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">const</span> <a class="code" href="structagile__modbus__slave__util__map.html">agile_modbus_slave_util_map_t</a> *maps = slave_util-&gt;<a class="code" href="structagile__modbus__slave__util.html#ae21eece6d89b5d46839496e9281108f8">tab_registers</a>;</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordtype">int</span> nb_maps = slave_util-&gt;<a class="code" href="structagile__modbus__slave__util.html#ac7c7bd2cc1687ae7c291a054d3071114">nb_registers</a>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    (void)ctx;</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> (maps == NULL)</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
