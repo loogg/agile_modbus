@@ -65,3 +65,13 @@
 2022-11-22: Ma Longwei
 
 * Writing a single register in `agile_modbus_slave_handle` will point the `slave_info.buf` pointer to the local variable address. This address will be used by other variables after turning on compiler optimization. Modify it to point to the global variable address within the function.
+
+## Agile Modbus 1.1.4 released
+
+### Revise
+
+* fixed some warnings for some compiltion IDE such as ses
+
+### New function
+
+* Add API `agile_modbus_compute_response_length_from_request`: Obtain the length of the response from the slave based on the request

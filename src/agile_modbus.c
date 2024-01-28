@@ -332,54 +332,6 @@ int agile_modbus_receive_judge(agile_modbus_t *ctx, int msg_length, agile_modbus
  */
 
 /**
- * @brief   Calculate the expected response data length
- * @note    If it is a special function code, AGILE_MODBUS_MSG_LENGTH_UNDEFINED is returned, but this does not mean an exception.
- *          When agile_modbus_check_confirmation calls this API processing, it is considered that the return value of AGILE_MODBUS_MSG_LENGTH_UNDEFINED is also valid.
- * @param   ctx modbus handle
- * @param   req request data pointer
- * @return  expected response data length
- */
-static int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx, uint8_t *req)
-{
-    int length;
-    const int offset = ctx->backend->header_length;
-
-    switch (req[offset]) {
-    case AGILE_MODBUS_FC_READ_COILS:
-    case AGILE_MODBUS_FC_READ_DISCRETE_INPUTS: {
-        /* Header + nb values (code from write_bits) */
-        int nb = (req[offset + 3] << 8) | req[offset + 4];
-        length = 2 + (nb / 8) + ((nb % 8) ? 1 : 0);
-    } break;
-
-    case AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS:
-    case AGILE_MODBUS_FC_READ_HOLDING_REGISTERS:
-    case AGILE_MODBUS_FC_READ_INPUT_REGISTERS:
-        /* Header + 2 * nb values */
-        length = 2 + 2 * (req[offset + 3] << 8 | req[offset + 4]);
-        break;
-
-    case AGILE_MODBUS_FC_WRITE_SINGLE_COIL:
-    case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER:
-    case AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS:
-    case AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS:
-        length = 5;
-        break;
-
-    case AGILE_MODBUS_FC_MASK_WRITE_REGISTER:
-        length = 7;
-        break;
-
-    default:
-        /* The response is device specific (the header provides the
-            length) */
-        return AGILE_MODBUS_MSG_LENGTH_UNDEFINED;
-    }
-
-    return offset + length + ctx->backend->checksum_length;
-}
-
-/**
  * @brief   Check and confirm the slave response data
  * @param   ctx modbus handle
  * @param   req request data pointer
@@ -1020,6 +972,54 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
 /** @defgroup Master_Raw_Operation_Functions Master Raw Operation Functions
  * @{
  */
+
+/**
+ * @brief   Calculate the expected response data length
+ * @note    If it is a special function code, AGILE_MODBUS_MSG_LENGTH_UNDEFINED is returned, but this does not mean an exception.
+ *          When agile_modbus_check_confirmation calls this API processing, it is considered that the return value of AGILE_MODBUS_MSG_LENGTH_UNDEFINED is also valid.
+ * @param   ctx modbus handle
+ * @param   req request data pointer
+ * @return  expected response data length
+ */
+int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx, uint8_t *req)
+{
+    int length;
+    const int offset = ctx->backend->header_length;
+
+    switch (req[offset]) {
+    case AGILE_MODBUS_FC_READ_COILS:
+    case AGILE_MODBUS_FC_READ_DISCRETE_INPUTS: {
+        /* Header + nb values (code from write_bits) */
+        int nb = (req[offset + 3] << 8) | req[offset + 4];
+        length = 2 + (nb / 8) + ((nb % 8) ? 1 : 0);
+    } break;
+
+    case AGILE_MODBUS_FC_WRITE_AND_READ_REGISTERS:
+    case AGILE_MODBUS_FC_READ_HOLDING_REGISTERS:
+    case AGILE_MODBUS_FC_READ_INPUT_REGISTERS:
+        /* Header + 2 * nb values */
+        length = 2 + 2 * (req[offset + 3] << 8 | req[offset + 4]);
+        break;
+
+    case AGILE_MODBUS_FC_WRITE_SINGLE_COIL:
+    case AGILE_MODBUS_FC_WRITE_SINGLE_REGISTER:
+    case AGILE_MODBUS_FC_WRITE_MULTIPLE_COILS:
+    case AGILE_MODBUS_FC_WRITE_MULTIPLE_REGISTERS:
+        length = 5;
+        break;
+
+    case AGILE_MODBUS_FC_MASK_WRITE_REGISTER:
+        length = 7;
+        break;
+
+    default:
+        /* The response is device specific (the header provides the
+            length) */
+        return AGILE_MODBUS_MSG_LENGTH_UNDEFINED;
+    }
+
+    return offset + length + ctx->backend->checksum_length;
+}
 
 /**
  * @brief   Pack the original data into a request message

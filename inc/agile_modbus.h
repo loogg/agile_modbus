@@ -64,7 +64,7 @@ extern "C" {
 /** @defgroup Modbus_Constants Modbus Constants
  * @{
  */
-#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.3" /**< Agile Modbus version number */
+#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.4" /**< Agile Modbus version number */
 
 #define AGILE_MODBUS_BROADCAST_ADDRESS 0 /**< Modbus broadcast address */
 
@@ -327,6 +327,7 @@ int agile_modbus_deserialize_report_slave_id(agile_modbus_t *ctx, int msg_length
 /** @addtogroup Master_Raw_Operation_Functions
  * @{
  */
+int agile_modbus_compute_response_length_from_request(agile_modbus_t *ctx, uint8_t *req);
 int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length);
 int agile_modbus_deserialize_raw_response(agile_modbus_t *ctx, int msg_length);
 /**
