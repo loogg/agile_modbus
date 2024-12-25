@@ -4,7 +4,7 @@
 
 This example provides functional demonstration of RTU / TCP master and slave.
 
-Using `gcc` under `WSL` or `Linux`, you can directly `make all` to compile all examples and run the test program on your computer.
+Using `cmake` under `WSL` or `Linux`, you can directly compile all examples and run the test program on your computer.
 
 Directory Structure:
 
@@ -26,7 +26,7 @@ The tools you need to prepare are as follows:
 - Modbus Poll
 - Modbus Slave
 
-Type `make clean` 、 `make all` on the command line.
+Type `cmake -B build` 、 `cmake --build build` on the command line.
 
 ### 2.1. Host
 
@@ -44,7 +44,7 @@ Type `make clean` 、 `make all` on the command line.
 
     ![ModbusSlaveRTUConnection](./figures/ModbusSlaveRTUConnection.jpg)
 
-  - Enter the `rtu_master` directory, `./RtuMaster /dev/ttySX` to run the `RTU` host example, `ttySX` is the other of a pair of virtual serial ports
+  - Enter the `build/bin` directory, `./RtuMaster /dev/ttySX` to run the `RTU` host example, `ttySX` is the other of a pair of virtual serial ports
 
     ![RTUMaster](./figures/RTUMaster.jpg)
 
@@ -56,7 +56,7 @@ Type `make clean` 、 `make all` on the command line.
 
     ![ModbusSlaveTCPConnection](./figures/ModbusSlaveTCPConnection.jpg)
 
-  - Enter the `tcp_master` directory, `./TcpMaster 127.0.0.1 502` and run the `TCP` host example
+  - Enter the `build/bin` directory, `./TcpMaster 127.0.0.1 502` and run the `TCP` host example
 
     ![TCPMaster](./figures/TCPMaster.jpg)
 
@@ -87,7 +87,7 @@ use:
 
   ![VirtualCom](./figures/VirtualCom.jpg)
 
-- Enter the `slave` directory, `./ModbusSlave /dev/ttyS2 1025` to run the example
+- Enter the `build/bin` directory, `./ModbusSlave /dev/ttyS2 1025` to run the example
 
   /dev/ttySX: One of the virtual serial ports
 
@@ -164,7 +164,7 @@ File data is transferred in packets, with a maximum size of 1024 bytes per packe
 
 #### 2.3.1. Point-to-point transmission
 
-- Enter the `rtu_p2p` directory and open `Linux Shell`. The demonstration effect is as follows
+- Enter the `build/bin` directory and open `Linux Shell`. The demonstration effect is as follows
 
   **Notice**:
 
@@ -194,7 +194,7 @@ serial_send(_fd, _dirty_buf, sizeof(_dirty_buf));
 
 Under such a fast data flow, `broadcast_slave` must use the `frame_length` parameter in `agile_modbus_slave_handle` to handle sticky packets.
 
-- Enter the `rtu_broadcast` directory and open `Linux Shell`. The demonstration effect is as follows
+- Enter the `build/bin` directory and open `Linux Shell`. The demonstration effect is as follows
 
   **Notice**:
 
