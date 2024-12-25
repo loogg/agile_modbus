@@ -90,7 +90,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <div class="textblock"><h1><a class="anchor" id="autotoc_md15"></a>
 1. Introduction</h1>
 <p>This example provides functional demonstration of RTU / TCP master and slave.</p>
-<p>Using <code>gcc</code> under <code>WSL</code> or <code>Linux</code>, you can directly <code>make all</code> to compile all examples and run the test program on your computer.</p>
+<p>Using <code>cmake</code> under <code>WSL</code> or <code>Linux</code>, you can directly compile all examples and run the test program on your computer.</p>
 <p>Directory Structure:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -118,7 +118,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <li>Modbus Poll</li>
 <li>Modbus Slave</li>
 </ul>
-<p>Type <code>make clean</code> 、 <code>make all</code> on the command line.</p>
+<p>Type <code>cmake -B build</code> 、 <code>cmake --build build</code> on the command line.</p>
 <h2><a class="anchor" id="autotoc_md17"></a>
 2.1. Host</h2>
 <ul>
@@ -132,7 +132,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <li><p class="startli"><code>Modbus Slave</code> connection, set as shown below</p>
 <p class="startli"><img src="./figures/ModbusSlaveRTUConnection.jpg" alt="ModbusSlaveRTUConnection" class="inline"/></p>
 </li>
-<li><p class="startli">Enter the <code>rtu_master</code> directory, <code>./RtuMaster /dev/ttySX</code> to run the <code>RTU</code> host example, <code>ttySX</code> is the other of a pair of virtual serial ports</p>
+<li><p class="startli">Enter the <code>build/bin</code> directory, <code>./RtuMaster /dev/ttySX</code> to run the <code>RTU</code> host example, <code>ttySX</code> is the other of a pair of virtual serial ports</p>
 <p class="startli"><img src="./figures/RTUMaster.jpg" alt="RTUMaster" class="inline"/></p>
 </li>
 </ul>
@@ -142,7 +142,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <li><p class="startli"><code>Modbus Slave</code> connection, set as shown below</p>
 <p class="startli"><img src="./figures/ModbusSlaveTCPConnection.jpg" alt="ModbusSlaveTCPConnection" class="inline"/></p>
 </li>
-<li><p class="startli">Enter the <code>tcp_master</code> directory, <code>./TcpMaster 127.0.0.1 502</code> and run the <code>TCP</code> host example</p>
+<li><p class="startli">Enter the <code>build/bin</code> directory, <code>./TcpMaster 127.0.0.1 502</code> and run the <code>TCP</code> host example</p>
 <p class="startli"><img src="./figures/TCPMaster.jpg" alt="TCPMaster" class="inline"/></p>
 </li>
 </ul>
@@ -175,7 +175,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <li><p class="startli">Use virtual serial port software to virtualize a pair of serial ports</p>
 <p class="startli"><img src="./figures/VirtualCom.jpg" alt="VirtualCom" class="inline"/></p>
 </li>
-<li><p class="startli">Enter the <code>slave</code> directory, <code>./ModbusSlave /dev/ttyS2 1025</code> to run the example</p>
+<li><p class="startli">Enter the <code>build/bin</code> directory, <code>./ModbusSlave /dev/ttyS2 1025</code> to run the example</p>
 <p class="startli">/dev/ttySX: One of the virtual serial ports</p>
 <p class="startli">1025: Listening port number. If you do not have <code>root</code> permissions, the port number must be greater than <code>1024</code></p>
 </li>
@@ -254,7 +254,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <h3><a class="anchor" id="autotoc_md20"></a>
 2.3.1. Point-to-point transmission</h3>
 <ul>
-<li><p class="startli">Enter the <code>rtu_p2p</code> directory and open <code>Linux Shell</code>. The demonstration effect is as follows</p>
+<li><p class="startli">Enter the <code>build/bin</code> directory and open <code>Linux Shell</code>. The demonstration effect is as follows</p>
 <p class="startli"><b>Notice</b>:</p><ul>
 <li>The transferred files must be general files. Executable files, directories, etc. are not supported.</li>
 <li>The file path must be the path in <code>Linux</code> environment</li>
@@ -275,7 +275,7 @@ $(document).ready(function(){initNavTree('md__home_runner_work_agile_modbus_agil
 <div class="ttc" id="agroup___master___raw___operation___functions_html_ga933c935a47f59cac74bcec545d266a4e"><div class="ttname"><a href="group___master___raw___operation___functions.html#ga933c935a47f59cac74bcec545d266a4e">agile_modbus_serialize_raw_request</a></div><div class="ttdeci">int agile_modbus_serialize_raw_request(agile_modbus_t *ctx, const uint8_t *raw_req, int raw_req_length)</div><div class="ttdoc">Pack the original data into a request message.</div><div class="ttdef"><b>Definition:</b> <a href="agile__modbus_8c_source.html#l01031">agile_modbus.c:1031</a></div></div>
 </div><!-- fragment --><p>Under such a fast data flow, <code>broadcast_slave</code> must use the <code>frame_length</code> parameter in <code>agile_modbus_slave_handle</code> to handle sticky packets.</p>
 <ul>
-<li><p class="startli">Enter the <code>rtu_broadcast</code> directory and open <code>Linux Shell</code>. The demonstration effect is as follows</p>
+<li><p class="startli">Enter the <code>build/bin</code> directory and open <code>Linux Shell</code>. The demonstration effect is as follows</p>
 <p class="startli"><b>Notice</b>:</p><ul>
 <li>The transferred files must be general files. Executable files, directories, etc. are not supported.</li>
 <li>The file path must be the path in <code>Linux</code> environment</li>
