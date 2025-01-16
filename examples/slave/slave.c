@@ -18,6 +18,10 @@ extern int rtu_slave_init(const char *dev, pthread_t *tid);
 extern int tcp_slave_init(int port, pthread_t *tid);
 
 pthread_mutex_t slave_mtx;
+uint8_t tab_bits[1000];
+uint8_t tab_input_bits[1000];
+uint16_t tab_registers[1000];
+uint16_t tab_input_registers[1000];
 
 static int addr_check(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info)
 {
@@ -49,6 +53,22 @@ int main(int argc, char *argv[])
     }
 
     pthread_mutex_init(&slave_mtx, NULL);
+
+    for (int i = 0; i < sizeof(tab_bits); i++) {
+        tab_bits[i] = i % 2;
+    }
+
+    for (int i = 0; i < sizeof(tab_input_bits); i++) {
+        tab_input_bits[i] = i % 2;
+    }
+
+    for (int i = 0; i < sizeof(tab_registers) / sizeof(tab_registers[0]); i++) {
+        tab_registers[i] = i;
+    }
+
+    for (int i = 0; i < sizeof(tab_input_registers) / sizeof(tab_input_registers[0]); i++) {
+        tab_input_registers[i] = i;
+    }
 
     rt_tick_init();
 

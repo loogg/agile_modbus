@@ -28,19 +28,30 @@ extern "C" {
  * @{
  */
 
+/** @defgroup SLAVE_UTIL_Constants Slave Util Constants
+ * @{
+ */
+#define AGILE_MODBUS_SLAVE_UTIL_MAP_BUFSZ 256 /**< Slave register mapping buffer size */
+/**
+ * @}
+ */
+
 /** @defgroup SLAVE_UTIL_Exported_Types Slave Util Exported Types
  * @{
  */
+typedef struct agile_modbus_slave_util_map agile_modbus_slave_util_map_t; /**< slave register mapping structure */
 
 /**
  * @brief   slave register mapping structure
  */
-typedef struct agile_modbus_slave_util_map {
-    int start_addr;                                       /**<Start address */
-    int end_addr;                                         /**< end address */
-    int (*get)(void *buf, int bufsz);                     /**< Get register data interface */
-    int (*set)(int index, int len, void *buf, int bufsz); /**< Set register data interface */
-} agile_modbus_slave_util_map_t;
+struct agile_modbus_slave_util_map {
+    int start_addr;                                                                                 /**<Start address */
+    int end_addr;                                                                                   /**< end address */
+    int (*get)(const agile_modbus_slave_util_map_t *map, void *buf, int bufsz);                     /**< Get register data interface */
+    int (*set)(const agile_modbus_slave_util_map_t *map, int index, int len, void *buf, int bufsz); /**< Set register data interface */
+    int addr_offset;                                                                                /**< Address offset */
+    int addr_len;                                                                                   /**< Address length */
+};
 
 /**
  * @brief   slave function structure

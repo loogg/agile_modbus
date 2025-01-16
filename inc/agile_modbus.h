@@ -64,7 +64,7 @@ extern "C" {
 /** @defgroup Modbus_Constants Modbus Constants
  * @{
  */
-#define AGILE_MODBUS_VERSION_STRING "AMB_1.1.4" /**< Agile Modbus version number */
+#define AGILE_MODBUS_VERSION_STRING "AMB_2.0.0" /**< Agile Modbus version number */
 
 #define AGILE_MODBUS_BROADCAST_ADDRESS 0 /**< Modbus broadcast address */
 

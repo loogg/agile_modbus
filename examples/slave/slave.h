@@ -7,6 +7,7 @@ extern "C" {
 
 #include <stdint.h>
 #include <pthread.h>
+#include <string.h>
 #include "agile_modbus.h"
 #include "agile_modbus_slave_util.h"
 
