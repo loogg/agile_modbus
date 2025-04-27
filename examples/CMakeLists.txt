@@ -24,6 +24,8 @@ set(EXECUTABLE_OUTPUT_PATH ${EXEC_PATH})
 link_directories(${LIB_PATH})
 link_libraries(${MODBUS_LIB} ${COMMON_LIB})
 
+find_package(Threads REQUIRED)
+
 add_subdirectory(rtu_broadcast)
 add_subdirectory(rtu_master)
 add_subdirectory(rtu_p2p)
