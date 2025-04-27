@@ -1,5 +1,7 @@
 <map id="agile_modbus_slave_io_get" name="agile_modbus_slave_io_get">
-<area shape="rect" id="node1" title="Read slave IO status." alt="" coords="375,5,529,47"/>
-<area shape="rect" id="node2" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="208,13,327,39"/>
-<area shape="rect" id="node3" href="$group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b" title="Slave callback function." alt="" coords="5,5,160,47"/>
+<area shape="rect" id="Node000001" title="Read slave IO status." alt="" coords="375,5,529,45"/>
+<area shape="rect" id="Node000002" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="208,13,327,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="361,28,327,28,327,23,361,23"/>
+<area shape="rect" id="Node000003" href="$group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b" title="Slave callback function." alt="" coords="5,5,160,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="194,28,160,28,160,23,194,23"/>
 </map>

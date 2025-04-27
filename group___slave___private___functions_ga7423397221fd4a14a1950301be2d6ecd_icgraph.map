@@ -1,4 +1,5 @@
 <map id="agile_modbus_serialize_response_exception" name="agile_modbus_serialize_response_exception">
-<area shape="rect" id="node1" title="packaged exception response data" alt="" coords="208,5,383,47"/>
-<area shape="rect" id="node2" href="$group___slave___operation___functions.html#ga9ddc38e7ac14384c02b07b8927165247" title="slave data processing" alt="" coords="5,5,160,47"/>
+<area shape="rect" id="Node000001" title="packaged exception response data" alt="" coords="208,5,383,45"/>
+<area shape="rect" id="Node000002" href="$group___slave___operation___functions.html#ga9ddc38e7ac14384c02b07b8927165247" title="slave data processing" alt="" coords="5,5,160,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="194,28,160,28,160,23,194,23"/>
 </map>

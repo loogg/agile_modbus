@@ -1,5 +1,7 @@
 <map id="agile_modbus_rtu_crc16" name="agile_modbus_rtu_crc16">
-<area shape="rect" id="node1" title="RTU CRC16 calculation." alt="" coords="236,46,416,73"/>
-<area shape="rect" id="node2" href="$group___r_t_u___private___functions.html#gaa7ff9945c4910eafae9b737957ae6cad" title="RTU check received data integrity interface (CRC16 comparison)" alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node3" href="$group___r_t_u___private___functions.html#ga1cb91eb00f06868c4c5b85e67f7ef126" title="RTU pre&#45;send data interface." alt="" coords="9,71,185,112"/>
+<area shape="rect" id="Node000001" title="RTU CRC16 calculation." alt="" coords="236,45,416,70"/>
+<area shape="rect" id="Node000002" href="$group___r_t_u___private___functions.html#gaa7ff9945c4910eafae9b737957ae6cad" title="RTU check received data integrity interface (CRC16 comparison)" alt="" coords="5,5,188,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,46,188,41,189,35,223,40"/>
+<area shape="rect" id="Node000003" href="$group___r_t_u___private___functions.html#ga1cb91eb00f06868c4c5b85e67f7ef126" title="RTU pre&#45;send data interface." alt="" coords="9,69,185,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="223,74,185,80,184,74,222,69"/>
 </map>

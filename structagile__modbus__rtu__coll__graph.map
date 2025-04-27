@@ -1,5 +1,7 @@
 <map id="agile_modbus_rtu" name="agile_modbus_rtu">
-<area shape="rect" id="node1" title="RTU structure." alt="" coords="23,184,162,211"/>
-<area shape="rect" id="node2" href="$structagile__modbus.html" title="Agile Modbus structure." alt="" coords="36,95,149,121"/>
-<area shape="rect" id="node3" href="$structagile__modbus__backend.html" title="Agile Modbus backend interface structure." alt="" coords="5,5,180,32"/>
+<area shape="rect" id="Node000001" title="RTU structure." alt="" coords="23,181,162,207"/>
+<area shape="rect" id="Node000002" href="$structagile__modbus.html" title="Agile Modbus structure." alt="" coords="36,93,149,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="95,133,95,181,90,181,90,133"/>
+<area shape="rect" id="Node000003" href="$structagile__modbus__backend.html" title="Agile Modbus backend interface structure." alt="" coords="5,5,180,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="95,45,95,93,90,93,90,45"/>
 </map>

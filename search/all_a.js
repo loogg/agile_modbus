@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['nb_175',['nb',['../structagile__modbus__slave__info.html#aeb6268b26910a7839eb1f515c8ad1e4b',1,'agile_modbus_slave_info']]],
-  ['nb_5fbits_176',['nb_bits',['../structagile__modbus__slave__util.html#a54d8cd5ea2ece03fc4748f857d433470',1,'agile_modbus_slave_util']]],
-  ['nb_5finput_5fbits_177',['nb_input_bits',['../structagile__modbus__slave__util.html#a81fb44a47ea6e8dc7eb190b87ddb6dc4',1,'agile_modbus_slave_util']]],
-  ['nb_5finput_5fregisters_178',['nb_input_registers',['../structagile__modbus__slave__util.html#a3c2c64bb74a0cab7f34f303fa3a37b31',1,'agile_modbus_slave_util']]],
-  ['nb_5fregisters_179',['nb_registers',['../structagile__modbus__slave__util.html#ac7c7bd2cc1687ae7c291a054d3071114',1,'agile_modbus_slave_util']]]
+  ['definition_0',['Modbus Module Definition',['../group___modbus___module___definition.html',1,'']]],
+  ['description_1',['description',['../index.html#autotoc_md31',1,'2.3.1. Interface description'],['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html',1,'Example description']]],
+  ['directory_20structure_2',['1.2. Directory structure',['../index.html#autotoc_md25',1,'']]],
+  ['document_20generation_3',['2.5. Doxygen document generation',['../index.html#autotoc_md34',1,'']]],
+  ['done_4',['done',['../structagile__modbus__slave__util.html#abc6323db9d3873c30bee0e7efe96f4b8',1,'agile_modbus_slave_util']]],
+  ['doxygen_20document_20generation_5',['2.5. Doxygen document generation',['../index.html#autotoc_md34',1,'']]]
 ];

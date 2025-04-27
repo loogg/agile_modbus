@@ -1,4 +1,5 @@
 <map id="agile_modbus_slave_util" name="agile_modbus_slave_util">
-<area shape="rect" id="node1" title="slave function structure" alt="" coords="5,153,188,180"/>
-<area shape="rect" id="node2" href="$structagile__modbus__slave__util__map.html" title="slave register mapping structure" alt="" coords="19,5,174,47"/>
+<area shape="rect" id="Node000001" title="slave function structure" alt="" coords="5,152,188,177"/>
+<area shape="rect" id="Node000002" href="$structagile__modbus__slave__util__map.html" title="slave register mapping structure" alt="" coords="19,5,174,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,59,99,152,94,152,94,59"/>
 </map>

@@ -1,6 +1,9 @@
 <map id="read_registers" name="read_registers">
-<area shape="rect" id="node1" title="read register" alt="" coords="5,78,120,105"/>
-<area shape="rect" id="node2" href="$group___slave___operation___functions.html#gab8a9c04d3fe520c9323600940cf080eb" title="slave IO settings" alt="" coords="168,5,323,47"/>
-<area shape="rect" id="node3" href="$group___slave___operation___functions.html#gae9ba6989bbe265b05caeba41a28db038" title="slave register settings" alt="" coords="168,71,323,112"/>
-<area shape="rect" id="node4" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga30993ba8e98dab4ab152116fa0cc6742" title="Get the mapping object from the mapping object array according to the register address." alt="" coords="176,137,315,163"/>
+<area shape="rect" id="Node000001" title="read register" alt="" coords="5,77,120,102"/>
+<area shape="rect" id="Node000002" href="$group___slave___operation___functions.html#gab8a9c04d3fe520c9323600940cf080eb" title="slave IO settings" alt="" coords="168,5,323,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,74,174,47,176,52,101,79"/>
+<area shape="rect" id="Node000003" href="$group___slave___operation___functions.html#gae9ba6989bbe265b05caeba41a28db038" title="slave register settings" alt="" coords="168,69,323,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="120,87,154,87,154,92,120,92"/>
+<area shape="rect" id="Node000004" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga9597bf0680c8154ec6eb23e27063fb5c" title="Get the mapping object from the mapping object array according to the register address." alt="" coords="176,134,315,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="105,100,192,127,191,132,103,105"/>
 </map>

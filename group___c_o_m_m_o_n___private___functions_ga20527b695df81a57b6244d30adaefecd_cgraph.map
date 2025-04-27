@@ -1,5 +1,7 @@
 <map id="agile_modbus_receive_msg_judge" name="agile_modbus_receive_msg_judge">
-<area shape="rect" id="node1" title="Check the correctness of received data." alt="" coords="5,39,173,80"/>
-<area shape="rect" id="node2" href="$group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="The length of data to be received after calculating the data element." alt="" coords="233,5,417,47"/>
-<area shape="rect" id="node3" href="$group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="The length of the data element to be received after calculating the function code." alt="" coords="221,71,429,112"/>
+<area shape="rect" id="Node000001" title="Check the correctness of received data." alt="" coords="5,37,173,77"/>
+<area shape="rect" id="Node000002" href="$group___c_o_m_m_o_n___private___functions.html#gac284cb29d9a9fc06bcc39f230734597b" title="The length of data to be received after calculating the data element." alt="" coords="233,5,417,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="173,43,219,37,220,42,174,49"/>
+<area shape="rect" id="Node000003" href="$group___c_o_m_m_o_n___private___functions.html#ga95720f06739a86879b2963ed9550fda9" title="The length of the data element to be received after calculating the function code." alt="" coords="221,69,429,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="174,66,208,71,207,76,173,71"/>
 </map>

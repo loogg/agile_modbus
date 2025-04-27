@@ -1,4 +1,5 @@
 <map id="agile_modbus_rtu_check_integrity" name="agile_modbus_rtu_check_integrity">
-<area shape="rect" id="node1" title="RTU check received data integrity interface (CRC16 comparison)" alt="" coords="5,5,188,47"/>
-<area shape="rect" id="node2" href="$group___r_t_u___private___functions.html#ga917aedd343bdcfd4d4a7b9fc80db2a17" title="RTU CRC16 calculation." alt="" coords="236,13,416,39"/>
+<area shape="rect" id="Node000001" title="RTU check received data integrity interface (CRC16 comparison)" alt="" coords="5,5,188,45"/>
+<area shape="rect" id="Node000002" href="$group___r_t_u___private___functions.html#ga917aedd343bdcfd4d4a7b9fc80db2a17" title="RTU CRC16 calculation." alt="" coords="236,13,416,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="188,23,222,23,222,28,188,28"/>
 </map>

@@ -1,6 +1,10 @@
 <map id="agile_modbus_slave_register_get" name="agile_modbus_slave_register_get">
-<area shape="rect" id="node1" title="Read slave register data." alt="" coords="411,23,565,65"/>
-<area shape="rect" id="node2" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gadcbf0921f3bb3aead3dc01cdb92a0917" title="Write and read registers." alt="" coords="208,5,363,32"/>
-<area shape="rect" id="node4" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="226,56,345,83"/>
-<area shape="rect" id="node3" href="$group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b" title="Slave callback function." alt="" coords="5,23,160,65"/>
+<area shape="rect" id="Node000001" title="Read slave register data." alt="" coords="411,23,565,63"/>
+<area shape="rect" id="Node000002" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gadcbf0921f3bb3aead3dc01cdb92a0917" title="Write and read registers." alt="" coords="208,5,363,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="397,35,363,30,364,25,397,29"/>
+<area shape="rect" id="Node000004" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="226,55,345,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="397,57,346,63,345,58,397,51"/>
+<area shape="rect" id="Node000003" href="$group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b" title="Slave callback function." alt="" coords="5,23,160,63"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="195,32,161,36,160,31,194,27"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="212,61,160,55,161,50,213,56"/>
 </map>

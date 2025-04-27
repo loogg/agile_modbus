@@ -1,9 +1,19 @@
 var searchData=
 [
-  ['backend_141',['backend',['../structagile__modbus.html#aa9d48739d05877966b473beeb61176b7',1,'agile_modbus']]],
-  ['backend_5fdata_142',['backend_data',['../structagile__modbus.html#ae1ab077d16f51a6dbaaa5e3136cf6053',1,'agile_modbus']]],
-  ['backend_5ftype_143',['backend_type',['../structagile__modbus__backend.html#acf381dc049072a82c7c858e042a72cae',1,'agile_modbus_backend']]],
-  ['buf_144',['buf',['../structagile__modbus__slave__info.html#a148c813b04073bf06d19fa0478c7b6f6',1,'agile_modbus_slave_info']]],
-  ['build_5frequest_5fbasis_145',['build_request_basis',['../structagile__modbus__backend.html#af1c930c538d90281d83ed4c9cc18f1ac',1,'agile_modbus_backend']]],
-  ['build_5fresponse_5fbasis_146',['build_response_basis',['../structagile__modbus__backend.html#a9cf149ef36ca2b44e5b1b45e061f2860',1,'agile_modbus_backend']]]
+  ['2_201_20host_0',['2.1. Host',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md17',1,'']]],
+  ['2_201_20transplantation_1',['2.1. Transplantation',['../index.html#autotoc_md28',1,'']]],
+  ['2_202_20host_2',['2.2. Host',['../index.html#autotoc_md29',1,'']]],
+  ['2_202_20slave_20machine_3',['2.2. Slave machine',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md18',1,'']]],
+  ['2_203_201_20interface_20description_4',['2.3.1. Interface description',['../index.html#autotoc_md31',1,'']]],
+  ['2_203_201_20point_20to_20point_20transmission_5',['2.3.1. Point-to-point transmission',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md20',1,'']]],
+  ['2_203_202_20broadcast_20transmission_6',['2.3.2. Broadcast transmission',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md21',1,'']]],
+  ['2_203_202_20simple_20slave_20access_20interface_7',['2.3.2. Simple slave access interface',['../index.html#autotoc_md32',1,'']]],
+  ['2_203_20rtu_20transmission_20file_8',['2.3. RTU transmission file',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md19',1,'']]],
+  ['2_203_20slave_20machine_9',['2.3. Slave machine',['../index.html#autotoc_md30',1,'']]],
+  ['2_204_20example_10',['2.4. Example',['../index.html#autotoc_md33',1,'']]],
+  ['2_205_20doxygen_20document_20generation_11',['2.5. Doxygen document generation',['../index.html#autotoc_md34',1,'']]],
+  ['2_20directory_20structure_12',['1.2. Directory structure',['../index.html#autotoc_md25',1,'']]],
+  ['2_20released_13',['Agile Modbus 1.1.2 released',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2_change_log.html#autotoc_md6',1,'']]],
+  ['2_20use_14',['2. Use',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md16',1,'']]],
+  ['2_20use_20agile_20modbus_15',['2. Use Agile Modbus',['../index.html#autotoc_md27',1,'']]]
 ];

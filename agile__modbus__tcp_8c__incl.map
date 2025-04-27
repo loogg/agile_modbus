@@ -1,7 +1,14 @@
 <map id="/home/runner/work/agile_modbus/agile_modbus/src/agile_modbus_tcp.c" name="/home/runner/work/agile_modbus/agile_modbus/src/agile_modbus_tcp.c">
-<area shape="rect" id="node1" title="Agile Modbus package TCP source file." alt="" coords="86,5,284,61"/>
-<area shape="rect" id="node2" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="73,109,198,136"/>
-<area shape="rect" id="node5" href="$agile__modbus__tcp_8h.html" title="Agile Modbus package TCP header file." alt="" coords="198,184,350,211"/>
-<area shape="rect" id="node3" title=" " alt="" coords="63,259,134,285"/>
-<area shape="rect" id="node4" href="$agile__modbus__rtu_8h.html" title="Agile Modbus package RTU header file." alt="" coords="23,184,174,211"/>
+<area shape="rect" id="Node000001" title="Agile Modbus package TCP source file." alt="" coords="85,5,284,60"/>
+<area shape="rect" id="Node000002" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="73,108,198,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="172,61,151,97,147,95,167,59"/>
+<area shape="rect" id="Node000005" href="$agile__modbus__tcp_8h.html" title="Agile Modbus package TCP header file." alt="" coords="198,181,350,207"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="202,59,263,168,259,171,197,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="63,255,133,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="82,136,43,154,26,166,12,183,9,192,9,200,18,218,36,233,59,246,56,251,33,238,14,221,3,202,3,191,8,180,22,163,40,149,80,131"/>
+<area shape="rect" id="Node000004" href="$agile__modbus__rtu_8h.html" title="Agile Modbus package RTU header file." alt="" coords="23,181,173,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="132,135,113,171,108,168,127,132"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="159,131,241,173,238,177,157,136"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="101,207,101,241,95,241,95,207"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="247,209,141,252,139,247,245,204"/>
 </map>

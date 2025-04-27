@@ -1,8 +1,14 @@
 <map id="/home/runner/work/agile_modbus/agile_modbus/inc/agile_modbus_tcp.h" name="/home/runner/work/agile_modbus/agile_modbus/inc/agile_modbus_tcp.h">
-<area shape="rect" id="node1" title="Agile Modbus package TCP header file." alt="" coords="520,5,719,61"/>
-<area shape="rect" id="node2" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="452,109,651,165"/>
-<area shape="rect" id="node5" href="$agile__modbus__tcp_8c.html" title="Agile Modbus package TCP source file." alt="" coords="676,213,875,269"/>
-<area shape="rect" id="node3" href="$agile__modbus_8c.html" title="Agile Modbus software package common source file." alt="" coords="5,213,204,269"/>
-<area shape="rect" id="node4" href="$agile__modbus__rtu_8c.html" title="Agile Modbus package RTU source file." alt="" coords="228,213,427,269"/>
-<area shape="rect" id="node6" href="$agile__modbus__slave__util_8c.html" title="Agile Modbus software package provides simple slave access source files." alt="" coords="451,213,652,269"/>
+<area shape="rect" id="Node000001" title="Agile Modbus package TCP header file." alt="" coords="520,5,719,60"/>
+<area shape="rect" id="Node000002" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="452,108,651,163"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="596,73,571,109,567,106,592,70"/>
+<area shape="rect" id="Node000005" href="$agile__modbus__tcp_8c.html" title="Agile Modbus package TCP source file." alt="" coords="676,211,875,265"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="650,69,757,208,753,212,646,72"/>
+<area shape="rect" id="Node000003" href="$agile__modbus_8c.html" title="Agile Modbus software package common source file." alt="" coords="5,211,204,265"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="439,164,216,213,205,216,204,211,215,208,438,159"/>
+<area shape="rect" id="Node000004" href="$agile__modbus__rtu_8c.html" title="Agile Modbus package RTU source file." alt="" coords="228,211,427,265"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="482,171,387,213,385,208,480,166"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="623,166,718,208,716,213,621,171"/>
+<area shape="rect" id="Node000006" href="$agile__modbus__slave__util_8c.html" title="Agile Modbus software package provides simple slave access source files." alt="" coords="451,211,652,265"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="554,176,554,211,549,211,549,176"/>
 </map>

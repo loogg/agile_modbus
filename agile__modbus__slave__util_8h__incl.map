@@ -1,4 +1,5 @@
 <map id="/home/runner/work/agile_modbus/agile_modbus/util/agile_modbus_slave_util.h" name="/home/runner/work/agile_modbus/agile_modbus/util/agile_modbus_slave_util.h">
-<area shape="rect" id="node1" title="The simple slave access header file provided by the Agile Modbus software package." alt="" coords="5,5,207,61"/>
-<area shape="rect" id="node2" title=" " alt="" coords="71,109,141,136"/>
+<area shape="rect" id="Node000001" title="The simple slave access header file provided by the Agile Modbus software package." alt="" coords="5,5,207,60"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="71,108,141,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,60,109,94,103,94,103,60"/>
 </map>

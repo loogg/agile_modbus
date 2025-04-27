@@ -1,14 +1,12 @@
 var searchData=
 [
-  ['changelog_2emd_147',['ChangeLog.md',['../_change_log_8md.html',1,'']]],
-  ['check_5fintegrity_148',['check_integrity',['../structagile__modbus__backend.html#a5b5d593afcd73504dd8b0977173dcb16',1,'agile_modbus_backend']]],
-  ['checksum_5flength_149',['checksum_length',['../structagile__modbus__backend.html#af249a707d3885f5fbcd47b444c28a298',1,'agile_modbus_backend']]],
-  ['common_150',['Common',['../group___c_o_m_m_o_n.html',1,'']]],
-  ['common_20exported_20constants_151',['Common Exported Constants',['../group___c_o_m_m_o_n___exported___constants.html',1,'']]],
-  ['common_20exported_20functions_152',['Common Exported Functions',['../group___c_o_m_m_o_n___exported___functions.html',1,'']]],
-  ['common_20exported_20types_153',['Common Exported Types',['../group___c_o_m_m_o_n___exported___types.html',1,'']]],
-  ['common_20private_20constants_154',['Common Private Constants',['../group___c_o_m_m_o_n___private___constants.html',1,'']]],
-  ['common_20private_20functions_155',['Common Private Functions',['../group___c_o_m_m_o_n___private___functions.html',1,'']]],
-  ['compute_5fdata_5flength_5fafter_5fmeta_156',['compute_data_length_after_meta',['../structagile__modbus.html#a01a1cc40593d0b2f35c4bd9264024023',1,'agile_modbus']]],
-  ['compute_5fmeta_5flength_5fafter_5ffunction_157',['compute_meta_length_after_function',['../structagile__modbus.html#a374a8fa6bbae7c8c7c26fa0327d86c28',1,'agile_modbus']]]
+  ['3_201_20interface_20description_0',['2.3.1. Interface description',['../index.html#autotoc_md31',1,'']]],
+  ['3_201_20point_20to_20point_20transmission_1',['2.3.1. Point-to-point transmission',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md20',1,'']]],
+  ['3_202_20broadcast_20transmission_2',['2.3.2. Broadcast transmission',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md21',1,'']]],
+  ['3_202_20simple_20slave_20access_20interface_3',['2.3.2. Simple slave access interface',['../index.html#autotoc_md32',1,'']]],
+  ['3_20license_4',['1.3. License',['../index.html#autotoc_md26',1,'']]],
+  ['3_20released_5',['Agile Modbus 1.1.3 released',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2_change_log.html#autotoc_md9',1,'']]],
+  ['3_20rtu_20transmission_20file_6',['2.3. RTU transmission file',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md19',1,'']]],
+  ['3_20slave_20machine_7',['2.3. Slave machine',['../index.html#autotoc_md30',1,'']]],
+  ['3_20support_8',['3. Support',['../index.html#autotoc_md35',1,'']]]
 ];

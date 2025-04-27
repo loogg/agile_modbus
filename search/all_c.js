@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['read_5fbuf_182',['read_buf',['../structagile__modbus.html#a7ae0e70e10647b910250928d8b15bc17',1,'agile_modbus']]],
-  ['read_5fbufsz_183',['read_bufsz',['../structagile__modbus.html#ad3d742a082530ee2dc6b55c04d80d9a2',1,'agile_modbus']]],
-  ['read_5fregisters_184',['read_registers',['../group___s_l_a_v_e___u_t_i_l___private___functions.html#gaa02440218e0c32a76738414a0fc2aeb4',1,'agile_modbus_slave_util.c']]],
-  ['readme_2emd_185',['README.md',['../examples_2_r_e_a_d_m_e_8md.html',1,'(Global Namespace)'],['../_r_e_a_d_m_e_8md.html',1,'(Global Namespace)']]],
-  ['rsp_5flength_186',['rsp_length',['../structagile__modbus__slave__info.html#aceba4a7afd2625d76b1aac132d0a758a',1,'agile_modbus_slave_info']]],
-  ['rtu_187',['RTU',['../group___r_t_u.html',1,'']]],
-  ['rtu_20exported_20constants_188',['RTU Exported Constants',['../group___r_t_u___exported___constants.html',1,'']]],
-  ['rtu_20exported_20functions_189',['RTU Exported Functions',['../group___r_t_u___exported___functions.html',1,'']]],
-  ['rtu_20exported_20types_190',['RTU Exported Types',['../group___r_t_u___exported___types.html',1,'']]],
-  ['rtu_20private_20constants_191',['RTU Private Constants',['../group___r_t_u___private___constants.html',1,'']]],
-  ['rtu_20private_20functions_192',['RTU Private Functions',['../group___r_t_u___private___functions.html',1,'']]]
+  ['features_0',['1.1. Features',['../index.html#autotoc_md24',1,'']]],
+  ['file_1',['2.3. RTU transmission file',['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2examples_2_r_e_a_d_m_e.html#autotoc_md19',1,'']]],
+  ['function_2',['function',['../structagile__modbus__sft.html#afe1918bcff8e86066656a68de876b873',1,'agile_modbus_sft::function'],['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2_change_log.html#autotoc_md13',1,'New function'],['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2_change_log.html#autotoc_md7',1,'New function'],['../md__2home_2runner_2work_2agile__modbus_2agile__modbus_2_change_log.html#autotoc_md2',1,'New function']]],
+  ['function_20codes_3',['Modbus Function Codes',['../group___modbus___function___codes.html',1,'']]],
+  ['functions_4',['functions',['../group___c_o_m_m_o_n___exported___functions.html',1,'Common Exported Functions'],['../group___c_o_m_m_o_n___private___functions.html',1,'Common Private Functions'],['../group___master___common___operation___functions.html',1,'Master Common Operation Functions'],['../group___master___private___functions.html',1,'Master Private Functions'],['../group___master___raw___operation___functions.html',1,'Master Raw Operation Functions'],['../group___r_t_u___exported___functions.html',1,'RTU Exported Functions'],['../group___r_t_u___private___functions.html',1,'RTU Private Functions'],['../group___slave___operation___functions.html',1,'Slave Operation Functions'],['../group___slave___private___functions.html',1,'Slave Private Functions'],['../group___s_l_a_v_e___u_t_i_l___exported___functions.html',1,'Slave Util Exported Functions'],['../group___s_l_a_v_e___u_t_i_l___private___functions.html',1,'Slave Util Private Functions'],['../group___t_c_p___exported___functions.html',1,'TCP Exported Functions'],['../group___t_c_p___private___functions.html',1,'TCP Private Functions']]]
 ];

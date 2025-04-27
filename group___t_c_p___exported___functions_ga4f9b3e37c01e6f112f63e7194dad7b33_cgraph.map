@@ -1,4 +1,5 @@
 <map id="agile_modbus_tcp_init" name="agile_modbus_tcp_init">
-<area shape="rect" id="node1" title="TCP initialization." alt="" coords="5,5,173,32"/>
-<area shape="rect" id="node2" href="$group___c_o_m_m_o_n___exported___functions.html#ga520bd6e5aa1521ebe24a058f8bc9e6f5" title="initialize modbus handle" alt="" coords="221,5,427,32"/>
+<area shape="rect" id="Node000001" title="TCP initialization." alt="" coords="5,5,173,31"/>
+<area shape="rect" id="Node000002" href="$group___c_o_m_m_o_n___exported___functions.html#ga520bd6e5aa1521ebe24a058f8bc9e6f5" title="initialize modbus handle" alt="" coords="221,5,427,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,15,208,15,208,21,174,21"/>
 </map>

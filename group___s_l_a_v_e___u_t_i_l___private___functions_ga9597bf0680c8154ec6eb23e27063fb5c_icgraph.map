@@ -1,0 +1,16 @@
+<map id="get_map_by_addr" name="get_map_by_addr">
+<area shape="rect" id="Node000001" title="Get the mapping object from the mapping object array according to the register address." alt="" coords="411,80,549,105"/>
+<area shape="rect" id="Node000002" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gad3e4f189a6169fc7b59228b7c321cb66" title="mask write register" alt="" coords="208,5,363,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="438,77,362,44,329,33,330,28,364,40,441,72"/>
+<area shape="rect" id="Node000004" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gaa02440218e0c32a76738414a0fc2aeb4" title="read register" alt="" coords="228,55,343,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="396,85,343,77,344,72,397,79"/>
+<area shape="rect" id="Node000005" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gadcbf0921f3bb3aead3dc01cdb92a0917" title="Write and read registers." alt="" coords="208,104,363,129"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="397,106,364,110,363,104,397,100"/>
+<area shape="rect" id="Node000006" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="226,153,345,179"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="437,113,364,143,328,156,326,151,362,138,435,108"/>
+<area shape="rect" id="Node000003" href="$group___s_l_a_v_e___u_t_i_l___exported___functions.html#ga6d7613fbda26c40a969df673cf9b8c5b" title="Slave callback function." alt="" coords="5,73,160,113"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="229,37,209,45,132,75,130,70,207,39,228,32"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="214,79,161,86,160,80,214,74"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="194,109,160,105,161,99,195,103"/>
+<area shape="poly" id="edge8_Node000006_Node000003" title=" " alt="" coords="231,151,207,143,134,115,135,110,209,138,232,146"/>
+</map>

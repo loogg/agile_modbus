@@ -1,12 +1,26 @@
 <map id="agile_modbus_slave_util_callback" name="agile_modbus_slave_util_callback">
-<area shape="rect" id="node1" title="Slave callback function." alt="" coords="5,129,160,171"/>
-<area shape="rect" id="node2" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gad3e4f189a6169fc7b59228b7c321cb66" title="mask write register" alt="" coords="208,111,363,138"/>
-<area shape="rect" id="node4" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gaa02440218e0c32a76738414a0fc2aeb4" title="read register" alt="" coords="228,61,343,87"/>
-<area shape="rect" id="node7" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gadcbf0921f3bb3aead3dc01cdb92a0917" title="Write and read registers." alt="" coords="208,162,363,189"/>
-<area shape="rect" id="node9" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="226,213,345,239"/>
-<area shape="rect" id="node3" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga30993ba8e98dab4ab152116fa0cc6742" title="Get the mapping object from the mapping object array according to the register address." alt="" coords="419,137,557,163"/>
-<area shape="rect" id="node5" href="$group___slave___operation___functions.html#gab8a9c04d3fe520c9323600940cf080eb" title="slave IO settings" alt="" coords="411,5,565,47"/>
-<area shape="rect" id="node6" href="$group___slave___operation___functions.html#gae9ba6989bbe265b05caeba41a28db038" title="slave register settings" alt="" coords="411,71,565,112"/>
-<area shape="rect" id="node8" href="$group___slave___operation___functions.html#gac82879249cfa7d8926aa9381a0264a72" title="Read slave register data." alt="" coords="411,188,565,229"/>
-<area shape="rect" id="node10" href="$group___slave___operation___functions.html#gaa5c9135cec09ea8626db054bd3d75227" title="Read slave IO status." alt="" coords="411,253,565,295"/>
+<area shape="rect" id="Node000001" title="Slave callback function." alt="" coords="5,128,160,168"/>
+<area shape="rect" id="Node000002" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gad3e4f189a6169fc7b59228b7c321cb66" title="mask write register" alt="" coords="208,110,363,135"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="160,136,193,131,194,137,161,141"/>
+<area shape="rect" id="Node000004" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gaa02440218e0c32a76738414a0fc2aeb4" title="read register" alt="" coords="228,61,343,86"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="130,125,207,95,228,88,229,93,209,100,132,130"/>
+<area shape="rect" id="Node000007" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#gadcbf0921f3bb3aead3dc01cdb92a0917" title="Write and read registers." alt="" coords="208,159,363,185"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="160,154,194,159,193,164,160,160"/>
+<area shape="rect" id="Node000009" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga7e9c1eddbd7f6f113b75170ef8e50e4e" title="write register" alt="" coords="226,209,345,234"/>
+<area shape="poly" id="edge11_Node000001_Node000009" title=" " alt="" coords="135,166,209,193,232,202,231,207,207,199,134,171"/>
+<area shape="rect" id="Node000003" href="$group___s_l_a_v_e___u_t_i_l___private___functions.html#ga9597bf0680c8154ec6eb23e27063fb5c" title="Get the mapping object from the mapping object array according to the register address." alt="" coords="419,134,557,159"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="363,129,406,134,405,140,363,134"/>
+<area shape="poly" id="edge6_Node000004_Node000003" title=" " alt="" coords="332,83,364,95,412,119,433,127,431,132,410,124,362,100,330,89"/>
+<area shape="rect" id="Node000005" href="$group___slave___operation___functions.html#gab8a9c04d3fe520c9323600940cf080eb" title="slave IO settings" alt="" coords="411,5,565,45"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="339,58,396,44,398,49,340,63"/>
+<area shape="rect" id="Node000006" href="$group___slave___operation___functions.html#gae9ba6989bbe265b05caeba41a28db038" title="slave register settings" alt="" coords="411,69,565,109"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="343,75,397,79,396,85,343,80"/>
+<area shape="poly" id="edge10_Node000007_Node000003" title=" " alt="" coords="363,160,405,154,406,160,363,165"/>
+<area shape="poly" id="edge9_Node000007_Node000006" title=" " alt="" coords="328,157,362,144,409,119,424,112,426,117,412,124,364,149,330,162"/>
+<area shape="rect" id="Node000008" href="$group___slave___operation___functions.html#gac82879249cfa7d8926aa9381a0264a72" title="Read slave register data." alt="" coords="411,184,565,224"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="363,182,397,187,396,192,362,187"/>
+<area shape="poly" id="edge14_Node000009_Node000003" title=" " alt="" coords="328,206,362,194,410,170,431,161,433,166,412,174,364,198,329,211"/>
+<area shape="poly" id="edge13_Node000009_Node000008" title=" " alt="" coords="345,214,397,209,397,214,345,219"/>
+<area shape="rect" id="Node000010" href="$group___slave___operation___functions.html#gaa5c9135cec09ea8626db054bd3d75227" title="Read slave IO status." alt="" coords="411,248,565,288"/>
+<area shape="poly" id="edge12_Node000009_Node000010" title=" " alt="" coords="342,231,398,245,397,250,341,237"/>
 </map>

@@ -1,8 +1,15 @@
 <map id="/home/runner/work/agile_modbus/agile_modbus/src/agile_modbus.c" name="/home/runner/work/agile_modbus/agile_modbus/src/agile_modbus.c">
-<area shape="rect" id="node1" title="Agile Modbus software package common source file." alt="" coords="59,5,258,61"/>
-<area shape="rect" id="node2" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="35,109,160,136"/>
-<area shape="rect" id="node6" title=" " alt="" coords="185,109,255,136"/>
-<area shape="rect" id="node3" title=" " alt="" coords="62,259,133,285"/>
-<area shape="rect" id="node4" href="$agile__modbus__rtu_8h.html" title="Agile Modbus package RTU header file." alt="" coords="22,184,173,211"/>
-<area shape="rect" id="node5" href="$agile__modbus__tcp_8h.html" title="Agile Modbus package TCP header file." alt="" coords="197,184,349,211"/>
+<area shape="rect" id="Node000001" title="Agile Modbus software package common source file." alt="" coords="60,5,258,60"/>
+<area shape="rect" id="Node000002" href="$agile__modbus_8h.html" title="Agile Modbus software package common header file." alt="" coords="35,108,160,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="143,62,116,98,112,95,138,59"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="185,108,256,133"/>
+<area shape="poly" id="edge7_Node000001_Node000006" title=" " alt="" coords="180,59,206,95,202,98,176,62"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="62,255,133,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="69,136,37,155,23,167,12,182,9,201,19,218,36,233,58,246,55,251,33,238,15,221,4,202,7,180,19,164,34,150,66,131"/>
+<area shape="rect" id="Node000004" href="$agile__modbus__rtu_8h.html" title="Agile Modbus package RTU header file." alt="" coords="22,181,173,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="100,134,100,168,95,168,95,134"/>
+<area shape="rect" id="Node000005" href="$agile__modbus__tcp_8h.html" title="Agile Modbus package TCP header file." alt="" coords="198,181,350,207"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="127,131,233,174,231,178,125,136"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="100,207,100,241,95,241,95,207"/>
+<area shape="poly" id="edge6_Node000005_Node000003" title=" " alt="" coords="247,209,140,252,138,247,245,204"/>
 </map>

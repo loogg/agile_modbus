@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['slave_20exported_20types_400',['Slave Exported Types',['../group___slave___exported___types.html',1,'']]],
-  ['slave_20operation_20functions_401',['Slave Operation Functions',['../group___slave___operation___functions.html',1,'']]],
-  ['slave_20private_20functions_402',['Slave Private Functions',['../group___slave___private___functions.html',1,'']]],
-  ['slave_20util_403',['Slave Util',['../group___s_l_a_v_e___u_t_i_l.html',1,'']]],
-  ['slave_20util_20exported_20functions_404',['Slave Util Exported Functions',['../group___s_l_a_v_e___u_t_i_l___exported___functions.html',1,'']]],
-  ['slave_20util_20exported_20types_405',['Slave Util Exported Types',['../group___s_l_a_v_e___u_t_i_l___exported___types.html',1,'']]],
-  ['slave_20util_20private_20functions_406',['Slave Util Private Functions',['../group___s_l_a_v_e___u_t_i_l___private___functions.html',1,'']]]
+  ['function_20codes_0',['Modbus Function Codes',['../group___modbus___function___codes.html',1,'']]],
+  ['functions_1',['functions',['../group___c_o_m_m_o_n___exported___functions.html',1,'Common Exported Functions'],['../group___c_o_m_m_o_n___private___functions.html',1,'Common Private Functions'],['../group___master___common___operation___functions.html',1,'Master Common Operation Functions'],['../group___master___private___functions.html',1,'Master Private Functions'],['../group___master___raw___operation___functions.html',1,'Master Raw Operation Functions'],['../group___r_t_u___exported___functions.html',1,'RTU Exported Functions'],['../group___r_t_u___private___functions.html',1,'RTU Private Functions'],['../group___slave___operation___functions.html',1,'Slave Operation Functions'],['../group___slave___private___functions.html',1,'Slave Private Functions'],['../group___s_l_a_v_e___u_t_i_l___exported___functions.html',1,'Slave Util Exported Functions'],['../group___s_l_a_v_e___u_t_i_l___private___functions.html',1,'Slave Util Private Functions'],['../group___t_c_p___exported___functions.html',1,'TCP Exported Functions'],['../group___t_c_p___private___functions.html',1,'TCP Private Functions']]]
 ];
