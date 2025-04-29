@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           # If your document requires Git submodules, uncomment the next line
@@ -41,7 +41,7 @@ jobs:
           tar -czvf binaries.tar.gz *
 
       - name: Upload examples bin
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: examples-bin
           path: examples/build/bin/binaries.tar.gz
