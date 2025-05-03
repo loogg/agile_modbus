@@ -2,13 +2,13 @@
 
 static uint8_t _tab_input_bits[10] = {0, 1, 1, 0, 0, 1, 1, 0, 0, 1};
 
-static int get_map_buf(void *buf, int bufsz)
+static int get_map_buf(int index, void *buf, int bufcnt)
 {
     uint8_t *ptr = (uint8_t *)buf;
 
     pthread_mutex_lock(&slave_mtx);
-    for (int i = 0; i < sizeof(_tab_input_bits); i++) {
-        ptr[i] = _tab_input_bits[i];
+    for (int i = 0; i < bufcnt && i + index < sizeof(_tab_input_bits); i++) {
+        ptr[i] = _tab_input_bits[index + i];
     }
     pthread_mutex_unlock(&slave_mtx);
 

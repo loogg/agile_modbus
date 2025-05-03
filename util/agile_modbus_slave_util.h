@@ -38,8 +38,8 @@ extern "C" {
 typedef struct agile_modbus_slave_util_map {
     int start_addr;                                       /**<Start address */
     int end_addr;                                         /**< end address */
-    int (*get)(void *buf, int bufsz);                     /**< Get register data interface */
-    int (*set)(int index, int len, void *buf, int bufsz); /**< Set register data interface */
+    int (*get)(int index, void *buf, int bufcnt);         /**< Get register data interface */
+    int (*set)(int index, void *buf, int bufcnt);         /**< Set register data interface */
 } agile_modbus_slave_util_map_t;
 
 /**
