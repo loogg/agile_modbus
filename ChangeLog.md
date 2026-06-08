@@ -1,5 +1,21 @@
 # Update record
 
+## Agile Modbus 1.2.0 released
+
+### Revise
+
+2026-06-08: mengplus
+
+* get/set 回调接口变更：`get(offset, len, buf, bufsz)` / `set(offset, len, buf, bufsz)`，支持局部读写
+* 优化读性能：`map->get` 只读取所需范围，不再全量读取后丢弃
+* 去除栈上 253 字节固定 map_buf，对齐修复
+* 去除冗余 memset，C++ 保留字冲突修复
+* slave_util_callback 增加 NULL 安全检查
+* 新增 Makefile 构建系统：`make lib` / `make test` / `make size-report` / `make format-check`
+* 新增 21 个 check 框架单元测试
+* 新增 CI 工作流：format-check → build (gcc+clang) → memory-check (valgrind) → example-build
+* 新增 ROM/RAM 占用报表
+
 ## Agile Modbus 1.1.0 released
 
 ### New function

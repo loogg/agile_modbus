@@ -34,12 +34,25 @@ extern "C" {
 
 /**
  * @brief   slave register mapping structure
+ *
+ * Callback semantics:
+ *   - get(offset, len, buf, bufsz):
+ *       Read `len` elements starting at internal offset `offset`.
+ *       buf[0..len-1] receives the data.
+ *       For coils/discrete inputs: element = uint8_t (1 byte each)
+ *       For registers: element = uint16_t (2 bytes each)
+ *
+ *   - set(offset, len, buf, bufsz):
+ *       Write `len` elements starting at internal offset `offset`.
+ *       buf[0..len-1] contains the data to write.
+ *       For coils: element = uint8_t (1 byte each)
+ *       For registers: element = uint16_t (2 bytes each)
  */
 typedef struct agile_modbus_slave_util_map {
-    int start_addr;                                       /**<Start address */
-    int end_addr;                                         /**< end address */
-    int (*get)(void *buf, int bufsz);                     /**< Get register data interface */
-    int (*set)(int index, int len, void *buf, int bufsz); /**< Set register data interface */
+    int start_addr;                                                     /**< Start address */
+    int end_addr;                                                       /**< end address */
+    int (*get)(int offset, int len, void *buf, int bufsz);              /**< Get register data interface */
+    int (*set)(int offset, int len, void *buf, int bufsz);              /**< Set register data interface */
 } agile_modbus_slave_util_map_t;
 
 /**
@@ -47,15 +60,15 @@ typedef struct agile_modbus_slave_util_map {
  */
 typedef struct agile_modbus_slave_util {
     const agile_modbus_slave_util_map_t *tab_bits;                                            /**< Coil register definition array */
-    int nb_bits;                                                                              /**<The number of coil register definition arrays */
+    int nb_bits;                                                                              /**< The number of coil register definition arrays */
     const agile_modbus_slave_util_map_t *tab_input_bits;                                      /**< Discrete input register definition array */
-    int nb_input_bits;                                                                        /**<The number of discrete input register definition arrays */
+    int nb_input_bits;                                                                        /**< The number of discrete input register definition arrays */
     const agile_modbus_slave_util_map_t *tab_registers;                                       /**< Holding register definition array */
     int nb_registers;                                                                         /**< Number of holding register definition arrays */
     const agile_modbus_slave_util_map_t *tab_input_registers;                                 /**< Input register definition array */
-    int nb_input_registers;                                                                   /**<Input register definition array number */
+    int nb_input_registers;                                                                   /**< Input register definition array number */
     int (*addr_check)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info);       /**< Address checking interface */
-    int (*special_function)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info); /**<Special function code processing interface */
+    int (*special_function)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info); /**< Special function code processing interface */
     int (*done)(agile_modbus_t *ctx, struct agile_modbus_slave_info *slave_info, int ret);    /**< Processing end interface */
 } agile_modbus_slave_util_t;
 

@@ -57,3 +57,4 @@ dkms.conf
 doc/doxygen/output/*
 !doc/doxygen/output/index.html
 !doc/doxygen/output/figures
+tests/test_slave_util

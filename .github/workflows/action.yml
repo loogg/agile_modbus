@@ -1,41 +1,105 @@
-name: Agile_Modbus
+name: CI
 
 on:
   push:
-    branches:
-      # Make sure this is the branch name you are using
-      - master
+    branches: [ master, feat/** ]
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'SConscript'
+      - 'ChangeLog.md'
+  pull_request:
+    branches: [ master ]
+    paths-ignore:
+      - '*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      - 'SConscript'
+      - 'ChangeLog.md'
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  example-build:
+  format-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          # If your document requires Git submodules, uncomment the next line
-          # submodules: true
+      - uses: actions/checkout@v4
 
-      - name: Install Tools
-        shell: bash
+      - name: Install clang-format
         run: |
           sudo apt-get update
-          sudo apt-get install cmake
+          sudo apt-get install -y clang-format
+
+      - name: Check code format
+        run: make format-check
+
+  build:
+    runs-on: ubuntu-latest
+    needs: format-check
+    strategy:
+      matrix:
+        compiler: [gcc, clang]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y check clang
+
+      - name: Build library
+        run: make lib CC=${{ matrix.compiler }}
+
+      - name: ROM/RAM report
+        run: make size-report
+
+      - name: Run unit tests
+        run: make test CC=${{ matrix.compiler }}
+
+  memory-check:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y check valgrind
+
+      - name: Build with debug symbols
+        run: make lib CFLAGS_EXTRA="-g -O0"
+
+      - name: Run tests under valgrind
+        run: |
+          make test CFLAGS_EXTRA="-g -O0 -Wconversion -Wshadow -Wdouble-promotion"
+          for t in build/tests/*; do
+            valgrind --leak-check=full --error-exitcode=1 $t
+          done
+
+  example-build:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake
 
       - name: Example Compile
-        shell: bash
         run: |
           cd examples
           cmake -B build
           cmake --build build
 
       - name: Package Binaries
-        shell: bash
         run: |
           cd examples/build/bin
           tar -czvf binaries.tar.gz *
@@ -48,30 +112,23 @@ jobs:
 
   deploy-gh-pages:
     runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          # If your document requires Git submodules, uncomment the next line
-          # submodules: true
+      - uses: actions/checkout@v4
 
       - name: Install Tools
-        shell: bash
         run: |
           sudo apt-get update
           sudo apt-get -qq install doxygen graphviz
 
-      - name: generat doxygen html
-        shell: bash
+      - name: Generate doxygen html
         run: |
-          ls
           cd doc/doxygen
           doxygen Doxyfile
 
       - name: Deployment documentation
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # This is the branch name to which the document is deployed
           branch: gh-pages
           folder: doc/doxygen/output

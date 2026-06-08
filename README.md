@@ -34,8 +34,20 @@ Agile Modbus is a lightweight modbus protocol stack that meets the needs of user
 | inc  | header file |
 | src  | source code |
 | util | Provides simple and practical components |
+| tests | Unit tests (check framework) |
+| Makefile | Build system |
 
-### 1.3. License
+### 1.3. Build & Test
+
+```bash
+make lib          # Build static library
+make test         # Run unit tests (requires check)
+make size-report  # Show ROM/RAM usage
+make format-check # Check code format (requires clang-format)
+make clean        # Remove build artifacts
+```
+
+### 1.4. License
 
 Agile Modbus complies with the `Apache-2.0` license, see the `LICENSE` file for details.
 
